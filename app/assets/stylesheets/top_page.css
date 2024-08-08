@@ -75,3 +75,12 @@
   .text-center {
     margin-top: 15px;
   }
+
+  #avatar-preview {
+    margin-top: 10px;
+    max-width: 100px;
+    display: block; /* ブロックレベルにする */
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 50%; /* 画像を丸くする */
+  }
