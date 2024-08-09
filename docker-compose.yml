@@ -34,7 +34,6 @@ services:
       DATABASE_USERNAME: ramen_asmr
       DATABASE_PASSWORD: database_password
       DATABASE_HOST: db
-      GOOGLE_PLACES_API_KEY: AIzaSyCTT84S2klZnVTcF--4GpLo3r3tIaeIOgw
 
 volumes:
   mysql-data:
