@@ -1,0 +1,87 @@
+.video-form-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 1000px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.custom-form {
+  width: 70%;
+  height: 70%;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex; /* フレックスボックスにする */
+  flex-direction: column; /* フォーム要素を縦に並べる */
+  align-items: center;
+  gap: 20px;
+}
+
+.video-form-container .form-group {
+  width: 100%;
+  margin-bottom: 15px;
+}
+  
+.video-form-container .form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+input[type="file"] {
+  background-color: #ff9999; /* 薄い赤色 */
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+.form-group label[for="video_file"] {
+  background-color: #e75480;
+  color: white;
+  padding: 15px 20px;
+  font-size: 1.2em;
+  border-radius: 5px;
+  cursor: pointer;
+  display: block;
+  transition: background-color 0.3s ease;
+  text-align: center; /* テキストを中央に揃える */
+  margin: 30px auto;
+  width: 50%;
+}
+.form-group .form-control {
+  width: 100%;
+  height: 50px;
+}
+
+.form-group .video-title{
+  text-align: center;
+}
+
+.video-title, .video-description {
+  text-align: center;
+  font-size: 1.5em !important;
+}
+
+.video-btn {
+  align-self: center; /* 親要素の中央に配置 */
+  display: block; /* ブロックレベルにする */
+  margin: 0 auto;
+}
+
