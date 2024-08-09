@@ -1,0 +1,16 @@
+<div class='search_container'>
+  <%= render 'search_form' %>
+
+   <% if @ramen_shops.any? %>
+    <ul>
+      <% @ramen_shops.each do |shop| %>
+        <li>
+          <strong><%= shop.name %></strong><br>
+          <span><%= shop.vicinity || shop.formatted_address %></span>
+        </li>
+      <% end %>
+    </ul>
+   <% else %>
+    <p>検索結果がありません</p>
+   <% end %>
+</div>
