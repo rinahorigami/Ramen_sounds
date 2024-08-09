@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   delete 'logout', to: 'sessions#destroy'
 
   resources :ramen_shops, only: %i[index]
+
+  resources :videos, only: %i[new create]
 end
