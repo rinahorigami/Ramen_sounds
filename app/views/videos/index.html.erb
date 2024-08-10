@@ -1,0 +1,22 @@
+<div class="reel-container">
+  <% @videos.each do |video| %>
+    <div class="reel-item">
+      <div class="video-content">
+        <div class="video-wrapper">
+          <h2 class="videos-title"><%= video.title %></h2>
+          <% if video.file.present? %>
+            <video controls>
+              <source src="<%= video.file.url %>" type="video/mp4">
+              お使いのブラウザは動画の再生に対応していません。
+            </video>
+          <% else %>
+            <span>動画がありません</span>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+<script type="module">
+  import "videos";
+</script>

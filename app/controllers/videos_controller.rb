@@ -1,4 +1,9 @@
 class VideosController < ApplicationController
+
+  def index
+    @videos = Video.includes(:user).order(created_at: :desc)
+  end
+
   def new
     @video = Video.new
   end
@@ -8,7 +13,7 @@ class VideosController < ApplicationController
     @video.user = current_user
 
     if @video.save
-      redirect_to root_path, notice: '動画がアップロードされました。'
+      redirect_to videos_path, notice: '動画がアップロードされました。'
     else
       render :new
     end

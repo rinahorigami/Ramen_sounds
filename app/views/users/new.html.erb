@@ -20,7 +20,8 @@
       </div>
       <div class="mb-3">
         <%= f.label :avatar %>
-        <%= f.file_field :avatar, accept: 'image/*', onchange: 'previewImage(event)' %>
+        <%= f.file_field :avatar, accept: 'image/*', id: "avatar-input", style: "display: none;" %>
+        <button type="button" class="btn btn-secondary" id="select-avatar-btn">画像を選択する</button>
         <img id="avatar-preview" src="#" alt="プレビュー画像" style="display:none; margin-top: 10px; max-width: 100px;">
       </div>
       <%= f.submit "登録", class: "btn btn-primary" %>
@@ -30,3 +31,7 @@
     </div>
   </div>
 </body>
+
+<script type="module">
+  import "avatar_preview";
+</script>
