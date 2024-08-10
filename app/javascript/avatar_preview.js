@@ -1,16 +1,20 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const fileInput = document.querySelector('input[type="file"][name="user[avatar]"]');
-    if (fileInput) {
-      fileInput.addEventListener('change', previewImage);
-    }
+  const fileInput = document.getElementById('avatar-input');
+  const selectAvatarBtn = document.getElementById('select-avatar-btn');
+
+  selectAvatarBtn.addEventListener('click', () => {
+    fileInput.click();
   });
-  
-  function previewImage(event) {
-    var reader = new FileReader();
-    reader.onload = function() {
-      var output = document.getElementById('avatar-preview');
-      output.src = reader.result;
-      output.style.display = 'block';
-    };
-    reader.readAsDataURL(event.target.files[0]);
-  }
+
+  fileInput.addEventListener('change', previewImage);
+});
+
+function previewImage(event) {
+  const reader = new FileReader();
+  reader.onload = function() {
+    const output = document.getElementById('avatar-preview');
+    output.src = reader.result;
+    output.style.display = 'block';
+  };
+  reader.readAsDataURL(event.target.files[0]);
+}

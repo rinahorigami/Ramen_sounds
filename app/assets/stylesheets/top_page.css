@@ -79,8 +79,8 @@ a:hover {
 #avatar-preview {
   margin-top: 10px;
   max-width: 100px;
-  display: block; /* ブロックレベルにする */
+  display: block;
   margin-left: auto;
   margin-right: auto;
-  border-radius: 50%; /* 画像を丸くする */
+  border-radius: 50%;
 }
