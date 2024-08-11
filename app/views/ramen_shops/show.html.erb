@@ -1,0 +1,19 @@
+<div class="ramen-shop-details">
+  <%= link_to ramen_shops_path(keyword: params[:keyword], lat: params[:lat], lng: params[:lng]), class: 'back-button' do %>
+    <i class="fas fa-arrow-left"></i>
+  <% end %>
+
+  <h1><%= @ramen_shop['name'] %></h1>
+  <p>住所: <%= @ramen_shop['vicinity'] %></p>
+  <p>電話番号: <%= @ramen_shop['formatted_phone_number'] || '情報なし' %></p>
+  <p class="hours-label">営業時間:</p>
+  <% if @ramen_shop['opening_hours'] && @ramen_shop['opening_hours']['weekday_text'] %>
+    <ul class="hours-list">
+      <% @ramen_shop['opening_hours']['weekday_text'].each do |day_text| %>
+        <li><%= day_text %></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>営業時間情報なし</p>
+  <% end %>
+</div>
