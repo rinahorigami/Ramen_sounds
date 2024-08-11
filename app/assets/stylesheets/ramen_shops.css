@@ -48,3 +48,65 @@
   padding: 10px 20px;
   height: auto;
 }
+
+.ramen-shop-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.ramen-shop-details h1 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.ramen-shop-details p {
+  width: 100%;
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #ccc;
+}
+
+.ramen-shop-details .hours-label { 
+  width: 100%;
+  font-size: 1.2em;
+  border-bottom: none; 
+  margin-bottom: 0 !important;
+}
+
+.ramen-shop-details .hours-list {
+  width: 100%;
+  padding-left: 0;
+  list-style: none;
+  font-size: 1.2em;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #ccc;
+  margin-top: 0 !important;
+}
+
+.ramen-shop-details .hours-list ul {
+  margin-top: 0 !important;
+}
+
+.ramen-shop-details .hours-list li {
+  padding-left: 20px;
+  text-indent: -20px;
+}
+
+.back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 24px;
+  color: #333; /* アイコンの色を設定 */
+  text-decoration: none;
+}
+
+.back-button i {
+  font-size: 30px;
+}

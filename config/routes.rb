@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
 
-  resources :ramen_shops, only: %i[index]
+  resources :ramen_shops, only: %i[index show]
 
   resources :videos, only: %i[new create index]
 end
