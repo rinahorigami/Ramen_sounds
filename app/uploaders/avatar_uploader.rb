@@ -18,7 +18,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   end
 
   def default_url(*args)
-    "/assets/19561-1-300x300.jpg"
+    "/assets/AdobeStock_424225597.jpeg"
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
