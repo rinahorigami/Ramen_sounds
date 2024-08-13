@@ -2,7 +2,7 @@
   font-family: 'Helvetica', 'Arial', sans-serif;
   margin: 0;
   padding: 0;
-  background-image: url('/assets/360_F_212532288_jW08k9mnEjRk17fZl9VRMpXXCMru8Qmh.jpg');
+  background-image: url('/assets/AdobeStock_343708014.jpeg');
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -12,7 +12,7 @@
 }
   
 .top-page-container {
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(255, 255, 255, 0.7);
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
@@ -22,16 +22,20 @@
 }
   
 h1 {
-  font-size: 3em;
+  font-size: 4.8em;
   margin-bottom: 20px;
+  margin-top: 20px;
+  font-family: 'Merriweather', serif;
+  color: rgb(79, 77, 77);
 }
   
 p {
   margin: 10px 0;
+  font-size: 18px;
 }
   
 a {
-  color: #007bff;
+  color: #fb7c4a;
   text-decoration: none;
   font-weight: bold;
 }
