@@ -10,7 +10,11 @@ class RamenShopsController < ApplicationController
   end
 
   def show
-    google_places_service = GooglePlacesService.new
-    @ramen_shop = google_places_service.fetch_ramen_shop_details(params[:id])
+    @ramen_shop = RamenShop.find_by(id: params[:id])
+    
+    if @ramen_shop.blank?
+      google_places_service = GooglePlacesService.new
+      @ramen_shop_data = google_places_service.get_ramen_shop_data(params[:id])
+    end
   end
 end

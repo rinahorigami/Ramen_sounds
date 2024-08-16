@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_08_09_082822) do
+ActiveRecord::Schema[7.0].define(version: 2024_08_15_080851) do
+  create_table "ramen_shops", charset: "utf8mb4", force: :cascade do |t|
+    t.string "place_id", null: false
+    t.string "name"
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
+    t.string "phone_number"
+    t.text "opening_hours"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", charset: "utf8mb4", force: :cascade do |t|
     t.string "email", null: false
     t.string "crypted_password"
@@ -23,14 +35,18 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_09_082822) do
   end
 
   create_table "videos", charset: "utf8mb4", force: :cascade do |t|
-    t.string "title"
-    t.text "description"
+    t.string "menu_name"
+    t.integer "price"
     t.string "file"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "ramen_shop_id"
+    t.text "comment"
+    t.index ["ramen_shop_id"], name: "fk_rails_0a063615c2"
     t.index ["user_id"], name: "index_videos_on_user_id"
   end
 
+  add_foreign_key "videos", "ramen_shops"
   add_foreign_key "videos", "users"
 end

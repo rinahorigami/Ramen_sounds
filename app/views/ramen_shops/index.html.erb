@@ -5,7 +5,7 @@
     <ul>
       <% @ramen_shops.each do |shop| %>
         <li>
-          <strong><%= link_to shop.name, ramen_shop_path(id: shop.place_id, keyword: params[:keyword], lat: params[:lat], lng: params[:lng]) %></strong><br>
+          <strong><%= link_to shop.name, ramen_shop_path(id: shop.place_id, keyword: params[:keyword], lat: params[:lat], lng: params[:lng], from_video_form: params[:from_video_form]) %></strong><br>
           <span><%= shop.vicinity || shop.formatted_address %></span>
         </li>
       <% end %>

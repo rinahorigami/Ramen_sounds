@@ -1,20 +1,28 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('turbo:load', () => {
   const fileInput = document.getElementById('avatar-input');
   const selectAvatarBtn = document.getElementById('select-avatar-btn');
 
-  selectAvatarBtn.addEventListener('click', () => {
-    fileInput.click();
-  });
+  if (selectAvatarBtn && fileInput) {
+    selectAvatarBtn.addEventListener('click', () => {
+      fileInput.click();
+    });
+  }
 
-  fileInput.addEventListener('change', previewImage);
+  if (fileInput) {
+    fileInput.addEventListener('change', previewImage);
+  }
 });
 
 function previewImage(event) {
   const reader = new FileReader();
   reader.onload = function() {
     const output = document.getElementById('avatar-preview');
-    output.src = reader.result;
-    output.style.display = 'block';
+    if (output) {
+      output.src = reader.result;
+      output.style.display = 'block';
+    }
   };
-  reader.readAsDataURL(event.target.files[0]);
+  if (event.target.files[0]) {
+    reader.readAsDataURL(event.target.files[0]);
+  }
 }
