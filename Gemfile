@@ -75,3 +75,4 @@ end
 gem 'sorcery'
 gem 'carrierwave'
 gem 'google_places'
+gem 'rest-client'

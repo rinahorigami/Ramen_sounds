@@ -60,13 +60,14 @@
 
 .ramen-shop-details h1 {
   font-size: 2em;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   text-align: center;
 }
 
 .ramen-shop-details p {
   width: 100%;
   font-size: 1.2em;
+  margin-top: 30px;
   margin-bottom: 10px;
   padding-bottom: 10px;
   border-bottom: 2px solid #ccc;
@@ -109,4 +110,21 @@
 
 .back-button i {
   font-size: 30px;
+}
+
+.shop_name {
+  text-align: center !important;
+  line-height: 1;
+}
+
+.select-shop-link {
+  background-color: #e65b85;
+  color: white;
+  padding: 10px 15px;
+  font-size: 1em;
+  border-radius: 5px;
+}
+
+.select-shop-link:hover {
+  background-color: #e33b6d;
 }

@@ -2,16 +2,26 @@
   <%= link_to ramen_shops_path(keyword: params[:keyword], lat: params[:lat], lng: params[:lng]), class: 'back-button' do %>
     <i class="fas fa-arrow-left"></i>
   <% end %>
-
-  <h1><%= @ramen_shop['name'] %></h1>
-  <p>住所: <%= @ramen_shop['vicinity'] %></p>
-  <p>電話番号: <%= @ramen_shop['formatted_phone_number'] || '情報なし' %></p>
+  <div class='shop_name'>
+    <h1><%= @ramen_shop&.name || @ramen_shop_data['name'] %></h1>
+    <% if params[:from_video_form] == "true" %>
+      <%= link_to 'この店舗を選択', new_video_path(place_id: params[:id], shop_name: @ramen_shop&.name || @ramen_shop_data['name']), class: 'select-shop-link' %>
+    <% end %>
+  </div>
+  <p>住所: <%= @ramen_shop&.address || @ramen_shop_data['vicinity'] %></p>
+  <p>電話番号: <%= @ramen_shop&.phone_number || @ramen_shop_data['formatted_phone_number'] || '情報なし' %></p>
   <p class="hours-label">営業時間:</p>
-  <% if @ramen_shop['opening_hours'] && @ramen_shop['opening_hours']['weekday_text'] %>
+  <% if @ramen_shop&.opening_hours.present? %>
     <ul class="hours-list">
-      <% @ramen_shop['opening_hours']['weekday_text'].each do |day_text| %>
-        <li><%= day_text %></li>
-      <% end %>
+     <% @ramen_shop.opening_hours.split("\n").each do |day_text| %>
+      <li><%= day_text %></li>
+     <% end %>
+    </ul>
+  <% elsif @ramen_shop_data.present? && @ramen_shop_data['opening_hours'] && @ramen_shop_data['opening_hours']['weekday_text'] %>
+    <ul class="hours-list">
+     <% @ramen_shop_data['opening_hours']['weekday_text'].each do |day_text| %>
+      <li><%= day_text %></li>
+     <% end %>
     </ul>
   <% else %>
     <p>営業時間情報なし</p>
