@@ -1,0 +1,66 @@
+<div class="video-form-container">
+  <h2>投稿編集</h2>
+
+  <%= form_with(model: @video, local: true, html: { class: 'custom-form' }, data: { turbo: false }) do |form| %>
+    
+    <div class="form-group horizontal-form-group">
+      <span class="video-form-label">ラーメン店</span>
+      <div class="input-group">
+        <%= link_to ramen_shops_path(from_video_form: true), class: 'btn btn-primary secondary' do %>
+          ラーメン店を選択
+        <% end %>
+        <p id="selected-shop-name" class="selected-shop-name">
+        <% if params[:shop_name].present? %>
+          <%= params[:shop_name] %>
+        <% elsif @video.ramen_shop.present? %>
+          <%= @video.ramen_shop.name %>
+        <% else %>
+          店舗が選択されていません
+        <% end %>
+        </p>
+      </div>
+      <%= hidden_field_tag :ramen_shop_id, params[:place_id] || @video.ramen_shop_id %>
+    </div>
+
+    <div class="form-group horizontal-form-group">
+      <%= form.label :menu_name, "メニュー名", class: 'video-form-label' %>
+      <%= form.text_field :menu_name, placeholder: "メニュー名を入力してください", class: 'form-control', value: @video.menu_name || params[:menu_name] %>
+    </div>
+
+    <div class="form-group horizontal-form-group">
+      <%= form.label :price, "金額", class: 'video-form-label' %>
+      <%= form.text_field :price, placeholder: "数字を入力してください", class: 'form-control', value: @video.price || params[:price] %>
+    </div>
+
+    <div class="form-group horizontal-form-group">
+      <%= form.label :comment, "コメント", class: 'video-form-label' %>
+      <%= form.text_area :comment, class: 'form-control', value: @video.comment || params[:comment] %>
+    </div>
+
+    <div class="form-group file-upload">
+      <%= form.label :file, "動画をアップロード", for: "video_file", class: 'custom-file-label' %>
+      <%= form.file_field :file, id: "video_file", class: 'form-control-file', onchange: "showFileName()" %>
+      <span id="file-name" class="file-name">
+        <% if @video.file.present? %>
+          <%= @video.file.url.split('/').last %>
+        <% end %>
+      </span>
+    </div>
+
+    <%= form.submit '編集する', class: 'btn btn-primary video-btn' %>
+  <% end %>
+</div>
+
+<script>
+  function showFileName() {
+    const fileInput = document.getElementById('video_file');
+    const fileNameDisplay = document.getElementById('file-name');
+
+    if (fileInput && fileNameDisplay) {
+      const file = fileInput.files[0];
+      if (file) {
+        fileNameDisplay.textContent = file.name;
+      }
+    }
+  }
+</script>

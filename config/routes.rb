@@ -9,5 +9,5 @@ Rails.application.routes.draw do
 
   resources :ramen_shops, only: %i[index show]
 
-  resources :videos, only: %i[new create index]
+  resources :videos
 end
