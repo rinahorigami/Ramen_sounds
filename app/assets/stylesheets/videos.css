@@ -194,6 +194,7 @@ input[type="file"] {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
+  gap: 10px;
 }
 
 .user-avatar {
@@ -214,7 +215,23 @@ input[type="file"] {
 
 .ramen-shop-name,
 .videos-menu-name,
-.videos-price {
+.videos-price,
+.videos-comment {
   margin: 0;
-  margin-bottom: 5px;
+}
+
+.video-actions {
+  display: flex;
+  gap: 10px;
+  margin-left: auto;
+}
+
+.edit-icon, .delete-icon {
+  color: #000;
+  text-decoration: none;
+  font-size: 22px;
+}
+
+.edit-icon:hover, .delete-icon:hover {
+  color: #007bff;
 }

@@ -5,7 +5,10 @@
   <div class='shop_name'>
     <h1><%= @ramen_shop&.name || @ramen_shop_data['name'] %></h1>
     <% if params[:from_video_form] == "true" %>
-      <%= link_to 'この店舗を選択', new_video_path(place_id: params[:id], shop_name: @ramen_shop&.name || @ramen_shop_data['name']), class: 'select-shop-link' %>
+      <%= link_to 'この店舗を選択', new_video_path(
+        place_id: params[:id],
+        shop_name: @ramen_shop&.name || @ramen_shop_data['name'],
+      ), class: 'select-shop-link' %>
     <% end %>
   </div>
   <p>住所: <%= @ramen_shop&.address || @ramen_shop_data['vicinity'] %></p>
