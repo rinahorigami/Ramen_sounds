@@ -13,23 +13,24 @@ header {
   align-items: center;
 }
   
-.logo h1 {
+.custom-logo h1 {
   margin: 0;
   font-size: 45px;
   font-weight: bold;
 }
 
-.header-container .logo h1 a {
+.header-container .custom-logo h1 a {
   color: black !important;
   font-family: 'Merriweather', serif;
+  text-decoration: none;
 }
-  
-.nav-links {
+
+.custom-nav-links {
   display: flex;
   justify-content: center;
 }
   
-.nav-link {
+.custom-nav-link {
   margin: 0 15px;
   font-size: 21px;
   text-decoration: none;
@@ -37,6 +38,7 @@ header {
   font-family: 'Merriweather', serif;
 }
   
-.nav-link:hover {
+.custom-nav-link:hover,
+.header-container .custom-logo h1:hover {
   text-decoration: underline;
 }

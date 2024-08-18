@@ -4,9 +4,8 @@
   <%= form_with(model: @video, local: true, html: { class: 'custom-form' }) do |form| %>
     
     <div class="form-group horizontal-form-group">
-      <span class="video-form-label">ラーメン店</span>
       <div class="input-group">
-        <%= link_to ramen_shops_path(from_video_form: true), class: 'btn btn-primary secondary' do %>
+        <%= link_to ramen_shops_path(from_video_form: true), class: 'btn-primary secondary' do %>
           ラーメン店を選択
         <% end %>
         <p id="selected-shop-name" class="selected-shop-name">
@@ -35,37 +34,11 @@
       <%= form.text_area :comment, class: 'form-control' %>
     </div>
 
-    <div class="form-group file-upload">
-      <%= form.label :file, "動画をアップロード", for: "video_file", class: 'custom-file-label' %>
-      <%= form.file_field :file, id: "video_file", class: 'form-control-file', onchange: "showFileName()" %>
-      <span id="file-name" class="file-name">選択されたファイルはありません</span>
+    <div class="form-group horizontal-form-group">
+      <%= form.label :file, "動画をアップロード", class: 'custom-file-label' %>
+      <%= form.file_field :file, id: "video_file", class: 'form-control-file' %>
     </div>
 
-    <%= form.submit '投稿する', class: 'btn btn-primary video-btn' %>
+    <%= form.submit '投稿する', class: 'btn-primary video-btn' %>
   <% end %>
 </div>
-
-<script>
-  function showFileName() {
-    const fileInput = document.getElementById('video_file');
-    const fileNameSpan = document.getElementById('file-name');
-
-    if (fileInput && fileNameSpan) {
-      const files = fileInput.files;
-      if (files.length > 0) {
-        fileNameSpan.textContent = files[0].name;
-      } else {
-        fileNameSpan.textContent = "選択されたファイルはありません";
-      }
-    } else {
-      console.error("ファイル入力またはスパンが見つかりません");
-    }
-  }
-
-  document.addEventListener('turbo:load', () => {
-    const fileInput = document.getElementById('video_file');
-    if (fileInput) {
-      fileInput.addEventListener('change', showFileName);
-    }
-  });
-</script>

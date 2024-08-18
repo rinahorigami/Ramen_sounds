@@ -32,8 +32,8 @@
               <% end %>
             </div>
             <%= link_to video.ramen_shop.name, ramen_shop_path(video.ramen_shop.id) %>
-            <p class="videos-menu-name">メニュー名: <%= video.menu_name %> <%= video.price %>円</p>
-            <p class="videos-comment"><%= video.comment if video.comment.present? %>
+            <p class="videos-menu-name"><strong>メニュー名:</strong>  <%= video.menu_name %>  <%= video.price %>円</p>
+            <p class="videos-comment"><%= video.comment if video.comment.present? %></p>
           </div>
         </div>
       </div>
