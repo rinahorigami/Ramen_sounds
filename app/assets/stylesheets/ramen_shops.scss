@@ -29,13 +29,13 @@
   color: #555;
 }
 
-.search-form .form-group {
+.search-form .custom-form-group {
   display: flex;
   align-items: center;
   gap: 10px;
 }
   
-.search-form .form-control {
+.search-form .custom-form-control {
   flex-grow: 1;
   height: 100%;
   padding: 10px 20px;
@@ -104,7 +104,7 @@
   top: 20px;
   left: 20px;
   font-size: 24px;
-  color: #333; /* アイコンの色を設定 */
+  color: #333;
   text-decoration: none;
 }
 
@@ -128,3 +128,4 @@
 .select-shop-link:hover {
   background-color: #e33b6d;
 }
+

@@ -4,9 +4,8 @@
   <%= form_with(model: @video, local: true, html: { class: 'custom-form' }, data: { turbo: false }) do |form| %>
     
     <div class="form-group horizontal-form-group">
-      <span class="video-form-label">ラーメン店</span>
       <div class="input-group">
-        <%= link_to ramen_shops_path(from_video_form: true), class: 'btn btn-primary secondary' do %>
+        <%= link_to ramen_shops_path(from_video_form: true), class: 'btn-primary secondary' do %>
           ラーメン店を選択
         <% end %>
         <p id="selected-shop-name" class="selected-shop-name">
@@ -37,30 +36,18 @@
       <%= form.text_area :comment, class: 'form-control', value: @video.comment || params[:comment] %>
     </div>
 
-    <div class="form-group file-upload">
-      <%= form.label :file, "動画をアップロード", for: "video_file", class: 'custom-file-label' %>
-      <%= form.file_field :file, id: "video_file", class: 'form-control-file', onchange: "showFileName()" %>
-      <span id="file-name" class="file-name">
-        <% if @video.file.present? %>
-          <%= @video.file.url.split('/').last %>
-        <% end %>
-      </span>
+    <div class="form-group horizontal-form-group">
+      <%= form.label :file, "動画をアップロード", class: 'custom-file-label' %>
+      <p class="file-message">※現在の動画から変更する場合のみ選択してください</p>
+      <%= form.file_field :file, class: 'form-control-file', value: @video.file %>
+
+      <% if @video.file.present? %>
+        <div class="current-video-url">
+          <p>現在の動画URL: <%= link_to @video.file.url, @video.file.url, target: "_blank" %></p>
+        </div>
+      <% end %>
     </div>
 
-    <%= form.submit '編集する', class: 'btn btn-primary video-btn' %>
+    <%= form.submit '編集する', class: 'btn-primary video-btn' %>
   <% end %>
 </div>
-
-<script>
-  function showFileName() {
-    const fileInput = document.getElementById('video_file');
-    const fileNameDisplay = document.getElementById('file-name');
-
-    if (fileInput && fileNameDisplay) {
-      const file = fileInput.files[0];
-      if (file) {
-        fileNameDisplay.textContent = file.name;
-      }
-    }
-  }
-</script>

@@ -4,19 +4,19 @@
     <%= form_with model: @user, local: true, data: { turbo: false } do |f| %>
       <div class="mb-3">
         <%= f.label :name, "ユーザー名", class: "form-label" %>
-        <%= f.text_field :name, class: "user-form-control" %>
+        <%= f.text_field :name, class: "form-control" %>
       </div>
       <div class="mb-3">
         <%= f.label :email, "メールアドレス", class: "form-label" %>
-        <%= f.email_field :email, class: "user-form-control" %>
+        <%= f.email_field :email, class: "form-control" %>
       </div>
       <div class="mb-3">
         <%= f.label :password, "パスワード ※3文字以上で入力してください", class: "form-label" %>
-        <%= f.password_field :password, class: "user-form-control" %>
+        <%= f.password_field :password, class: "form-control" %>
       </div>
       <div class="mb-3">
         <%= f.label :password_confirmation, "パスワード確認", class: "form-label" %>
-        <%= f.password_field :password_confirmation, class: "user-form-control" %>
+        <%= f.password_field :password_confirmation, class: "form-control" %>
       </div>
       <div class="mb-3">
         <%= f.label :avatar, "アバター画像", for: "avatar-input" %>
@@ -24,7 +24,7 @@
         <button type="button" class="btn btn-secondary" id="select-avatar-btn">画像を選択する</button>
         <img id="avatar-preview" src="#" alt="プレビュー画像" style="display:none; margin-top: 10px; max-width: 100px;">
       </div>
-      <%= f.submit "登録", class: "btn btn-primary" %>
+      <%= f.submit "登録", class: "btn-primary" %>
     <% end %>
     <div class='text-center'>
       <%= link_to 'ログインページへ', login_path %>

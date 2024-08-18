@@ -11,7 +11,7 @@
       ), class: 'select-shop-link' %>
     <% end %>
   </div>
-  <p>住所: <%= @ramen_shop&.address || @ramen_shop_data['vicinity'] %></p>
+  <p>住所: <%= @ramen_shop.present? ? @ramen_shop.address.sub(/^日本、?\s*/, '').sub(/^〒\d{3}-\d{4}\s*/, '') : @ramen_shop_data['vicinity'] %></p>
   <p>電話番号: <%= @ramen_shop&.phone_number || @ramen_shop_data['formatted_phone_number'] || '情報なし' %></p>
   <p class="hours-label">営業時間:</p>
   <% if @ramen_shop&.opening_hours.present? %>

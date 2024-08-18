@@ -3,9 +3,10 @@ class RamenShopsController < ApplicationController
     if params[:keyword].present?
       location = { lat: 35.6895, lng: 139.6917 }
       google_places_service = GooglePlacesService.new
-      @ramen_shops = google_places_service.search_ramen_shops(params[:keyword], location)
+      ramen_shops_array = google_places_service.search_ramen_shops(params[:keyword], location)
+      @ramen_shops = Kaminari.paginate_array(ramen_shops_array).page(params[:page]).per(10)
     else
-      @ramen_shops = []
+      @ramen_shops = Kaminari.paginate_array([]).page(params[:page]).per(10)
     end
   end
 
