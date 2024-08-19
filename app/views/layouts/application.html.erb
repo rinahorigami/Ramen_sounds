@@ -16,6 +16,7 @@
     <% if logged_in? %>
       <%= render 'shared/header' %>
     <% end %>
+    <%= render 'shared/flash_message' %>
     <%= yield %>
   </body>
 </html>

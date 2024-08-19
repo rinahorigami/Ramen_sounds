@@ -33,8 +33,9 @@ class VideosController < ApplicationController
     end
 
     if @video.save
-      redirect_to videos_path, notice: '動画が投稿されました。'
+      redirect_to videos_path, flash: { success: "動画が投稿されました。" }
     else
+      flash.now[:danger] = "動画投稿に失敗しました。"
       render :new, status: :unprocessable_entity
     end
   end
@@ -51,10 +52,8 @@ class VideosController < ApplicationController
 
   def update
     if @video.update(video_params)
-      redirect_to videos_path, notice: '動画が編集されました。'
+      redirect_to videos_path, flash: { success: "動画が編集されました。" }
     else
-      logger.debug "動画の編集に失敗しました: #{@video.errors.full_messages.join(', ')}"
-
       flash.now[:danger] = '動画の編集に失敗しました。'
       render :edit
     end
@@ -62,7 +61,7 @@ class VideosController < ApplicationController
 
   def destroy
     @video.destroy
-    redirect_to videos_path, notice: '動画が削除されました。', status: :see_other
+    redirect_to videos_path, flash: { success: "動画が削除されました。" }, status: :see_other
   end
 
   private

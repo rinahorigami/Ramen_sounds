@@ -1,4 +1,4 @@
-<body class="signup-page">
+<div class="signup-page">
   <div class="top-page-container">
     <h2 class="sign-up">ユーザー登録</h2>
     <%= form_with model: @user, local: true, data: { turbo: false } do |f| %>
@@ -30,7 +30,7 @@
       <%= link_to 'ログインページへ', login_path %>
     </div>
   </div>
-</body>
+</div>
 
 <script>
   document.addEventListener('turbo:load', () => {
