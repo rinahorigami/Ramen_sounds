@@ -1,6 +1,6 @@
 <body class="signup-page">
   <div class="top-page-container">
-    <h1 class="sign-up">ユーザー登録</h1>
+    <h2 class="sign-up">ユーザー登録</h2>
     <%= form_with model: @user, local: true, data: { turbo: false } do |f| %>
       <div class="mb-3">
         <%= f.label :name, "ユーザー名", class: "form-label" %>
