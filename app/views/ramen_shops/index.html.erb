@@ -1,4 +1,7 @@
 <div class='search_container'>
+  <%= link_to videos_path, class: 'back-button' do %>
+    <i class="fas fa-arrow-left"></i>
+  <% end %>
   <%= render 'search_form' %>
 
    <% if @ramen_shops.any? %>
