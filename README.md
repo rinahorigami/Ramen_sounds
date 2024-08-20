@@ -37,10 +37,9 @@ ASMRコンテンツとしてラーメン動画を楽しむことができ、ラ�
 ユーザーが視覚だけでなく聴覚でもラーメン体験を楽しむことができ、音を通じて新しいラーメン店を発見する楽しさが体験できます。
 
 ### 画面遷移図
-Figma:https://www.figma.com/design/a0rMpXFKHFcY7kllhPLJ4Y/Ramen-sounds%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?node-id=0-1&t=oZIpwYcenkdGOaaM-1
-
+Figma:https://www.figma.com/design/a0rMpXFKHFcY7kllhPLJ4Y/Ramen-sounds%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?node-id=0-1&t=BK30Tu4CXAV4ZwzV-1
 ### ER図
-https://gyazo.com/4ba3bd2f0a72627aac9acf8bbaf0cfb0
+https://gyazo.com/ddeaeba4cd6f92ffa1b5c91688808f60
 
 ## 実装を予定している機能
 ### MVP
