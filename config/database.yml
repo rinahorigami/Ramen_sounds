@@ -16,7 +16,11 @@ test:
   database: ramen_asmr_app_test
 
 production:
-  <<: *default
-  database: ramen_asmr_app_production
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: <%= ENV['DATABASE_USERNAME'] %>
   password: <%= ENV['DATABASE_PASSWORD'] %>
+  host: <%= ENV['DATABASE_HOST'] %>
+  database: ramen_asmr_app_production
+  port: 5432
