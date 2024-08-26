@@ -1,7 +1,7 @@
 class Video < ApplicationRecord
   mount_uploader :file, VideoUploader
   belongs_to :user
-  belongs_to :ramen_shop
+  belongs_to :ramen_shop, optional: true 
 
   validates :file, presence: true
 
