@@ -31,8 +31,8 @@
   <% end %>
   </div>
 
-  <% if @videos.any? %>
-    <div class="videos-section">
+  <div class="videos-section">
+    <% if @videos.any? %>
       <h2>関連動画</h2>
       <ul class="videos-list">
         <% @videos.each do |video| %>
@@ -44,7 +44,7 @@
           </li>
         <% end %>
       </ul>
-    </div>
-  <% else %>
-    <p>関連する動画はありません。</p>
-  <% end %>
+    <% else %>
+      <p>関連する動画はありません。</p>
+    <% end %>
+  </div>

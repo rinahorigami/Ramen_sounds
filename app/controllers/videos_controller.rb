@@ -31,6 +31,10 @@ class VideosController < ApplicationController
       @ramen_shop.save
       @video.ramen_shop = @ramen_shop
       @video.place_id = ramen_shop_id
+
+    else
+      @video.ramen_shop = nil
+      @video.place_id = nil
     end
 
     if @video.save

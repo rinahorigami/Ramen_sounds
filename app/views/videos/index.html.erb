@@ -31,16 +31,18 @@
                 </div>
               <% end %>
             </div>
-            <%= link_to video.ramen_shop.name, ramen_shop_path(video.ramen_shop.id) %>
-            <p class="videos-menu-name">
-              <% if video.menu_name.present? %>
-                <strong>メニュー名:</strong> <%= video.menu_name %> 
-                <% if video.price.present? %>
-                  <%= video.price %>円
+            <% if video.ramen_shop.present? %>
+              <%= link_to video.ramen_shop.name, ramen_shop_path(video.ramen_shop.id) %>
+            <% end %>
+              <p class="videos-menu-name">
+                <% if video.menu_name.present? %>
+                  <strong>メニュー名:</strong> <%= video.menu_name %> 
+                  <% if video.price.present? %>
+                    <%= video.price %>円
+                  <% end %>
                 <% end %>
-              <% end %>
-            </p>
-            <p class="videos-comment"><%= video.comment if video.comment.present? %></p>
+              </p>
+              <p class="videos-comment"><%= video.comment if video.comment.present? %></p>
           </div>
         </div>
       </div>
