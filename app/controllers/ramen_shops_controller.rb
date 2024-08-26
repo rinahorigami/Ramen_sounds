@@ -12,10 +12,19 @@ class RamenShopsController < ApplicationController
 
   def show
     @ramen_shop = RamenShop.find_by(id: params[:id])
-    
-    if @ramen_shop.blank?
+  
+    if @ramen_shop
+      @videos = Video.where(ramen_shop_id: @ramen_shop.id)
+    else
       google_places_service = GooglePlacesService.new
       @ramen_shop_data = google_places_service.get_ramen_shop_data(params[:id])
+  
+      if @ramen_shop_data
+        place_id = @ramen_shop_data['place_id']
+        @videos = Video.where(place_id: place_id)
+      else
+        @videos = []
+      end
     end
   end
 end

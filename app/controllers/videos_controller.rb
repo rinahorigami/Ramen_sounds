@@ -30,6 +30,7 @@ class VideosController < ApplicationController
 
       @ramen_shop.save
       @video.ramen_shop = @ramen_shop
+      @video.place_id = ramen_shop_id
     end
 
     if @video.save

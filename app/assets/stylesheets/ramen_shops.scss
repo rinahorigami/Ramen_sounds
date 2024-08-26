@@ -129,3 +129,29 @@
   background-color: #e33b6d;
 }
 
+.videos-section {
+  align-items: center;
+  margin: 10px 55px;
+}
+
+.videos-section h2 {
+  text-align: center;
+}
+
+.videos-list {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.videos-list li {
+  margin: 10px;
+}
+
+.videos-list video {
+  display: block;
+  width: 320px;
+  height: 180px;
+}
