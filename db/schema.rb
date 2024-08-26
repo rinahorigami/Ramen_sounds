@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_08_22_115308) do
+ActiveRecord::Schema[7.0].define(version: 2024_08_26_041446) do
   create_table "ramen_shops", charset: "utf8mb4", force: :cascade do |t|
     t.string "place_id", null: false
     t.string "name"
@@ -43,6 +43,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_22_115308) do
     t.datetime "updated_at", null: false
     t.bigint "ramen_shop_id"
     t.text "comment"
+    t.string "place_id"
     t.index ["ramen_shop_id"], name: "fk_rails_0a063615c2"
     t.index ["user_id"], name: "index_videos_on_user_id"
   end
