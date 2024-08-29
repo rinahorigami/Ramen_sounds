@@ -7,15 +7,17 @@ class SessionsController < ApplicationController
     @user = login(params[:email], params[:password])
 
     if @user
-      redirect_to videos_path, flash: { success: "ログインしました。" }
+      flash[:notice] = "ログインしました。"
+      redirect_to videos_path
     else
-      flash.now[:danger] = "ログインに失敗しました。"
+      flash[:error] = "メールアドレスまたはパスワードが違います。"
       render :new, status: :unprocessable_entity
     end
   end
 
   def destroy
     logout
-    redirect_to root_path, status: :see_other, flash: { success: "ログアウトしました。" }
+    flash[:notice] = "ログアウトしました。"
+    redirect_to root_path, status: :see_other
   end
 end

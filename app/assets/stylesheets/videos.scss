@@ -151,6 +151,7 @@
 
 .video-wrapper {
   position: relative;
+  border-radius: 15px;
   width: 100%;
   height: 500px;
   display: flex;
@@ -178,18 +179,15 @@
 }
 
 .video-info {
-  margin-top: 10px;
+  margin-top: 5px;
+  padding: 10px;
+  border-radius: 15px;
+  background-color: rgba(251, 252, 252, 0.7);
 }
 
 .user-info {
   display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-  gap: 10px;
-}
-
-.user-avatar {
-  margin-right: 10px;
+  flex-direction: column;
 }
 
 .avatar-image {
@@ -206,15 +204,18 @@
 
 .ramen-shop-name,
 .videos-menu-name,
-.videos-price,
+.videos-menu-price,
 .videos-comment {
   margin: 0;
 }
 
+.videos-menu-name,
+.videos-menu-price,
+.videos-comment {
+  font-size: 15px;
+}
 .video-actions {
   display: flex;
-  gap: 10px;
-  margin-left: auto;
 }
 
 .edit-icon, .delete-icon {
@@ -225,4 +226,40 @@
 
 .edit-icon:hover, .delete-icon:hover {
   color: #007bff;
+}
+
+.video-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100px;
+  height: 500px;
+  position: absolute;
+  right: -30px;
+  top: 0;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.comment-icon, .shop-info-icon {
+  font-size: 30px;
+  margin: 10px 0;
+  background-color: #d3d3d3;
+  border-radius: 50%;
+  padding: 10px;
+  color: #000;
+}
+
+.action-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.ramen-shop-name {
+  font-size: 20px;
 }

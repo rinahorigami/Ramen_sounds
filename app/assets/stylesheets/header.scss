@@ -1,7 +1,5 @@
 header {
-  background-color: rgba(249, 213, 178, 0.5);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 10px 0;
+  padding: 20px 20px;
   width: 100%;
   top: 0;
   z-index: 1000;
@@ -9,13 +7,14 @@ header {
   
 .header-container {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
+  padding: 8px;
 }
   
 .custom-logo h1 {
   margin: 0;
-  font-size: 45px;
+  font-size: 35px;
   font-weight: bold;
 }
 
@@ -31,14 +30,40 @@ header {
 }
   
 .custom-nav-link {
-  margin: 0 15px;
-  font-size: 21px;
-  text-decoration: none;
+  font-size: 15px;
   color: black;
-  font-family: 'Merriweather', serif;
+  font-weight: 100;
+  margin-left: 30px;
+  margin-right: 10px;
+  text-decoration: none;
 }
   
 .custom-nav-link:hover,
 .header-container .custom-logo h1:hover {
-  text-decoration: underline;
+  background-color: rgba(246, 250, 249, 0.5);
+  border-radius: 10px;
+}
+
+.flash-message {
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 16px;
+  text-align: center;
+}
+
+.flash-notice {
+  background-color: #5061c1; /* 成功メッセージの背景色 */
+  color: #f3f7f4; /* 成功メッセージの文字色 */
+}
+
+.flash-alert {
+  background-color: #e6f765; /* 警告メッセージの背景色 */
+  color: #1c1b1c; /* 警告メッセージの文字色 */
+}
+
+.flash-error {
+  background-color: #fb4557; /* エラーメッセージの背景色 */
+  color: #f7f4f5; /* エラーメッセージの文字色 */
 }

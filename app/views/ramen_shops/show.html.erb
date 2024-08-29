@@ -1,7 +1,7 @@
+<%= link_to ramen_shops_path(keyword: params[:keyword], lat: params[:lat], lng: params[:lng]) do %>
+  <p class='back-button'>＜ 検索フォームへ</p>
+<% end %>
 <div class="ramen-shop-details">
-  <%= link_to ramen_shops_path(keyword: params[:keyword], lat: params[:lat], lng: params[:lng]), class: 'back-button' do %>
-    <i class="fas fa-arrow-left"></i>
-  <% end %>
   <div class='shop_name'>
     <h1><%= @ramen_shop&.name || @ramen_shop_data['name'] %></h1>
     <% if params[:from_video_form] == "true" %>
