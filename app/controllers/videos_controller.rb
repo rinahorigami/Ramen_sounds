@@ -45,15 +45,7 @@ class VideosController < ApplicationController
     end
   end
 
-  def edit
-    logger.debug "Received params: #{params.inspect}"
-
-    @video.menu_name = params[:menu_name] if params[:menu_name]
-    @video.price = params[:price] if params[:price]
-    @video.comment = params[:comment] if params[:comment]
-
-    logger.debug "Updated video: #{@video.attributes.inspect}"
-  end
+  def edit ;end
 
   def update
     if @video.update(video_params)
@@ -72,7 +64,7 @@ class VideosController < ApplicationController
   private
 
   def video_params
-    params.require(:video).permit(:menu_name, :price, :comment, :file)
+    params.require(:video).permit(:menu_name, :price, :comment, :file, :tag_list)
   end
 
   def set_video
