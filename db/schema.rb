@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_08_26_104349) do
+ActiveRecord::Schema[7.0].define(version: 2024_08_27_064639) do
   create_table "ramen_shops", charset: "utf8mb4", force: :cascade do |t|
     t.string "place_id", null: false
     t.string "name"
@@ -23,6 +23,13 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_26_104349) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "tags", charset: "utf8mb4", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_tags_on_name", unique: true
+  end
+
   create_table "users", charset: "utf8mb4", force: :cascade do |t|
     t.string "email", null: false
     t.string "crypted_password"
@@ -32,6 +39,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_26_104349) do
     t.datetime "updated_at", null: false
     t.string "name"
     t.index ["email"], name: "index_users_on_email", unique: true
+  end
+
+  create_table "video_tags", charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "video_id", null: false
+    t.bigint "tag_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tag_id"], name: "index_video_tags_on_tag_id"
+    t.index ["video_id"], name: "index_video_tags_on_video_id"
   end
 
   create_table "videos", charset: "utf8mb4", force: :cascade do |t|
@@ -48,6 +64,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_26_104349) do
     t.index ["user_id"], name: "index_videos_on_user_id"
   end
 
+  add_foreign_key "video_tags", "tags"
+  add_foreign_key "video_tags", "videos"
   add_foreign_key "videos", "ramen_shops"
   add_foreign_key "videos", "users"
 end

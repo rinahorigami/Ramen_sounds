@@ -38,6 +38,11 @@
     </div>
 
     <div class="form-group horizontal-form-group">
+      <%= form.label :tags, "タグ", class: 'video-form-label' %>
+      <%= form.text_field :tag_list, placeholder: "カンマ区切りで入力してください(例: 新宿,醤油ラーメン)", value: @video.tag_list_without_hash, class: 'form-control' %>
+    </div>
+
+    <div class="form-group horizontal-form-group">
       <%= form.label :file, "動画をアップロード", class: 'custom-file-label' %>
       <p class="file-message">※現在の動画から変更する場合のみ選択してください</p>
       <%= form.file_field :file, class: 'form-control-file', value: @video.file %>

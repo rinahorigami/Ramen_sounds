@@ -1,0 +1,21 @@
+ja:
+  activerecord:
+    errors:
+      models:
+        video:
+          attributes:
+            file:
+              blank: "ファイルを選択してください。"
+        user:
+          attributes:
+            email:
+              taken: "このメールアドレスはすでに存在します。"
+            password:
+              too_short: "パスワードは%{count}文字以上で入力してください。"
+            password_confirmation:
+              confirmation: "パスワード確認が一致しません。"
+      messages:
+        blank: "この項目は必須です。"
+        taken: "はすでに存在します。"
+        too_short: "は%{count}文字以上で入力してください。"
+        confirmation: "確認が一致しません。"
