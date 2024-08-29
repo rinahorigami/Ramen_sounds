@@ -14,7 +14,11 @@
  *= require_self
  */
 
- $primary: #FFA07A;
+ $primary: #98bafa;
 
 @import "bootstrap";
+
+body {
+    background-color: #e3eef7;
+}
 

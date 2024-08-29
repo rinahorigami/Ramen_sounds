@@ -13,13 +13,10 @@
               <span>動画がありません</span>
             <% end %>
           </div>
-          <div class="video-info">
-            <div class="user-info">
-              <div class="user-avatar">
-                <%= image_tag video.user.avatar.url, alt: video.user.name, class: "avatar-image" %>
-              </div>
-              <p class="user-name"><%= video.user.name %></p>
 
+          <%= render 'video_details', video: video %>
+
+          <div class="video-info">
               <% if current_user == video.user %>
                 <div class="video-actions">
                   <%= link_to edit_video_path(video), class: "edit-icon" do %>
@@ -30,27 +27,28 @@
                   <% end %>
                 </div>
               <% end %>
-            </div>
             <% if video.ramen_shop.present? %>
-              <%= link_to video.ramen_shop.name, ramen_shop_path(video.ramen_shop.id) %>
+              <%= link_to video.ramen_shop.name, ramen_shop_path(video.ramen_shop.id), class: "ramen-shop-name" %>
             <% end %>
               <p class="videos-menu-name">
                 <% if video.menu_name.present? %>
-                  <strong>メニュー名:</strong> <%= video.menu_name %> 
-                  <% if video.price.present? %>
-                    <%= video.price %>円
-                  <% end %>
+                  <%= video.menu_name %>
+                <% end %>
+              </p>
+              <p class="videos-menu-price">
+                <% if video.price.present? %>
+                  <%= video.price %>円
                 <% end %>
               </p>
               <p class="videos-comment"><%= video.comment if video.comment.present? %></p>
-              <div class="video-tags">
-                <% video.tags.each do |tag| %>
-                  <span class="tag">#<%= tag.name %></span>
-                <% end %>
+                <div class="video-tags">
+                  <% video.tags.each do |tag| %>
+                    <span class="tag">#<%= tag.name %></span>
+                  <% end %>
+                </div>
               </div>
+           </div>
           </div>
-        </div>
-      </div>
     <% end %>
   <% else %>
     <p class='no-videos-message'>投稿動画がありません</p>
