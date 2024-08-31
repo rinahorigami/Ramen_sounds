@@ -1,24 +1,30 @@
+require 'google_maps_service'
+
 class GooglePlacesService
   def initialize(api_key = ENV['GOOGLE_PLACES_API_KEY'])
-    @client = GooglePlaces::Client.new(api_key)
+    @client = GoogleMapsService::Client.new(key: api_key)
   end
 
-  def search_ramen_shops(keyword, location, radius = 18000)
+  def search_ramen_shops_by_keyword(keyword, location, radius = 1000)
     combined_keyword = "#{keyword} ラーメン"
-    results = @client.spots(location[:lat], location[:lng], radius: radius, types: ['restaurant'], keyword: combined_keyword, language: 'ja')
-    filtered_results = results.select { |shop| shop.name.downcase.include?(keyword.downcase) }
-    filtered_results
+    @client.nearby_search(
+      location: [location[:lat], location[:lng]],
+      radius: radius,
+      keyword: combined_keyword,
+      language: 'ja'
+    )
+  end
+
+  def search_ramen_shops_by_location(location, radius = 1000)
+    @client.nearby_search(
+      location: [location[:lat], location[:lng]],
+      radius: radius,
+      type: 'restaurant',
+      language: 'ja'
+    )
   end
 
   def get_ramen_shop_data(place_id)
-    url = URI("https://maps.googleapis.com/maps/api/place/details/json?place_id=#{place_id}&key=#{@client.api_key}&language=ja")
-    response = Net::HTTP.get(url)
-    data = JSON.parse(response)
-    
-    if data['status'] == 'OK'
-      return data['result']
-    else
-      raise "Failed to fetch data: #{data['status']}"
-    end
+    @client.place_details(place_id, language: 'ja')
   end
 end

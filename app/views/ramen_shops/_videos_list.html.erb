@@ -1,0 +1,16 @@
+<% if @ramen_shops.any? %>
+  <ul>
+    <% @ramen_shops.each do |video| %>
+      <li>
+        <video width="600" controls>
+          <source src="<%= video.file.url %>" type="video/mp4">
+          お使いのブラウザでは動画が再生できません。
+        </video><br>
+        <span><%= video.tag_list%></span>
+      </li>
+    <% end %>
+  </ul>
+  <%= paginate @ramen_shops, theme: 'bootstrap-5' %>
+<% else %>
+  <p>検索結果がありません</p>
+<% end %>
