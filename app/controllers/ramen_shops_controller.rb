@@ -1,13 +1,31 @@
 class RamenShopsController < ApplicationController
   def index
-    if params[:keyword].present?
-      location = { lat: 35.6895, lng: 139.6917 }
-      google_places_service = GooglePlacesService.new
-      ramen_shops_array = google_places_service.search_ramen_shops(params[:keyword], location)
-      @ramen_shops = Kaminari.paginate_array(ramen_shops_array).page(params[:page]).per(10)
+    search_type = params[:search_type] # 'name', 'location', or 'tag'
+    query = params[:query]
+    location_param = params[:location]
+    radius = 5000 # 例: 5km
+
+    location = if location_param.present?
+                 lat, lng = location_param.split(',').map(&:to_f)
+                 { lat: lat, lng: lng }
+               else
+                 { lat: 35.6895, lng: 139.6917 } # デフォルトは東京
+               end
+
+    google_places_service = GooglePlacesService.new
+
+    case search_type
+    when 'name'
+      @results = google_places_service.search_ramen_shops_by_keyword(query, location, radius)
+    when 'location'
+      @results = google_places_service.search_ramen_shops_by_location(location, radius)
+    when 'tag'
+      @results = query.present? ? Video.by_tag(query) : []
     else
-      @ramen_shops = Kaminari.paginate_array([]).page(params[:page]).per(10)
+      @results = []
     end
+
+    @ramen_shops = Kaminari.paginate_array(@results).page(params[:page]).per(10)
   end
 
   def show
