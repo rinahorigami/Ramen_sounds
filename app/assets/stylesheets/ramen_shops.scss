@@ -7,15 +7,16 @@
   
 .search_container form {
   width: 100%;
-  max-width: 1000px;
+  max-width: 800px; /* 横幅を広げる */
+  margin: 0 auto;   /* 中央寄せ */
 }
   
-.search_container ul { 
+.search_container ul {
   list-style-type: none;
   padding: 0;
   margin-top: 20px;
   width: 100%;
-  max-width: 1000px;
+  max-width: 1200px; /* リストの横幅も合わせる */
 }
   
 .search_container li {
@@ -29,17 +30,22 @@
   color: #555;
 }
 
+.search-form {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
 .search-form .custom-form-group {
   display: flex;
-  align-items: center;
   gap: 10px;
 }
   
-.search-form .custom-form-control {
-  flex-grow: 1;
-  height: 100%;
-  padding: 10px 20px;
+.custom-form-control {
+  width: calc(100% - 83px); /* ボタンの幅を引いた幅に調整 */
+  padding: 10px;
   box-sizing: border-box;
+  margin-top: 10px;
 }
   
 .search-form .search-btn {
@@ -127,8 +133,10 @@
 }
 
 .videos-section {
-  align-items: center;
-  margin: 10px 55px;
+  display: flex;
+  flex-direction: column; /* 縦方向に並べる */
+  align-items: center; /* 中央寄せ */
+  margin: 10px auto; /* 自動で中央寄せ */
 }
 
 .videos-section h2 {
@@ -136,11 +144,24 @@
 }
 
 .videos-list {
-  display: flex;
-  flex-wrap: wrap;
   list-style-type: none;
   padding: 0;
   margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* 中央寄せ */
+}
+
+.tag-videos {
+  text-align: center;
+  margin: 10px; /* スペースを追加 */
+}
+
+/* 動画のスタイル */
+.tag-videos video {
+  width: 800px !important;
+  height: auto !important;
+  max-width: 100% !important;
 }
 
 .videos-list li {
@@ -155,6 +176,7 @@
 
 .videos-section p {
   width: 100%;
+  max-width: 1200px; /* テキストエリアの横幅も調整 */
   font-size: 1.2em;
   margin-top: 30px;
   margin-bottom: 10px;
@@ -164,16 +186,34 @@
 
 .tabs {
   display: flex;
-  border-bottom: 2px solid #ddd;
+  justify-content: center; /* 中央寄せ */
 }
 
 .tab {
-  padding: 10px 20px;
+  padding: 0 30px;
   cursor: pointer;
   text-align: center;
+  text-decoration: none;
+  font-size: 20px;
+  color: #0259b7;
+  transition: color 0.5s ease;
+}
+
+.tab:hover {
+  text-decoration: none;
+  color: #87c4fc;
 }
 
 .tab.active {
-  border-bottom: 2px solid #007bff;
+  border-bottom: 2px solid #9da4aa;
   font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.tag-videos {
+  justify-content: center;
+}
+
+.search-message {
+  margin-top: 40px;
 }
