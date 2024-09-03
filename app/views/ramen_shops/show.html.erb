@@ -1,4 +1,10 @@
-<%= link_to ramen_shops_path(keyword: params[:keyword], lat: params[:lat], lng: params[:lng]) do %>
+<%= link_to ramen_shops_path(
+                keyword: params[:keyword], 
+                search_type: params[:search_type], 
+                location: params[:location], 
+                page: params[:page],
+                lat: params[:lat], 
+                lng: params[:lng]) do %>
   <p class='back-button'>＜ 検索フォームへ</p>
 <% end %>
 <div class="ramen-shop-details">
@@ -11,7 +17,17 @@
       ), class: 'select-shop-link' %>
     <% end %>
   </div>
-  <p>住所: <%= @ramen_shop.present? ? @ramen_shop.address.sub(/^日本、?\s*/, '').sub(/^〒\d{3}-\d{4}\s*/, '') : @ramen_shop_data['vicinity'] %></p>
+  <p>住所: 
+    <% if @ramen_shop.present? %>
+      <%= link_to(@ramen_shop.address.sub(/^日本、?\s*/, '').sub(/^〒\d{3}-\d{4}\s*/, ''), 
+                  map_ramen_shop_path(@ramen_shop)) %>
+    <% elsif @ramen_shop_data.present? %>
+      <%= link_to(@ramen_shop_data['vicinity'], 
+                  map_ramen_shop_path(@ramen_shop_data['place_id'])) %>
+    <% else %>
+      住所が見つかりませんでした。
+    <% end %>
+  </p>
   <p>電話番号: <%= @ramen_shop&.phone_number || @ramen_shop_data['formatted_phone_number'] || '情報なし' %></p>
   <p class="hours-label">営業時間:</p>
   <% if @ramen_shop&.opening_hours.present? %>

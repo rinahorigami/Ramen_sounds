@@ -1,0 +1,13 @@
+#map-container {
+    display: flex;
+    justify-content: center; /* 横方向に中央揃え */
+    align-items: center; /* 縦方向に中央揃え (必要に応じて) */
+    height: 100vh; /* ページ全体の高さを確保 (必要に応じて) */
+}
+
+#map {
+    height: 600px;
+    width: 80%;
+    max-width: 1000px; /* 必要に応じて最大幅を設定 */
+    border: 1px solid #ccc; /* 境界線を追加 (オプション) */
+}

@@ -7,5 +7,4 @@ class ApplicationController < ActionController::Base
     flash[:error] = "ログインしてください。"
     redirect_to login_path
   end
-
 end

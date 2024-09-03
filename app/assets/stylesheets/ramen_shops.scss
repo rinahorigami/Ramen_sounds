@@ -7,8 +7,8 @@
   
 .search_container form {
   width: 100%;
-  max-width: 800px; /* 横幅を広げる */
-  margin: 0 auto;   /* 中央寄せ */
+  max-width: 800px;
+  margin: 0 auto;
 }
   
 .search_container ul {
@@ -16,7 +16,7 @@
   padding: 0;
   margin-top: 20px;
   width: 100%;
-  max-width: 1200px; /* リストの横幅も合わせる */
+  max-width: 1200px;
 }
   
 .search_container li {
@@ -42,7 +42,7 @@
 }
   
 .custom-form-control {
-  width: calc(100% - 83px); /* ボタンの幅を引いた幅に調整 */
+  width: calc(100% - 83px);
   padding: 10px;
   box-sizing: border-box;
   margin-top: 10px;
@@ -107,12 +107,19 @@
 
 .back-button {
   position: absolute;
-  top: 75px;
+  top: 85px;
   left: 20px;
   font-size: 15px;
   font-weight: 100;
   color: #333;
   text-decoration: none;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  border-radius: 3px;
+}
+
+.back-button:hover {
+  background-color: rgba(187, 188, 188, 0.3);
+  box-shadow: 0 0 0 10px rgba(187, 188, 188, 0.3);
 }
 
 .shop_name {
@@ -134,9 +141,9 @@
 
 .videos-section {
   display: flex;
-  flex-direction: column; /* 縦方向に並べる */
-  align-items: center; /* 中央寄せ */
-  margin: 10px auto; /* 自動で中央寄せ */
+  flex-direction: column;
+  align-items: center;
+  margin: 10px auto;
 }
 
 .videos-section h2 {
@@ -149,15 +156,14 @@
   margin: 0;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center; /* 中央寄せ */
+  justify-content: center;
 }
 
 .tag-videos {
   text-align: center;
-  margin: 10px; /* スペースを追加 */
+  margin: 10px;
 }
 
-/* 動画のスタイル */
 .tag-videos video {
   width: 800px !important;
   height: auto !important;
@@ -176,7 +182,7 @@
 
 .videos-section p {
   width: 100%;
-  max-width: 1200px; /* テキストエリアの横幅も調整 */
+  max-width: 1200px;
   font-size: 1.2em;
   margin-top: 30px;
   margin-bottom: 10px;
@@ -186,7 +192,7 @@
 
 .tabs {
   display: flex;
-  justify-content: center; /* 中央寄せ */
+  justify-content: center;
 }
 
 .tab {
@@ -216,4 +222,8 @@
 
 .search-message {
   margin-top: 40px;
+}
+
+.search-ramen-shop {
+  padding: 5px 50px;
 }
