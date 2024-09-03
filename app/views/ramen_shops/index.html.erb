@@ -7,25 +7,28 @@
   <% if params[:search_type] == 'tag' %>
     <%= render 'videos_list' %>
   <% else %>
-
     <% if @ramen_shops.any? %>
       <ul>
         <% @ramen_shops.each do |shop| %>
+         <div class='search-ramen-shop'>
           <li>
             <strong><%= link_to shop.name, ramen_shop_path(
-                      id: shop.place_id, 
-                      keyword: params[:keyword], 
-                      lat: params[:lat], 
-                      lng: params[:lng], 
-                      from_video_form: params[:from_video_form]
-                    ) %></strong><br>
+                        id: shop.place_id, 
+                        keyword: params[:keyword], 
+                        search_type: params[:search_type], 
+                        location: params[:location], 
+                        page: params[:page], 
+                        lat: params[:lat], 
+                        lng: params[:lng]) %>
+            </strong><br>
             <span><%= shop.vicinity || shop.formatted_address %></span>
           </li>
+          </div>
         <% end %>
       </ul>
       <%= paginate @ramen_shops, theme: 'bootstrap-5' %>
-     <% else %>
+    <% else %>
       <p class="search-message">検索結果がありません</p>
-     <% end %>
+    <% end %>
   <% end %>
 </div>

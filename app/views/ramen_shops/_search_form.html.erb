@@ -1,12 +1,14 @@
-<%= form_with(url: ramen_shops_path, method: :get, local: true, html: { class: "search-form" }) do |f| %>
+<%= form_with(url: ramen_shops_path, method: :get, local: true, class: "search-form") do |f| %>
+  <% search_type = params[:search_type] || 'name' %>
+  
   <div class="tabs">
-    <%= link_to '店舗名', ramen_shops_path(search_type: 'name', query: params[:query], location: params[:location]), class: ("tab" + (params[:search_type] == 'name' ? ' active' : '')) %>
-    <%= link_to '場所', ramen_shops_path(search_type: 'location', query: params[:query], location: params[:location]), class: ("tab" + (params[:search_type] == 'location' ? ' active' : '')) %>
-    <%= link_to 'タグ', ramen_shops_path(search_type: 'tag', query: params[:query], location: params[:location]), class: ("tab" + (params[:search_type] == 'tag' ? ' active' : '')) %>
+    <%= link_to '店舗名', ramen_shops_path(search_type: 'name', keyword: params[:keyword], location: params[:location]), class: "tab#{' active' if search_type == 'name'}" %>
+    <%= link_to '場所', ramen_shops_path(search_type: 'location', keyword: params[:keyword], location: params[:location]), class: "tab#{' active' if search_type == 'location'}" %>
+    <%= link_to 'タグ', ramen_shops_path(search_type: 'tag', keyword: params[:keyword], location: params[:location]), class: "tab#{' active' if search_type == 'tag'}" %>
   </div>
   
-  <%= f.text_field :query, value: params[:query], placeholder: "検索キーワードを入力してください", class: "custom-form-control" %>
-  <%= f.hidden_field :search_type, value: params[:search_type] %>
-  <%= f.hidden_field :location, value: params[:location] %>
+  <%= f.text_field :keyword, value: params[:keyword], placeholder: "検索キーワードを入力してください", class: "custom-form-control" %>
+  <%= f.hidden_field :search_type, value: search_type %>
+  <%= f.hidden_field :location, value: params[:location] || '' %>
   <%= f.submit "検索", class: "btn-primary search-btn" %>
 <% end %>
