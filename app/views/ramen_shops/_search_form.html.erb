@@ -1,14 +1,42 @@
-<%= form_with(url: ramen_shops_path, method: :get, local: true, class: "search-form") do |f| %>
+<%= form_with(url: ramen_shops_path, method: :get, local: true, class: "search-form", id: "search-form") do |f| %>
   <% search_type = params[:search_type] || 'name' %>
-  
+
   <div class="tabs">
-    <%= link_to '店舗名', ramen_shops_path(search_type: 'name', keyword: params[:keyword], location: params[:location]), class: "tab#{' active' if search_type == 'name'}" %>
-    <%= link_to '場所', ramen_shops_path(search_type: 'location', keyword: params[:keyword], location: params[:location]), class: "tab#{' active' if search_type == 'location'}" %>
-    <%= link_to 'タグ', ramen_shops_path(search_type: 'tag', keyword: params[:keyword], location: params[:location]), class: "tab#{' active' if search_type == 'tag'}" %>
+    <%= link_to '店舗名', ramen_shops_path(search_type: 'name', keyword: '', location: ''), class: "tab#{' active' if search_type == 'name'}", id: "tab-name" %>
+    <%= link_to '場所', ramen_shops_path(search_type: 'location', keyword: '', location: ''), class: "tab#{' active' if search_type == 'location'}", id: "tab-location" %>
+    <%= link_to 'タグ', ramen_shops_path(search_type: 'tag', keyword: '', location: ''), class: "tab#{' active' if search_type == 'tag'}", id: "tab-tag" %>
   </div>
-  
-  <%= f.text_field :keyword, value: params[:keyword], placeholder: "検索キーワードを入力してください", class: "custom-form-control" %>
+
+  <% placeholder_text = case search_type
+       when 'name'
+         '店舗名を入力してください'
+       when 'location'
+         '場所を入力してください'
+       when 'tag'
+         'タグを入力してください'
+       else
+         '検索キーワードを入力してください'
+     end %>
+
+  <%= f.text_field :keyword, value: params[:keyword], placeholder: placeholder_text, class: "custom-form-control", id: "search-keyword" %>
   <%= f.hidden_field :search_type, value: search_type %>
   <%= f.hidden_field :location, value: params[:location] || '' %>
   <%= f.submit "検索", class: "btn-primary search-btn" %>
 <% end %>
+
+<script>
+  document.addEventListener('turbo:load', function() {
+    // フォーム全体のリセット処理
+    const form = document.getElementById('search-form');
+    
+    document.getElementById('tab-name').addEventListener('click', function() {
+      form.reset();  // フォームをリセット
+    });
+    document.getElementById('tab-location').addEventListener('click', function() {
+      form.reset();
+    });
+    document.getElementById('tab-tag').addEventListener('click', function() {
+      form.reset();
+    });
+  });
+</script>

@@ -1,9 +1,12 @@
 <%= link_to @link_url do %>
-  <p class='back-button'>＜ 店舗詳細ページへ</p>
+  <p class='back-button'>＜ 戻る</p>
 <% end %>
 
 <div id="map-container">
-    <div id="map"></div>
+  <div class="shop-name-container">
+    <h2 class="shop-name"><%= @ramen_shop&.name || @ramen_shop_data['name'] %></h2>
+  </div>
+  <div id="map"></div>
 </div>
 
 <script>
