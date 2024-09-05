@@ -6,7 +6,7 @@
     
     <div class="form-group horizontal-form-group">
       <div class="input-group">
-        <%= link_to ramen_shops_path(from_video_form: true), class: 'btn-primary secondary' do %>
+        <%= link_to ramen_shops_path(id: @video.id, from_video_form: "edit"), class: 'btn-primary secondary' do %>
           ラーメン店を選択
         <% end %>
         <p id="selected-shop-name" class="selected-shop-name">

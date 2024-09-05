@@ -12,14 +12,14 @@
         <% @ramen_shops.each do |shop| %>
          <div class='search-ramen-shop'>
           <li>
+            <% video_id = params[:from_video_form] == "edit" ? @video&.id : nil %>
             <strong><%= link_to shop.name, ramen_shop_path(
-                        id: shop.place_id, 
-                        keyword: params[:keyword], 
-                        search_type: params[:search_type], 
-                        location: params[:location], 
-                        page: params[:page], 
-                        lat: params[:lat], 
-                        lng: params[:lng]) %>
+                        id: shop.place_id,
+                        video_id: params[:video_id],
+                        from_video_form: params[:from_video_form],
+                        keyword: params[:keyword],
+                        search_type: params[:search_type],
+                        location: params[:location]) %>
             </strong><br>
             <span><%= shop.vicinity || shop.formatted_address %></span>
           </li>

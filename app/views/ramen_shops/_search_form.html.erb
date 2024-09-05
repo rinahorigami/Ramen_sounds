@@ -1,10 +1,13 @@
 <%= form_with(url: ramen_shops_path, method: :get, local: true, class: "search-form", id: "search-form") do |f| %>
+  <%= hidden_field_tag :from_video_form, params[:from_video_form] %>
+  <%= hidden_field_tag :video_id, @video.present? ? @video.id : params[:video_id] %>
+
   <% search_type = params[:search_type] || 'name' %>
 
   <div class="tabs">
-    <%= link_to '店舗名', ramen_shops_path(search_type: 'name', keyword: '', location: ''), class: "tab#{' active' if search_type == 'name'}", id: "tab-name" %>
-    <%= link_to '場所', ramen_shops_path(search_type: 'location', keyword: '', location: ''), class: "tab#{' active' if search_type == 'location'}", id: "tab-location" %>
-    <%= link_to 'タグ', ramen_shops_path(search_type: 'tag', keyword: '', location: ''), class: "tab#{' active' if search_type == 'tag'}", id: "tab-tag" %>
+    <%= link_to '店舗名', ramen_shops_path(search_type: 'name', keyword: '', location: '', video_id: params[:video_id], from_video_form: params[:from_video_form]), class: "tab#{' active' if search_type == 'name'}", id: "tab-name" %>
+    <%= link_to '場所', ramen_shops_path(search_type: 'location', keyword: '', location: '', video_id: params[:video_id], from_video_form: params[:from_video_form]), class: "tab#{' active' if search_type == 'location'}", id: "tab-location" %>
+    <%= link_to 'タグ', ramen_shops_path(search_type: 'tag', keyword: '', location: '', video_id: params[:video_id], from_video_form: params[:from_video_form]), class: "tab#{' active' if search_type == 'tag'}", id: "tab-tag" %>
   </div>
 
   <% placeholder_text = case search_type
