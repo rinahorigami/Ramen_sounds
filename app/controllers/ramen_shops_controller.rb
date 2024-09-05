@@ -1,5 +1,7 @@
 class RamenShopsController < ApplicationController
   def index
+    @video = current_user.videos.find_by(id: params[:video_id])
+
     if params[:keyword].present?
       location = { lat: 35.6895, lng: 139.6917 }
       google_places_service = GooglePlacesService.new(ENV['GOOGLE_PLACES_API_KEY'])
@@ -40,6 +42,10 @@ class RamenShopsController < ApplicationController
       else
         @videos = []
       end
+    end
+
+    if params[:from_video_form] == "edit".present?
+      @video = current_user.videos.find_by(id: params[:video_id]) # ここでビデオを取得
     end
   end
 

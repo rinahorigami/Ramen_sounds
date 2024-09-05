@@ -19,7 +19,7 @@
           <div class="video-info">
               <% if current_user == video.user %>
                 <div class="video-actions">
-                  <%= link_to edit_video_path(video), class: "edit-icon" do %>
+                  <%= link_to edit_video_path(video.id), class: "edit-icon" do %>
                     <i class="fas fa-edit"></i>
                   <% end %>
                   <%= link_to video_path(video), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" }, class: "delete-icon" do %>
