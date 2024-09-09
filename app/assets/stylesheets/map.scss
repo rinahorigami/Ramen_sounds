@@ -1,22 +1,43 @@
 #map-container {
-    display: flex;
-    flex-direction: column; /* 上下方向に要素を配置 */
-    align-items: center; /* 横方向に中央揃え */
-    justify-content: center; /* 縦方向に中央揃え */
-    height: 100vh; /* ページ全体の高さを確保 */
-  }
+  display: flex;
+  flex-direction: column; /* 上下方向に要素を配置 */
+  align-items: center; /* 横方向に中央揃え */
+  justify-content: center; /* 縦方向に中央揃え */
+  height: 100vh; /* ページ全体の高さを確保 */
+  width: 100%;
+}
   
-  .shop-name-container {
-    margin-bottom: 20px; /* マップとの距離を取るためのマージン */
-    background-color: rgba(255, 255, 255, 0.8); /* 背景色を設定して見やすくする */
-    padding: 10px;
-    border-radius: 8px;
-    text-align: center; /* 店舗名を中央揃え */
-  }
+.shop-name-container {
+  margin-bottom: 20px; /* マップとの距離を取るためのマージン */
+  background-color: rgba(255, 255, 255, 0.8); /* 背景色を設定して見やすくする */
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center; /* 店舗名を中央揃え */
+}
   
-  #map {
-    height: 600px;
-    width: 80%;
-    max-width: 1000px; /* 必要に応じて最大幅を設定 */
-    border: 1px solid #ccc; /* 境界線を追加 (オプション) */
-  }
+#store-map,
+#user-map {
+  height: 600px;
+  width: 80%;
+  max-width: 1000px; /* 必要に応じて最大幅を設定 */
+  border: 1px solid #ccc; /* 境界線を追加 (オプション) */
+}
+
+#search-button {
+  background-color: #3172b7;  /* 青色 */
+  color: white;               /* 文字色を白に */
+  padding: 10px 20px;         /* パディングを追加してサイズを調整 */
+  border: none;               /* ボーダーを無しに */
+  border-radius: 5px;         /* 角を丸くする */
+  font-size: 16px;            /* フォントサイズを大きくする */
+  cursor: pointer;            /* カーソルをポインターにする */
+  box-shadow: 0 5px #022e5c;  /* ボタンの影（通常時） */
+  transition: all 0.2s ease;
+  margin-bottom: 20px;
+}
+
+#search-button:active {
+  background-color: #0056b3;  /* ボタンが押されたときの背景色 */
+  box-shadow: 0 2px #003d80;  /* ボタンが押されたときの影を短くする */
+  transform: translateY(2px); /* ボタンを少し下に押し込むように見せる */
+}
