@@ -1,30 +1,37 @@
 class RamenShopsController < ApplicationController
   def index
-    @video = current_user.videos.find_by(id: params[:video_id])
+    @latitude = params[:lat].to_f if params[:lat].present?
+    @longitude = params[:lng].to_f if params[:lng].present?
 
-    if params[:keyword].present?
-      location = { lat: 35.6895, lng: 139.6917 }
-      google_places_service = GooglePlacesService.new(ENV['GOOGLE_PLACES_API_KEY'])
+    @video = current_user.videos.find_by(id: params[:video_id])
   
+    if params[:lat].present? && params[:lng].present?
+      location = { lat: params[:lat].to_f, lng: params[:lng].to_f }  # ユーザーの現在地
+    else
+      location = { lat: 35.6895, lng: 139.6917 }  # デフォルトの位置（東京）
+    end
+  
+    google_places_service = GooglePlacesService.new(ENV['GOOGLE_PLACES_API_KEY'])
+  
+    if params[:keyword].present?
       case params[:search_type]
       when 'name'
         # 店舗名で検索
         ramen_shops_array = google_places_service.search_by_name(params[:keyword], location)
       when 'location'
-        # 場所で検索 (例: 特定のエリアを含む場合)
+        # 場所で検索
         ramen_shops_array = google_places_service.search_by_location_with_spots(params[:keyword], location)
       when 'tag'
-        # タグで検索 (Videoモデルを使用して検索)
+        # タグで検索
         ramen_shops_array = Video.by_tag(params[:keyword])
       else
-        # デフォルトは空の結果
         ramen_shops_array = []
       end
-  
-      @ramen_shops = Kaminari.paginate_array(ramen_shops_array).page(params[:page]).per(10)
     else
-      @ramen_shops = Kaminari.paginate_array([]).page(params[:page]).per(10)
+      ramen_shops_array = []
     end
+  
+    @ramen_shops = Kaminari.paginate_array(ramen_shops_array).page(params[:page]).per(10)
   end
 
   def show

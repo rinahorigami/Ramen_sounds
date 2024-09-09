@@ -4,6 +4,10 @@
   <% end %>
   <%= render 'search_form' %>
 
+  <% unless params[:keyword].present? %>
+    <%= render 'current_location_map', latitude: @latitude, longitude: @longitude %>
+  <% end %>
+
   <% if params[:search_type] == 'tag' %>
     <%= render 'videos_list' %>
   <% else %>
@@ -28,7 +32,9 @@
       </ul>
       <%= paginate @ramen_shops, theme: 'bootstrap-5' %>
     <% else %>
-      <p class="search-message">検索結果がありません</p>
+      <% if params[:keyword].present? %>
+        <p class="search-message">検索結果がありません</p>
+      <% end %>
     <% end %>
   <% end %>
 </div>
