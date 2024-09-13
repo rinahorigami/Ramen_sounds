@@ -17,7 +17,7 @@
          <div class='search-ramen-shop'>
           <li>
             <% video_id = params[:from_video_form] == "edit" ? @video&.id : nil %>
-            <strong><%= link_to shop.name, ramen_shop_path(
+            <strong><%= link_to shop[:name], ramen_shop_path(
                         id: shop.place_id,
                         video_id: params[:video_id],
                         from_video_form: params[:from_video_form],

@@ -24,25 +24,37 @@ class VideosController < ApplicationController
       @ramen_shop.latitude = ramen_shop_data['geometry']['location']['lat']
       @ramen_shop.longitude = ramen_shop_data['geometry']['location']['lng']
 
-      if ramen_shop_data['opening_hours'].present?
-        @ramen_shop.opening_hours = ramen_shop_data['opening_hours']['weekday_text'].join("\n")
-      end
+        if ramen_shop_data['opening_hours'].present?
+          @ramen_shop.opening_hours = ramen_shop_data['opening_hours']['weekday_text'].join("\n")
+        end
 
-      @ramen_shop.save
-      @video.ramen_shop = @ramen_shop
-      @video.place_id = ramen_shop_id
+        if @ramen_shop.save
+          @video.ramen_shop = @ramen_shop
+          @video.place_id = ramen_shop_id
+
+        if @video.save
+          flash[:notice] = "動画が投稿されました。"
+          redirect_to videos_path
+        else
+          flash[:error] = "動画投稿に失敗しました。"
+          render :new, status: :unprocessable_entity
+        end
+      else
+        flash[:error] = "ラーメン店情報の保存に失敗しました。"
+        render :new, status: :unprocessable_entity
+      end
 
     else
       @video.ramen_shop = nil
       @video.place_id = nil
-    end
 
-    if @video.save
-      flash[:notice] = "動画が投稿されました。"
-      redirect_to videos_path
-    else
-      flash[:error] = "動画投稿に失敗しました。"
-      render :new, status: :unprocessable_entity
+      if @video.save
+        flash[:notice] = "動画が投稿されました。"
+        redirect_to videos_path
+      else
+        flash[:error] = "動画投稿に失敗しました。"
+        render :new, status: :unprocessable_entity
+      end
     end
   end
 
