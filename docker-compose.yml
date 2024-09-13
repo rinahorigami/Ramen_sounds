@@ -30,10 +30,19 @@ services:
     depends_on:
       db:
         condition: service_healthy
+      selenium:
+        condition: service_started
     environment:
       DATABASE_USERNAME: ramen_asmr
       DATABASE_PASSWORD: database_password
       DATABASE_HOST: db
+      SELENIUM_DRIVER_URL: http://selenium:4444
+      CAPYBARA_SERVER_HOST: 0.0.0.0
+      CAPYBARA_APP_HOST: http://web:3000
+  selenium:
+    image: seleniarm/standalone-chromium:4.17.0
+    ports:
+      - "4444:4444"
 
 volumes:
   mysql-data:

@@ -4,7 +4,8 @@ class User < ApplicationRecord
   has_many :videos, dependent: :destroy
 
   mount_uploader :avatar, AvatarUploader
-
+  
+  validates :name, presence: true
   validates :email, presence: true, uniqueness: { case_sensitive: false }
   validates :password, length: { minimum: 3 }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }

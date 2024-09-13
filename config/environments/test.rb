@@ -22,6 +22,10 @@ Rails.application.configure do
     "Cache-Control" => "public, max-age=#{1.hour.to_i}"
   }
 
+  config.action_dispatch.default_headers = {
+    "X-Frame-Options" => "ALLOWALL"
+  }
+
   # Show full error reports and disable caching.
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
@@ -57,4 +61,12 @@ Rails.application.configure do
 
   # Annotate rendered view with file names.
   # config.action_view.annotate_rendered_view_with_filenames = true
+
+  CarrierWave.configure do |config|
+    config.storage = :file  # ローカルファイルシステムを使用
+    config.enable_processing = false  # 画像処理を無効化（テストの高速化のため）
+    
+    # 保存先のディレクトリを指定（オプション）
+    config.root = Rails.root.join('tmp')  # tmpディレクトリを利用してファイルを保存
+  end
 end
