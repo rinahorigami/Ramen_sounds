@@ -5,21 +5,23 @@
   justify-content: center; /* 縦方向に中央揃え */
   height: 100vh; /* ページ全体の高さを確保 */
   width: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
   
 .shop-name-container {
   margin-bottom: 20px; /* マップとの距離を取るためのマージン */
   background-color: rgba(255, 255, 255, 0.8); /* 背景色を設定して見やすくする */
-  padding: 10px;
+  padding: 10px 20px;
   border-radius: 8px;
   text-align: center; /* 店舗名を中央揃え */
 }
-  
+
 #store-map,
 #user-map {
-  height: 600px;
-  width: 80%;
-  max-width: 1000px; /* 必要に応じて最大幅を設定 */
+  height: 500px;
+  width: 100%;
+  max-width: 2000px; /* 必要に応じて最大幅を設定 */
   border: 1px solid #ccc; /* 境界線を追加 (オプション) */
 }
 

@@ -4,6 +4,7 @@ class Video < ApplicationRecord
   belongs_to :ramen_shop, optional: true 
   has_many :video_tags, dependent: :destroy
   has_many :tags, through: :video_tags
+  has_many :comments, -> { order(created_at: :desc) }, dependent: :destroy
 
   scope :by_tag, -> (tag_name) {
     joins(:tags).where('tags.name LIKE ?', "%#{tag_name}%")

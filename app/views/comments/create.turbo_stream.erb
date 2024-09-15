@@ -1,0 +1,8 @@
+<%= turbo_stream.prepend "comment-list-#{@video.id}", partial: "comments/comment", locals: { comment: @comment } %>
+
+<%= turbo_stream.replace "comment-form-#{@video.id}" do %>
+  <%= form_with(model: [@video, Comment.new], id: "comment-form-#{@video.id}", html: { class: 'comment-form' }) do |form| %>
+    <%= form.text_area :content, placeholder: "コメントを入力", rows: 1 %>
+    <%= form.submit "投稿", class: 'submit-button' %>
+  <% end %>
+<% end %>

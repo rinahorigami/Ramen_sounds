@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 40px !important;
+  padding-top: 150px;
 }
   
 .search_container form {
@@ -61,7 +61,7 @@
   align-items: center;
   max-width: 600px;
   margin: 0 auto;
-  padding: 20px;
+  padding-top: 150px;
 }
 
 .ramen-shop-details h1 {
@@ -107,7 +107,7 @@
 
 .back-button {
   position: absolute;
-  top: 85px;
+  top: 110px;
   left: 20px;
   font-size: 15px;
   font-weight: 100;
