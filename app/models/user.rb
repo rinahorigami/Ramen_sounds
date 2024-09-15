@@ -3,6 +3,8 @@ class User < ApplicationRecord
 
   has_many :videos, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :liked_videos, through: :likes, source: :video
 
   mount_uploader :avatar, AvatarUploader
   
@@ -13,6 +15,10 @@ class User < ApplicationRecord
   validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
 
   before_destroy :remove_avatar_from_s3
+
+  def liked?(video)
+    liked_videos.include?(video)
+  end
 
   private
 

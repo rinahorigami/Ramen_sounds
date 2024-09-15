@@ -5,6 +5,7 @@
   max-width: 1000px;
   width: 100%;
   margin: 10px auto;
+  margin-top: 100px;
   padding: 20px;
   background-color: #fffcfc;
   border-radius: 8px;
@@ -247,13 +248,32 @@
   align-items: center;
 }
 
-.comment-icon {
+.comment-icon,
+.like-button {
   font-size: 30px;
+  width: 50px;  /* 幅を固定 */
+  height: 50px; /* 高さを固定 */
   margin: 10px 0;
   background-color: #d3d3d3;
-  border-radius: 50%;
+  border-radius: 50%; /* 正円にする */
   padding: 10px;
   color: #000;
+  display: inline-flex; /* アイコンを中央に配置 */
+  justify-content: center; /* 水平方向中央揃え */
+  align-items: center; /* 垂直方向中央揃え */
+}
+
+.like-button {
+  display: flex;
+  flex-direction: column; /* アイコンとカウントを縦に並べる */
+  padding-top: 40px;
+}
+
+.like-count {
+  font-size: 14px;
+  text-align: center;
+  margin-top: 5px;
+  color: #333; /* 好みに応じて色を設定 */
 }
 
 .action-link {

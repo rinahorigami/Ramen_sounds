@@ -1,9 +1,10 @@
 <div class="video-details">
-    <div class="user-info">
-        <%= image_tag video.user.avatar.url, alt: video.user.name, class: "avatar-image" %>
-        <div class="actions">
-            <i class="fa fa-comment comment-icon" data-video-id="<%= video.id %>"></i>
-            <%= render 'comments/comments', video: video %>
-        </div>
+  <div class="user-info">
+    <%= image_tag video.user.avatar.url, alt: video.user.name, class: "avatar-image" %>
+    <div class="actions">
+      <%= render 'videos/like_button', video: video %>
+      <i class="fa fa-comment comment-icon" data-video-id="<%= video.id %>"></i>
+      <%= render 'comments/comments', video: video %>
     </div>
+  </div>
 </div>
