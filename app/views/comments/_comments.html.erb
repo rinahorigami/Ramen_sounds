@@ -1,0 +1,16 @@
+<div class="comment-section" id="comment-section-<%= video.id %>" style="display: none;">
+  <div class="comment-section-header">
+    <button class="close-comment-section" data-video-id="<%= video.id %>">×</button>
+  </div>
+
+  <div id="comment-list-<%= video.id %>" class="comment-list">
+    <%= render partial: "comments/comment", collection: video.comments %>
+  </div>
+
+  <div class="comment-form-container">
+    <%= form_with(model: [video, Comment.new], id: "comment-form-#{video.id}", data: { turbo: true }, html: { class: 'comment-form' }) do |form| %>
+      <%= form.text_area :content, placeholder: "コメントを入力", rows: 1 %>
+      <%= form.submit "投稿", class: 'submit-button' %>
+    <% end %>
+  </div>
+</div>

@@ -116,7 +116,8 @@
   align-items: center;
   gap: 20px;
   overflow-y: scroll;
-  height: 90vh;
+  height: 100%;
+  margin-top: 120px;
 }
 
 .no-videos-message {
@@ -246,7 +247,7 @@
   align-items: center;
 }
 
-.comment-icon, .shop-info-icon {
+.comment-icon {
   font-size: 30px;
   margin: 10px 0;
   background-color: #d3d3d3;

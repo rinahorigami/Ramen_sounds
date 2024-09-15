@@ -1,0 +1,13 @@
+<div class="comment">
+  <div class="comment-content">
+    <p><strong><%= comment.user.name %>:</strong> <%= comment.content %></p>
+  </div>
+
+  <% if current_user == comment.user %>
+    <div class="comment-actions">
+      <%= link_to video_comment_path(comment.video_id, comment), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" }, class: "delete-comment-link" do %>
+        <i class="fas fa-trash-alt"></i>
+      <% end %>
+    </div>
+  <% end %>
+</div>
