@@ -1,0 +1,14 @@
+<div class="like-button" id="like-button-<%= video.id %>">
+  <% if current_user.liked?(video) %>
+    <%= link_to video_like_path(video), data: { turbo_method: :delete }, remote: true, class: "like-icon" do %>
+      <i class="fas fa-heart"></i>
+    <% end %>
+  <% else %>
+    <%= link_to video_like_path(video), data: { turbo_method: :post }, remote: true, class: "like-icon" do %>
+      <i class="far fa-heart"></i>
+    <% end %>
+  <% end %>
+  <div class="like-count">
+    <%= video.likes.count %>
+  </div>
+</div>

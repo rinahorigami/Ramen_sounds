@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_09_13_074552) do
+ActiveRecord::Schema[7.0].define(version: 2024_09_15_080224) do
   create_table "comments", charset: "utf8mb4", force: :cascade do |t|
     t.text "content", null: false
     t.bigint "user_id", null: false
@@ -19,6 +19,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_09_13_074552) do
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_comments_on_user_id"
     t.index ["video_id"], name: "index_comments_on_video_id"
+  end
+
+  create_table "likes", charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "video_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_likes_on_user_id"
+    t.index ["video_id"], name: "index_likes_on_video_id"
   end
 
   create_table "ramen_shops", charset: "utf8mb4", force: :cascade do |t|
@@ -76,6 +85,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_09_13_074552) do
 
   add_foreign_key "comments", "users"
   add_foreign_key "comments", "videos"
+  add_foreign_key "likes", "users"
+  add_foreign_key "likes", "videos"
   add_foreign_key "video_tags", "tags"
   add_foreign_key "video_tags", "videos"
   add_foreign_key "videos", "ramen_shops"
