@@ -32,7 +32,7 @@
       </ul>
       <%= paginate @ramen_shops, theme: 'bootstrap-5' %>
     <% else %>
-      <% if params[:keyword].present? %>
+      <% if params[:keyword].present? && params[:keyword].strip != "" %>
         <p class="search-message">検索結果がありません</p>
       <% end %>
     <% end %>

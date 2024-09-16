@@ -1,0 +1,18 @@
+<div class="login-page">
+  <div class="top-page-container">
+    <h2 class="login">パスワードリセット</h2>
+    <%= form_with url: password_resets_path, method: :post do |f| %>
+      <div class="mb-3">
+        <%= f.label :email, "登録されているメールアドレス", class: "form-label" %>
+        <%= f.email_field :email, class: "form-control" %>
+      </div>
+      <%= f.submit "メールを送信", class: "btn-primary" %>
+    <% end %>
+    <div class='text-center'>
+      <%= link_to 'アカウントお持ちでない方 →', new_user_path, class: "signup-link"%>
+    </div>
+    <div class='text-center'>
+      <%= link_to 'ログインページ →', login_path, class: "signup-link"%>
+    </div>
+  </div>
+</div>

@@ -12,8 +12,13 @@
       </div>
       <%= f.submit "ログイン", class: "btn-primary" %>
     <% end %>
+    
     <div class='text-center'>
       <%= link_to 'アカウントお持ちでない方 →', new_user_path, class: "signup-link"%>
+    </div>
+    
+    <div class='text-center'>
+      <%= link_to 'パスワードを忘れた方 →', new_password_reset_path, class: "password-reset-link"%>
     </div>
   </div>
 </div>
