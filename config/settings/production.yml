@@ -1,0 +1,9 @@
+mailer:
+  smtp_settings:
+    address: "smtp.gmail.com"
+    port: 587
+    domain: "ramensounds.com"
+    user_name: "noreply@ramensounds.com"
+    password: "メールアドレスのパスワード"
+    authentication: "plain"
+    enable_starttls_auto: true

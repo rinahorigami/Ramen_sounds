@@ -59,6 +59,7 @@ gem 'fog-aws'
 gem "aws-sdk-s3", require: false
 gem 'google_maps_service'
 gem 'google_places'
+gem 'config'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -68,6 +69,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 5.0.0'
   gem 'factory_bot_rails'
   gem 'faker'
+  gem 'letter_opener_web'
 end
 
 group :development do

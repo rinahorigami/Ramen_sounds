@@ -253,7 +253,7 @@
   font-size: 30px;
   width: 50px;  /* 幅を固定 */
   height: 50px; /* 高さを固定 */
-  margin: 10px 0;
+  margin: 15px 0;
   background-color: #d3d3d3;
   border-radius: 50%; /* 正円にする */
   padding: 10px;
@@ -266,13 +266,12 @@
 .like-button {
   display: flex;
   flex-direction: column; /* アイコンとカウントを縦に並べる */
-  padding-top: 40px;
+  padding-top: 37px;
 }
 
 .like-count {
   font-size: 14px;
   text-align: center;
-  margin-top: 5px;
   color: #333; /* 好みに応じて色を設定 */
 }
 
@@ -283,4 +282,8 @@
 
 .ramen-shop-name {
   font-size: 20px;
+}
+
+.fa-heart {
+  color: black;
 }

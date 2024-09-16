@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
+  
   root 'top#index'
 
   resources :users, only: %i[new create]
@@ -17,4 +21,6 @@ Rails.application.routes.draw do
     resources :comments, only: %i[create edit update destroy]
     resource :like, only: [:create, :destroy]
   end
+
+  resources :password_resets, only: [:new, :create, :edit, :update]
 end
