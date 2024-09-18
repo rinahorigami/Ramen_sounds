@@ -6,4 +6,4 @@ mailer:
     user_name: "info@ramen-sounds.com"
     password: "one5ok2rock4"
     authentication: "plain"
-    enable_starttls_auto: true
+    enable_starttls_auto: !!bool true
