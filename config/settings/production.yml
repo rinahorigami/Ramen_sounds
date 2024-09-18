@@ -1,9 +1,9 @@
 mailer:
   smtp_settings:
-    address: "smtp.gmail.com"
+    address: "smtp.zoho.com"
     port: 587
-    domain: "ramensounds.com"
-    user_name: "noreply@ramensounds.com"
-    password: "メールアドレスのパスワード"
+    domain: "ramen-sounds.com"
+    user_name: "info@ramen-sounds.com"
+    password: "one5ok2rock4"
     authentication: "plain"
     enable_starttls_auto: true
