@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "noreply@ramensounds.com"
+  default from: "info@ramen-sounds.com"
   layout "mailer"
 end
