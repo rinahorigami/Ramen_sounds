@@ -6,6 +6,7 @@
       <nav class="custom-nav-links">
         <%= link_to '見つける', '#', class: 'custom-nav-link', id: 'find-location-link', data: { search_url: ramen_shops_path } %>
         <%= link_to '動画投稿', new_video_path, class: 'custom-nav-link' %>
+        <%= link_to 'マイページ', user_path(current_user), class: 'custom-nav-link' %>
         <%= link_to 'ログアウト', logout_path, class: 'custom-nav-link', data: { turbo_method: :delete } %>
       </nav>
     </div>

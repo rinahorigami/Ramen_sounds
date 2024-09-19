@@ -1,0 +1,32 @@
+<div class="user-profile">
+  <h1><%= @user.name %></h1>
+    <%= image_tag @user.avatar.url, class: "avatar-image" %>
+  <div class="profile-links">
+    <%= link_to 'プロフィール編集', edit_user_path(@user), class: 'custom-nav-link' %>
+    <%= link_to 'ログアウト', logout_path, data: { turbo_method: :delete }, class: 'custom-nav-link' %>
+  </div>
+  
+  <div class="tabs">
+    <button class="tab-link active" data-tab="post-videos">投稿動画</button>
+    <button class="tab-link" data-tab="liked-videos">いいね動画</button>
+  </div>
+
+  <div class="tab-content-wrapper">
+    <div id="post-videos" class="tab-content active">
+      <% @videos.each do |video| %>
+        <div class="video-item">
+          <%= video_tag video.file.url, controls: true, class: "video-fixed-size"%>
+        </div>
+      <% end %>
+    </div>
+
+    <div id="liked-videos" class="tab-content">
+      <% @liked_videos.each do |video| %>
+        <div class="video-item">
+          <%= video_tag video.file.url, controls: true, class: "video-fixed-size" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+

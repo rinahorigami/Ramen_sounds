@@ -1,0 +1,71 @@
+.user-profile {
+  text-align: center;
+  margin: auto;
+  margin-top: 100px;
+  max-width: 1280px;
+}
+
+.avatar-image {
+  margin-bottom: 20px;
+}
+
+.profile-links {
+  margin-bottom: 20px;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #ccc;
+}
+
+.tab-link {
+  padding: 10px 20px;
+  margin: 0 10px;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+.tab-link.active {
+  background-color: #3773b3;
+  color: white;
+  border-radius: 5px;
+}
+
+.tab-link.active:hover {
+  background-color: #253a67;
+}
+
+.tab-content-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.tab-content {
+  display: none;
+  width: 100%;
+}
+
+.tab-content.active {
+  display: flex; /* アクティブなタブのみflexで表示 */
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.video-item {
+  flex: 1 1 calc(33.33% - 10px); /* 3列表示、スペース分を引く */
+  max-width: 300px; /* 最大幅を指定 */
+  margin-bottom: 20px; /* 下にスペースを追加 */
+}
+
+.video-fixed-size {
+  width: 300px;
+  height: 220px;
+  object-fit: contain; /* アスペクト比を保持して、余白は黒にする */
+  background-color: black; /* 余白部分を黒く表示 */
+}
