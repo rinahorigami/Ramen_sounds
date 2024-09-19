@@ -1,6 +1,12 @@
 class UsersController < ApplicationController
   skip_before_action :require_login, only: %i[new create]
 
+  def show
+    @user = current_user
+    @videos = @user.videos
+    @liked_videos = @user.liked_videos
+  end
+
   def new
     @user = User.new
   end
