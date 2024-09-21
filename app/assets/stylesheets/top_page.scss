@@ -11,14 +11,15 @@
   align-items: center;
 }
   
-.top-page-container {
+.top-page-container,
+.user-page-container {
   background-color: rgba(255, 255, 255, 0.7);
   padding: 20px 40px;
   border-radius: 10px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
-  max-width: 800px;
-  width: 80%;
+  max-width: 1000px;
+  width: 100%;
 }
   
 .top-page-container h1 {
@@ -40,11 +41,9 @@ h1 {
   font-family: 'Merriweather', serif;
 }
 
-.login-page .top-page-container h2 {
-  font-size: 3.3em;
-}
-
-.signup-page .top-page-container h2 {
+.login-page .top-page-container h2,
+.signup-page .top-page-container h2,
+.edit-profile h2 {
   font-size: 3.3em;
 }
 

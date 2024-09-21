@@ -1,19 +1,24 @@
 .user-profile {
   text-align: center;
   margin: auto;
-  margin-top: 100px;
-  max-width: 1280px;
+  margin-top: 150px;
+  max-width: 1000px;
+  width: 100%;
 }
 
-.avatar-image {
+.profile-avatar-image {
   margin-bottom: 20px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid black;
 }
 
 .profile-links {
   margin-bottom: 20px;
 }
 
-.tabs {
+.user-tabs {
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
@@ -29,19 +34,21 @@
   background: none;
 }
 
+.tab-link:hover {
+  transition: color 0.3s ease, transform 0.5s ease;
+  color: rgb(48, 72, 152);
+}
+
 .tab-link.active {
   background-color: #3773b3;
   color: white;
   border-radius: 5px;
 }
 
-.tab-link.active:hover {
-  background-color: #253a67;
-}
-
 .tab-content-wrapper {
   display: flex;
   justify-content: center;
+  width: 100%;
 }
 
 .tab-content {
@@ -50,22 +57,31 @@
 }
 
 .tab-content.active {
-  display: flex; /* アクティブなタブのみflexで表示 */
+  display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 10px;
+  gap: 5px;
   width: 100%;
 }
 
 .video-item {
-  flex: 1 1 calc(33.33% - 10px); /* 3列表示、スペース分を引く */
-  max-width: 300px; /* 最大幅を指定 */
-  margin-bottom: 20px; /* 下にスペースを追加 */
+  max-width: 250px; /* 最大幅を指定 */
+  margin-right: 70px;
+  display: flex;
+  margin-bottom: 10px;
 }
 
 .video-fixed-size {
   width: 300px;
-  height: 220px;
+  height: 250px;
   object-fit: contain; /* アスペクト比を保持して、余白は黒にする */
   background-color: black; /* 余白部分を黒く表示 */
+  border-radius: 5px;
+}
+
+.profile-video-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-left: 5px;
 }
