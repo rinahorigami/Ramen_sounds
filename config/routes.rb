@@ -15,6 +15,9 @@ Rails.application.routes.draw do
     member do
       get 'map'
     end
+    collection do
+      get :autocomplete
+    end
   end
 
   resources :videos do

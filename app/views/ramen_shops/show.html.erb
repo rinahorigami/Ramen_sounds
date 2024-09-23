@@ -8,6 +8,9 @@
                 from_video_form: params[:from_video_form]) do %>
   <p class='back-button'>＜ 検索フォームへ</p>
 <% end %>
+<% if params[:search_type] == 'location' %>
+  <%= render 'location_map', latitude: @latitude, longitude: @longitude %>
+<% else %>
 <div class="ramen-shop-details">
   <div class='shop_name'>
     <h1><%= @ramen_shop&.name || @ramen_shop_data['name'] %></h1>
@@ -73,3 +76,4 @@
       <p>関連する動画はありません。</p>
     <% end %>
   </div>
+<% end %>

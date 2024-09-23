@@ -6,46 +6,6 @@
   <div class="shop-name-container">
     <h2 class="shop-name"><%= @ramen_shop&.name || @ramen_shop_data['name'] %></h2>
   </div>
-  <div id="store-map"></div>
+  <div id="store-map" data-latitude="<%= @ramen_shop&.latitude || @ramen_shop_data['geometry']['location']['lat'] %>" 
+                    data-longitude="<%= @ramen_shop&.longitude || @ramen_shop_data['geometry']['location']['lng'] %>"></div>
 </div>
-
-<script>
-  // グローバルスコープにinitMapを定義
-  function initMap() {
-  // 店舗の位置情報を取得
-    let latitude, longitude;
-  
-    <% if @ramen_shop.present? %>
-      latitude = <%= @ramen_shop.latitude %>;
-      longitude = <%= @ramen_shop.longitude %>;
-    <% elsif @ramen_shop_data.present? %>
-      latitude = <%= @ramen_shop_data['geometry']['location']['lat'] %>;
-      longitude = <%= @ramen_shop_data['geometry']['location']['lng'] %>;
-    <% else %>
-      // 位置情報がない場合のデフォルト位置（東京）
-      latitude = 35.6895;  // 東京の緯度
-      longitude = 139.6917; // 東京の経度
-    <% end %>
-
-    const location = { lat: latitude, lng: longitude };
-
-    // マップを店舗の位置で初期化
-    const map = new google.maps.Map(document.getElementById("store-map"), {
-      zoom: 15,
-      center: location
-    });
-
-    // 店舗の位置にマーカーを配置
-    new google.maps.Marker({
-      position: location,
-      map: map
-    });
-  }
-
-  // Turboのページロード後にマップを初期化
-  document.addEventListener("turbo:load", function() {
-    if (typeof initMap === 'function') {
-      initMap();  // 既に定義されているinitMap関数を呼び出す
-    }
-  });
-</script>
