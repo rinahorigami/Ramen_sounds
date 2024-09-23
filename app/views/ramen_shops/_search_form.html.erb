@@ -25,6 +25,7 @@
   <%= f.hidden_field :search_type, value: search_type %>
   <%= f.hidden_field :location, value: params[:location] || '' %>
   <%= f.submit "検索", class: "btn-primary search-btn" %>
+  <ul id="autocomplete-list"></ul> 
 <% end %>
 
 <script>

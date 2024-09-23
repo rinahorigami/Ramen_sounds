@@ -1,0 +1,35 @@
+#autocomplete-list {
+  background-color: white;
+  border: 1px solid #ccc;
+  overflow-y: auto;
+  width: 90%;
+  z-index: 1000; /* ドロップダウンが他の要素の上に表示されるように */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  padding: 0 10px;
+  margin: 0;
+  list-style-type: none;
+}
+
+/* オートコンプリートの各アイテム */
+.autocomplete-item {
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  border-bottom: 1px solid #eee;
+}
+
+/* オートコンプリートのアイテムがホバーされた時のスタイル */
+.autocomplete-item:hover {
+  background-color: #f0f0f0;
+}
+
+/* オートコンプリートリストの最後のアイテムの境界線を除去 */
+.autocomplete-item:last-child {
+  border-bottom: none;
+}
+
+/* 選択されたアイテムのスタイル（キーボード操作時用） */
+.autocomplete-item.active {
+  background-color: #007BFF;
+  color: white;
+}

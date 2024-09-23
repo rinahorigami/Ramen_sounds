@@ -2,7 +2,7 @@ class RamenShopsController < ApplicationController
   def index
     @latitude = params[:lat].to_f if params[:lat].present?
     @longitude = params[:lng].to_f if params[:lng].present?
-
+  
     @video = current_user.videos.find_by(id: params[:video_id])
   
     if params[:lat].present? && params[:lng].present?
@@ -20,7 +20,7 @@ class RamenShopsController < ApplicationController
         ramen_shops_array = google_places_service.search_by_name(params[:keyword], location)
       when 'location'
         # 場所で検索
-        ramen_shops_array = google_places_service.search_by_location_with_spots(params[:keyword], location)
+        ramen_shops_array = google_places_service.search_by_location(params[:keyword])
       when 'tag'
         # タグで検索
         ramen_shops_array = Video.by_tag(params[:keyword])
@@ -31,10 +31,16 @@ class RamenShopsController < ApplicationController
       ramen_shops_array = []
     end
   
+    # ramen_shops_array が nil の場合、空配列を設定
+    ramen_shops_array ||= []
+  
+    # ラーメン店の検索結果をページネーションで表示
     @ramen_shops = Kaminari.paginate_array(ramen_shops_array).page(params[:page]).per(10)
-  end
+  end  
 
   def show
+    @latitude = params[:lat]
+    @longitude = params[:lng]
     @ramen_shop = RamenShop.find_by(id: params[:id])
   
     if @ramen_shop
@@ -75,5 +81,23 @@ class RamenShopsController < ApplicationController
     else
       '#'
     end
+  end
+
+  def autocomplete
+    search_type = params[:search_type]
+    keyword = params[:keyword]
+  
+    results = case search_type
+              when 'name'
+                RamenShop.where('name LIKE ?', "%#{keyword}%").limit(10)
+              when 'location'
+                RamenShop.where('address LIKE ?', "%#{keyword}%").limit(10)
+              when 'tag'
+                Tag.where('name LIKE ?', "%#{keyword}%").limit(10)
+              else
+                []
+              end
+  
+    render json: results.map { |result| { name: result.name } }
   end
 end
