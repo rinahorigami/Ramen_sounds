@@ -6,24 +6,20 @@ class RamenShopsController < ApplicationController
     @video = current_user.videos.find_by(id: params[:video_id])
   
     if params[:lat].present? && params[:lng].present?
-      location = { lat: params[:lat].to_f, lng: params[:lng].to_f }  # ユーザーの現在地
+      location = { lat: params[:lat].to_f, lng: params[:lng].to_f }
     else
-      location = { lat: 35.6895, lng: 139.6917 }  # デフォルトの位置（東京）
+      location = { lat: 35.6895, lng: 139.6917 }
     end
-  
-    google_places_service = GooglePlacesService.new(ENV['GOOGLE_PLACES_API_KEY'])
   
     if params[:keyword].present?
       case params[:search_type]
       when 'name'
-        # 店舗名で検索
-        ramen_shops_array = google_places_service.search_by_name(params[:keyword], location)
+        ramen_shops_array = RamenShop.where('name LIKE ?', "%#{params[:keyword]}%")
       when 'location'
-        # 場所で検索
+        google_places_service = GooglePlacesService.new(ENV['GOOGLE_PLACES_API_KEY'])
         ramen_shops_array = google_places_service.search_by_location(params[:keyword])
       when 'tag'
-        # タグで検索
-        ramen_shops_array = Video.by_tag(params[:keyword])
+        ramen_shops_array = Video.by_tag(params[:keyword]).map(&:ramen_shop).compact
       else
         ramen_shops_array = []
       end
@@ -34,7 +30,6 @@ class RamenShopsController < ApplicationController
     # ramen_shops_array が nil の場合、空配列を設定
     ramen_shops_array ||= []
   
-    # ラーメン店の検索結果をページネーションで表示
     @ramen_shops = Kaminari.paginate_array(ramen_shops_array).page(params[:page]).per(10)
   end  
 
@@ -58,7 +53,7 @@ class RamenShopsController < ApplicationController
     end
 
     if params[:from_video_form] == "edit".present?
-      @video = current_user.videos.find_by(id: params[:video_id]) # ここでビデオを取得
+      @video = current_user.videos.find_by(id: params[:video_id])
     end
   end
 
@@ -91,13 +86,14 @@ class RamenShopsController < ApplicationController
               when 'name'
                 RamenShop.where('name LIKE ?', "%#{keyword}%").limit(10)
               when 'location'
-                RamenShop.where('address LIKE ?', "%#{keyword}%").limit(10)
+                google_places_service = GooglePlacesService.new(ENV['GOOGLE_PLACES_API_KEY'])
+                google_places_service.search_by_location(keyword)
               when 'tag'
                 Tag.where('name LIKE ?', "%#{keyword}%").limit(10)
               else
                 []
               end
   
-    render json: results.map { |result| { name: result.name } }
+    render json: results.map { |result| { name: result[:name], place_id: result[:place_id] } }
   end
 end

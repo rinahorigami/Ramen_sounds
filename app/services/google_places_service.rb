@@ -5,17 +5,40 @@ class GooglePlacesService
     @client = GooglePlaces::Client.new(api_key)
   end
 
-  # 店舗名で検索するメソッド
-  def search_by_name(keyword, location, radius = 18000)
+  def save_ramen_shop_data(ramen_shop_id)
+    ramen_shop_data = get_ramen_shop_data(ramen_shop_id)
+
+    ramen_shop = RamenShop.find_or_initialize_by(place_id: ramen_shop_id)
+    ramen_shop.name = ramen_shop_data['name']
+    ramen_shop.address = ramen_shop_data['formatted_address']
+    ramen_shop.phone_number = ramen_shop_data['formatted_phone_number']
+    ramen_shop.latitude = ramen_shop_data['geometry']['location']['lat']
+    ramen_shop.longitude = ramen_shop_data['geometry']['location']['lng']
+
+    if ramen_shop_data['opening_hours'].present?
+      ramen_shop.opening_hours = ramen_shop_data['opening_hours']['weekday_text'].join("\n")
+    end
+
+    if ramen_shop.save
+      return ramen_shop
+    else
+      raise "Failed to save ramen shop data"
+    end
+  end
+
+  def search_by_location_with_spots(keyword, location, radius = 18000)
     combined_keyword = "#{keyword} ラーメン"
-    results = @client.spots(location[:lat], location[:lng], radius: radius, types: ['restaurant'],keyword: combined_keyword, language: 'ja')
-    filtered_results = results.select { |shop| shop.name.downcase.include?(keyword.downcase) }
+    results = @client.spots(location[:lat], location[:lng], radius: radius, types: ['restaurant'], keyword: combined_keyword, language: 'ja')
+    filtered_results = results.select do |shop| 
+      (shop.vicinity && shop.vicinity.include?(keyword)) || 
+      (shop.formatted_address && shop.formatted_address.include?(keyword))
+    end
     filtered_results
   end
 
   def search_by_location(keyword)
-    # 場所名で検索するために `spots_by_query` を使用
-    results = @client.spots_by_query(keyword, language: 'ja')
+    # 場所名で検索し、typesを指定して地名や地域に限定する
+    results = @client.spots_by_query(keyword, language: 'ja', types: ['locality', 'sublocality', 'administrative_area_level_1', 'administrative_area_level_2', 'administrative_area_level_3', 'administrative_area_level_4', 'colloquial_area', 'postal_code', 'country'])
   
     # 必要な場所情報のみ返す（駅名などの場所名）
     filtered_results = results.map do |place|
@@ -28,7 +51,6 @@ class GooglePlacesService
         }
       }
     end
-  
     filtered_results
   end
 
