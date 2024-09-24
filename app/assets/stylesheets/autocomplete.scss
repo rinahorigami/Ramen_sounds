@@ -1,5 +1,6 @@
 #autocomplete-list {
   background-color: white;
+  color: #0259b7;
   border: 1px solid #ccc;
   overflow-y: auto;
   width: 90%;
@@ -20,7 +21,7 @@
 
 /* オートコンプリートのアイテムがホバーされた時のスタイル */
 .autocomplete-item:hover {
-  background-color: #f0f0f0;
+  text-decoration: underline;
 }
 
 /* オートコンプリートリストの最後のアイテムの境界線を除去 */

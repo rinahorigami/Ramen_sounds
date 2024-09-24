@@ -112,7 +112,7 @@ const RamenMap = {
 
   // マーカーを作成してマップに追加する
   createMarker: function(place, map) {
-    new google.maps.Marker({
+    const marker = new google.maps.Marker({
       position: place.geometry.location,
       map: map,
       title: place.name,
@@ -120,6 +120,16 @@ const RamenMap = {
         url: ramenIconPath, // ラーメン店の独自アイコン
         scaledSize: new google.maps.Size(40, 40)
       }
+    });
+  
+    // 店舗名をクリックした際に遷移するリンクを含む InfoWindow を作成
+    const infoWindow = new google.maps.InfoWindow({
+      content: `<div><strong><a href="/ramen_shops/${place.place_id}">${place.name}</a></strong><br>${place.vicinity || ''}</div>` // 店舗名や住所を表示
+    });
+  
+    // マーカーがクリックされた時に InfoWindow を表示
+    marker.addListener('click', function() {
+      infoWindow.open(map, marker);
     });
   },
 
@@ -231,26 +241,23 @@ document.addEventListener("turbo:load", function() {
   const searchInput = document.getElementById("search-keyword");
   const autocompleteList = document.getElementById("autocomplete-list");
 
-  // オートコンプリート候補を表示する関数
   searchInput.addEventListener("input", function() {
     const keyword = this.value;
-    const searchType = document.querySelector('input[name="search_type"]').value; // search_typeを取得
+    const searchType = document.querySelector('input[name="search_type"]').value;
 
-    // キーワードが一定以上の長さの場合のみオートコンプリートを行う
     if (keyword.length > 1) {
       fetch(`/ramen_shops/autocomplete?search_type=${searchType}&keyword=${keyword}`)
         .then(response => response.json())
         .then(data => {
-          autocompleteList.innerHTML = ''; // リストをクリア
+          autocompleteList.innerHTML = '';
           data.forEach(item => {
             const listItem = document.createElement("li");
             listItem.textContent = item.name;
             listItem.classList.add("autocomplete-item");
-            
-            // リストアイテムをクリックした際に、フォームに反映する
+
             listItem.addEventListener("click", function() {
-              searchInput.value = item.name; // 候補を検索フィールドに設定
-              autocompleteList.innerHTML = ''; // リストをクリア
+              searchInput.value = item.name;
+              autocompleteList.innerHTML = '';
             });
 
             autocompleteList.appendChild(listItem);
@@ -258,14 +265,13 @@ document.addEventListener("turbo:load", function() {
         })
         .catch(error => console.error('Error:', error));
     } else {
-      autocompleteList.innerHTML = ''; // 検索キーワードが短い場合はリストをクリア
+      autocompleteList.innerHTML = '';
     }
   });
 
-  // フォーカスが外れた場合にオートコンプリートリストをクリア
   searchInput.addEventListener("blur", function() {
     setTimeout(function() {
-      autocompleteList.innerHTML = ''; // リストをクリア
-    }, 200); // setTimeoutの時間を少し長めにしてクリックイベントを処理
+      autocompleteList.innerHTML = '';
+    }, 200);
   });
 });
