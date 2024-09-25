@@ -1,3 +1,4 @@
+// アップロードファイル名表示
 function showFileName() {
   const fileInput = document.getElementById('video_file');
   const fileNameSpan = document.getElementById('file-name');
@@ -21,6 +22,7 @@ document.addEventListener('turbo:load', () => {
   }
 });
 
+// 動画の自動停止
 document.addEventListener('turbo:load', () => {
     const videos = document.querySelectorAll('.reel-item video');
   
