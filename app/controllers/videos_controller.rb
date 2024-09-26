@@ -88,7 +88,7 @@ class VideosController < ApplicationController
   
     if @video.update(video_params)
       flash[:notice] = "動画を編集しました。"
-      redirect_to videos_path
+      redirect_to user_path(current_user)
     else
       flash[:error] = '動画の編集に失敗しました。'
       render :edit
@@ -98,7 +98,7 @@ class VideosController < ApplicationController
   def destroy
     @video.destroy
     flash[:alert] = '動画が削除されました。'
-    redirect_to videos_path, status: :see_other
+    redirect_to user_path(current_user), status: :see_other
   end
 
   private
@@ -108,6 +108,6 @@ class VideosController < ApplicationController
   end
 
   def set_video
-    @video = current_user.videos.find(params[:id])
+    @video = Video.find(params[:id])
   end
 end

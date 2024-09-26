@@ -17,16 +17,14 @@
     <% if params[:from_video_form] == "new" %>
       <%= link_to 'この店舗を選択', new_video_path(
         place_id: params[:id],
-        shop_name: @ramen_shop&.name || @ramen_shop_data['name'],
+        shop_name: @ramen_shop&.name || @ramen_shop_data['name']
       ), class: 'select-shop-link' %>
-    <% elsif params[:from_video_form] == "edit" %>
-      <% if @video.present? %>
-        <%= link_to 'この店舗を選択', edit_video_path(
-          id: @video.id,
-          place_id: params[:id],
-          shop_name: @ramen_shop&.name || @ramen_shop_data['name']
-        ), class: 'select-shop-link' %>
-      <% end %>
+    <% elsif params[:from_video_form] == "edit" && params[:video_id].present?  %>
+      <%= link_to 'この店舗を選択', edit_video_path(
+        id: params[:video_id],
+        place_id: params[:id],
+        shop_name: @ramen_shop&.name || @ramen_shop_data['name']
+      ), class: 'select-shop-link' %>
     <% end %>
   </div>
   <p>住所: 
