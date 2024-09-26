@@ -51,10 +51,6 @@ class RamenShopsController < ApplicationController
         @videos = []
       end
     end
-
-    if params[:from_video_form] == "edit".present?
-      @video = current_user.videos.find_by(id: params[:video_id])
-    end
   end
 
   def map

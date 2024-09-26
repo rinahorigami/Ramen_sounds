@@ -1,7 +1,7 @@
 .user-profile {
   text-align: center;
   margin: auto;
-  margin-top: 150px;
+  margin-top: 50px;
   max-width: 1000px;
   width: 100%;
 }
@@ -65,10 +65,19 @@
 }
 
 .video-item {
-  max-width: 250px; /* 最大幅を指定 */
+  position: relative;
+  max-width: 250px;
   margin-right: 70px;
   display: flex;
   margin-bottom: 10px;
+}
+
+.video-actions {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  display: flex;
+  gap: 5px;
 }
 
 .video-fixed-size {
@@ -84,4 +93,15 @@
   justify-content: space-between;
   align-items: flex-end;
   margin-left: 5px;
+}
+
+.edit-icon, .delete-icon {
+  color: white;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.edit-icon:hover, .delete-icon:hover {
+  color: #6ad2fb;
 }

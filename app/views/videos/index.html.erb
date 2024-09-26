@@ -17,16 +17,6 @@
           <%= render 'videos/video_details', video: video %>
 
           <div class="video-info">
-              <% if current_user == video.user %>
-                <div class="video-actions">
-                  <%= link_to edit_video_path(video.id), class: "edit-icon" do %>
-                    <i class="fas fa-edit"></i>
-                  <% end %>
-                  <%= link_to video_path(video), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" }, class: "delete-icon" do %>
-                    <i class="fas fa-trash-alt"></i>
-                  <% end %>
-                </div>
-              <% end %>
             <% if video.ramen_shop.present? %>
               <%= link_to video.ramen_shop.name, ramen_shop_path(video.ramen_shop.id), class: "ramen-shop-name" %>
             <% end %>
@@ -54,19 +44,3 @@
     <p class='no-videos-message'>投稿動画がありません</p>
   <% end %>
 </div>
-
-<script>
-  document.addEventListener('turbo:load', () => {
-    const videos = document.querySelectorAll('.reel-item video');
-  
-    videos.forEach(video => {
-      video.addEventListener('play', () => {
-        videos.forEach(v => {
-          if (v !== video && !v.paused) {
-            v.pause();
-          }
-        });
-      });
-    });
-  });
-</script>

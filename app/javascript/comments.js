@@ -1,6 +1,6 @@
 document.addEventListener("turbo:load", () => {
   // コメントアイコンをクリックしてコメント欄を表示
-  document.querySelectorAll(".comment-icon").forEach(icon => {
+  document.querySelectorAll(".fa-comment").forEach(icon => {
     icon.addEventListener("click", function() {
       const videoId = this.getAttribute("data-video-id");
       const commentSection = document.getElementById(`comment-section-${videoId}`);

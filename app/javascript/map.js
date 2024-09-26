@@ -56,9 +56,14 @@ const RamenMap = {
       }
     });
   
+    // 現在のURLからfrom_video_formとvideo_idパラメータを取得
+    const urlParams = new URLSearchParams(window.location.search);
+    const fromVideoForm = urlParams.get('from_video_form');
+    const videoId = urlParams.get('video_id');
+
     // 店舗名をクリックした際に遷移するリンクを含む InfoWindow を作成
     const infoWindow = new google.maps.InfoWindow({
-      content: `<div><strong><a href="/ramen_shops/${place.place_id}">${place.name}</a></strong><br>${place.vicinity || ''}</div>` // 店舗名や住所を表示
+      content: `<div><strong><a href="/ramen_shops/${place.place_id}?from_video_form=${fromVideoForm || ''}&video_id=${videoId || ''}">${place.name}</a></strong><br>${place.vicinity || ''}</div>` // 店舗名や住所を表示
     });
   
     // マーカーがクリックされた時に InfoWindow を表示
