@@ -106,3 +106,43 @@ a:hover {
   margin-right: auto;
   border-radius: 50%;
 }
+
+.terms_container {
+  max-width: 850px;
+  margin: 10px auto;
+  padding: 30px 40px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  line-height: 1.6;
+}
+
+.terms_container h1 {
+  font-size: 2em;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.terms_container h2 {
+  font-size: 1.5em;
+  color: #4a5285;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+.terms_container p {
+  margin-bottom: 20px;
+  color: #555;
+}
+
+.terms_container ul {
+  margin-left: 20px;
+  margin-bottom: 20px;
+  list-style-type: disc;
+}
+
+.terms_container ul li {
+  margin-bottom: 10px;
+}
+
