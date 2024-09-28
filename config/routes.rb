@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   
   root 'top#index'
 
+  get 'terms_of_service', to: 'top#terms_of_service'
+  get 'privacy', to: 'top#privacy'
+
   resources :users, only: %i[new create show edit update]
 
   get 'login', to: 'sessions#new'
