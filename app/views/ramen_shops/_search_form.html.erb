@@ -5,25 +5,25 @@
   <% search_type = params[:search_type] || 'name' %>
 
   <div class="tabs">
-    <%= link_to '店舗名', ramen_shops_path(search_type: 'name', keyword: '', location: '', video_id: params[:video_id], from_video_form: params[:from_video_form]), class: "tab#{' active' if search_type == 'name'}", id: "tab-name" %>
-    <%= link_to '場所', ramen_shops_path(search_type: 'location', keyword: '', location: '', video_id: params[:video_id], from_video_form: params[:from_video_form]), class: "tab#{' active' if search_type == 'location'}", id: "tab-location" %>
-    <%= link_to 'タグ', ramen_shops_path(search_type: 'tag', keyword: '', location: '', video_id: params[:video_id], from_video_form: params[:from_video_form]), class: "tab#{' active' if search_type == 'tag'}", id: "tab-tag" %>
+    <%= link_to t('.search_shop_name'), ramen_shops_path(search_type: 'name', keyword: '', location: '', video_id: params[:video_id], from_video_form: params[:from_video_form]), class: "tab#{' active' if search_type == 'name'}", id: "tab-name" %>
+    <%= link_to t('.search_location'), ramen_shops_path(search_type: 'location', keyword: '', location: '', video_id: params[:video_id], from_video_form: params[:from_video_form]), class: "tab#{' active' if search_type == 'location'}", id: "tab-location" %>
+    <%= link_to t('.search_tag'), ramen_shops_path(search_type: 'tag', keyword: '', location: '', video_id: params[:video_id], from_video_form: params[:from_video_form]), class: "tab#{' active' if search_type == 'tag'}", id: "tab-tag" %>
   </div>
 
   <% placeholder_text = case search_type
        when 'name'
-         '店舗名を入力してください'
+         t('.enter_store_name')
        when 'location'
-         '場所を入力してください'
+         t('.enter_location_name')
        when 'tag'
-         'タグを入力してください'
+         t('.enter_tag_name')
        else
-         '検索キーワードを入力してください'
+         t('.enter_kyeword')
      end %>
 
   <%= f.text_field :keyword, value: params[:keyword], placeholder: placeholder_text, class: "custom-form-control", id: "search-keyword" %>
   <%= f.hidden_field :search_type, value: search_type %>
   <%= f.hidden_field :location, value: params[:location] || '' %>
-  <%= f.submit "検索", class: "btn-primary search-btn" %>
+  <%= f.submit t('.search'), class: "btn-primary search-btn" %>
   <ul id="autocomplete-list"></ul> 
 <% end %>

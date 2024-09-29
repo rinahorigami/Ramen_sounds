@@ -1,26 +1,26 @@
 <div class="user-profile">
   <div class="user-page-container">
-    <h2 class="edit-profile">プロフィール編集</h2>
+    <h2 class="edit-profile"><%= t('.title') %></h2>
     <%= form_with model: @user, local: true, data: { turbo: false } do |f| %>
      <%= render 'shared/error_message', object: @user %>
       <div class="mb-3">
-        <%= f.label :name, "ユーザー名", class: "form-label" %>
+        <%= f.label :name, class: "form-label" %>
         <%= f.text_field :name, class: "form-control", value: @user.name || params[:name] %>
       </div>
       <div class="mb-3">
-        <%= f.label :email, "メールアドレス", class: "form-label" %>
+        <%= f.label :email, class: "form-label" %>
         <%= f.email_field :email, class: "form-control", value: @user.email || params[:email] %>
       </div>
       <div class="mb-3">
-        <%= f.label :avatar, "アバター画像", for: "avatar-input" %>
+        <%= f.label :avatar, for: "avatar-input" %>
         <%= f.file_field :avatar, accept: 'image/*', id: "avatar-input", style: "display: none;" %>
-        <button type="button" class="btn btn-secondary" id="select-avatar-btn">画像を選択する</button>
+        <button type="button" class="btn btn-secondary" id="select-avatar-btn"><%= t('.select_image') %></button>
         <img id="avatar-preview" src="#" alt="プレビュー画像" style="display:none; margin-top: 10px; max-width: 100px;">
       </div>
-      <%= f.submit "編集", class: "btn-primary" %>
+      <%= f.submit t('.update'), class: "btn-primary" %>
     <% end %>
     <div class='text-center'>
-      <%= link_to '戻る', user_path(@user), class: "login-link" %>
+      <%= link_to t('.back_button'), user_path(@user), class: "login-link" %>
     </div>
   </div>
 </div>

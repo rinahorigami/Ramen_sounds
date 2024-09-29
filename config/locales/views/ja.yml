@@ -1,0 +1,121 @@
+ja:
+  helpers:
+    submit:
+      create: 登録
+      submit: 保存
+      update: 更新
+    label:
+      email: メールアドレス
+      password: パスワード
+  sessions:
+    new:
+      title: ログイン
+      login: ログイン
+      to_register_page: アカウントお持ちでないの方 →
+      password_forget: パスワードをお忘れの方はこちら →
+  users:
+    new:
+      title: ユーザー登録
+      to_login_page: ログインページへ →
+      select_image: 画像を選択する
+      create: 登録
+    edit:
+      title: プロフィール編集
+      select_image: 画像を選択する
+      update: 編集
+      back_button: 戻る
+    show:
+      post_video: 投稿動画
+      like_video: いいね動画
+      logout: ログアウト
+      edit_profile: プロフィール編集
+      confirm_delete: 本当に削除しますか？
+  videos:
+    new:
+      title: 投稿動画を作成
+      select_shop: ラーメン店を選択
+      no_select_shop: 店舗が選択されていません
+      menu_name_message: メニュー名を入力してください
+      price_message: 金額を入力してください
+      tag_message: "カンマ区切りで入力してください(例: 新宿,醤油ラーメン)"
+      create: 投稿
+    index:
+      unsupported_browser: お使いのブラウザでは動画が再生できません
+      no_videos_message: 投稿動画がありません
+      yen: 円
+    edit:
+      title: 投稿動画を編集
+      select_shop: ラーメン店を選択
+      no_select_shop: 店舗が選択されていません
+      menu_name_message: メニュー名を入力してください
+      price_message: 金額を入力してください
+      tag_message: "カンマ区切りで入力してください(例: 新宿,醤油ラーメン)"
+      create: 編集
+      current_video_url: "現在の動画URL:"
+      file_message: "※現在の動画から変更する場合のみ選択してください"
+  ramen_shops:
+    search_form:
+      search_shop_name: 店舗名
+      search_location: 場所
+      search_tag: タグ
+      enter_store_name: 店舗名を入力してください
+      enter_location_name: 場所を入力してください
+      enter_tag_name: タグを入力してください
+      enter_kyeword: 検索キーワードを入力してください
+      search: 検索
+    videos_list:
+      unsupported_browser: お使いのブラウザでは動画が再生できません
+      no_search_results: 検索結果がありません
+    index:
+      no_search_results: 検索結果がありません
+      back_button: "← 動画一覧へ"
+    map:
+      back_button: " ← 戻る"
+    show:
+      back_button: "← 検索フォームへ"
+      select_store: この店舗を選択
+      address_not_found: 住所が見つかりませんでした
+      no_information: 情報なし
+      opening_hours: "営業時間:"
+      address: "住所:"
+      phone_number: "電話番号:"
+      no_opening_hours: 営業時間情報なし
+      related_videos: 関連動画
+      unsupported_browser: お使いのブラウザはビデオタグに対応していません
+      no_related_videos: 関連する動画がありません
+  comments:
+    create:
+      comment: コメントを入力
+      create: 投稿
+    comments:
+      comment: コメントを入力
+      create: 投稿
+    comment:
+      confirm_delete: 本当に削除しますか？
+  top:
+    index:
+      to_login_page: ログインページへ →
+      to_register_page: アカウントお持ちでないの方 →
+  password_resets:
+    new:
+      title: パスワードリセット
+      to_register_page: アカウントお持ちでないの方 →
+      to_login_page: ログインページへ →
+      send_email: メールを送信
+      email: 登録されているメールアドレス
+    edit:
+      title: パスワードリセット
+      new_password: 新しいパスワード
+      password_confirmation: パスワード確認
+      update: 更新
+  views:
+    shared:
+      header:
+        title: "Ramen sounds"
+        find: "見つける"
+        post_video: "動画投稿"
+        my_page: "マイページ"
+        logout: "ログアウト"
+      footer:
+        terms: 利用規約
+        privacy: プライバシーポリシー

@@ -4,7 +4,7 @@
       <li class="tag-videos">
         <video width="600" controls>
           <source src="<%= video.file.url %>" type="video/mp4">
-          お使いのブラウザでは動画が再生できません。
+          <%= t('.unsupported_browser') %>
         </video><br>
         <span><%= video.tag_list %></span>
       </li>
@@ -13,6 +13,6 @@
   <%= paginate @ramen_shops, theme: 'bootstrap-5' %>
 <% else %>
   <% if params[:keyword].present? && params[:keyword].strip != "" %>
-    <p class="search-message">検索結果がありません</p>
+    <p class="search-message"><%= t('.no_search_results') %></p>
   <% end %>
 <% end %>

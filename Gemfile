@@ -60,6 +60,7 @@ gem "aws-sdk-s3", require: false
 gem 'google_maps_service'
 gem 'google_places'
 gem 'config'
+gem 'rails-i18n'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

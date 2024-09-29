@@ -8,10 +8,10 @@ class PasswordResetsController < ApplicationController
 
     if @user
       @user.deliver_reset_password_instructions!
-      flash[:notice] = "パスワードリセットの手順をメールで送信しました。"
+      flash[:notice] = t('flash.password_resets.create_success')
       redirect_to login_path
     else
-      flash[:notice] = "パスワードリセットの手順をメールで送信しました。"
+      flash[:notice] = t('flash.password_resets.create_success')
       redirect_to login_path
     end
   end
@@ -26,7 +26,7 @@ class PasswordResetsController < ApplicationController
     return not_authenticated if @user.blank?
 
     if @user.update(user_params)
-      flash[:notice] = "パスワードが変更されました。"
+      flash[:notice] = t('flash.password_resets.update_success')
       redirect_to login_path
     else
       Rails.logger.info @user.errors.full_messages

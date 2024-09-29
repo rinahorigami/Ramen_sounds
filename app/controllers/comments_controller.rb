@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
     if @comment.save
 
     else
-      flash[:error] = 'コメントの投稿に失敗しました。'
+      flash[:error] = t('flash.comments.create_error')
       @videos = Video.includes(:user).order(created_at: :desc)
       render 'videos/index', status: :unprocessable_entity
     end
@@ -17,7 +17,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment = @video.comments.find(params[:id])
     @comment.destroy
-    flash[:alert] = 'コメントを削除しました。'
+    flash[:alert] = t('flash.comments.destroy_success')
     redirect_to videos_path, status: :see_other
   end
 

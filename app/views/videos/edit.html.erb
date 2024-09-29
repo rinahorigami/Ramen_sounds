@@ -1,5 +1,5 @@
 <div class="video-form-container">
-  <h2>投稿編集</h2>
+  <h2><%= t('.title') %></h2>
 
   <%= form_with(model: @video, local: true, html: { class: 'custom-form' }, data: { turbo: false }) do |form| %>
     <%= render 'shared/error_message', object: @video %>
@@ -7,7 +7,7 @@
     <div class="form-group horizontal-form-group">
       <div class="input-group">
         <%= link_to ramen_shops_path(video_id: @video.id, from_video_form: "edit"), class: 'btn-primary secondary' do %>
-          ラーメン店を選択
+          <%= t('.select_shop') %>
         <% end %>
         <p id="selected-shop-name" class="selected-shop-name">
         <% if params[:shop_name].present? %>
@@ -15,7 +15,7 @@
         <% elsif @video.ramen_shop.present? %>
           <%= @video.ramen_shop.name %>
         <% else %>
-          店舗が選択されていません
+          <%= t('.no_select_shop') %>
         <% end %>
         </p>
       </div>
@@ -23,37 +23,37 @@
     </div>
 
     <div class="form-group horizontal-form-group">
-      <%= form.label :menu_name, "メニュー名", class: 'video-form-label' %>
-      <%= form.text_field :menu_name, placeholder: "メニュー名を入力してください", class: 'form-control', value: @video.menu_name || params[:menu_name] %>
+      <%= form.label :menu_name, class: 'video-form-label' %>
+      <%= form.text_field :menu_name, placeholder: t('.menu_name_message'), class: 'form-control', value: @video.menu_name || params[:menu_name] %>
     </div>
 
     <div class="form-group horizontal-form-group">
-      <%= form.label :price, "金額", class: 'video-form-label' %>
-      <%= form.text_field :price, placeholder: "数字を入力してください", class: 'form-control', value: @video.price || params[:price] %>
+      <%= form.label :price, class: 'video-form-label' %>
+      <%= form.text_field :price, placeholder: t('.price_message'), class: 'form-control', value: @video.price || params[:price] %>
     </div>
 
     <div class="form-group horizontal-form-group">
-      <%= form.label :comment, "コメント", class: 'video-form-label' %>
+      <%= form.label :comment, class: 'video-form-label' %>
       <%= form.text_area :comment, class: 'form-control', value: @video.comment || params[:comment] %>
     </div>
 
     <div class="form-group horizontal-form-group">
-      <%= form.label :tags, "タグ", class: 'video-form-label' %>
-      <%= form.text_field :tag_list, placeholder: "カンマ区切りで入力してください(例: 新宿,醤油ラーメン)", value: @video.tag_list_without_hash, class: 'form-control' %>
+      <%= form.label :tags, class: 'video-form-label' %>
+      <%= form.text_field :tag_list, placeholder: t('.tag_message'), value: @video.tag_list_without_hash, class: 'form-control' %>
     </div>
 
     <div class="form-group horizontal-form-group">
-      <%= form.label :file, "動画をアップロード", class: 'custom-file-label' %>
-      <p class="file-message">※現在の動画から変更する場合のみ選択してください</p>
+      <%= form.label :file, class: 'custom-file-label' %>
+      <p class="file-message"><%= t('.file_message') %></p>
       <%= form.file_field :file, class: 'form-control-file', value: @video.file %>
 
       <% if @video.file.present? %>
         <div class="current-video-url">
-          <p>現在の動画URL: <%= link_to @video.file.url, @video.file.url, target: "_blank" %></p>
+          <p><%= t('.current_video_url') %><%= link_to @video.file.url, @video.file.url, target: "_blank" %></p>
         </div>
       <% end %>
     </div>
 
-    <%= form.submit '編集する', class: 'btn-primary video-btn' %>
+    <%= form.submit t('.create'), class: 'btn-primary video-btn' %>
   <% end %>
 </div>

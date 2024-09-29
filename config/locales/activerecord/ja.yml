@@ -1,0 +1,72 @@
+ja:
+  flash:
+    errors:
+      not_authenticated: "ログインしてください"
+    comments:
+      create_error: "コメントの投稿に失敗しました。"
+      destroy_success: "コメントを削除しました。"
+    password_resets:
+      create_success: "パスワードリセットの手順をメールで送信しました。"
+      update_success: "パスワードが変更されました。"
+    sessions:
+      login_success: "ログインしました。"
+      login_failure: "メールアドレスまたはパスワードが違います。"
+      logout: "ログアウトしました。"
+    users:
+      create_success: "ユーザー登録に成功しました。"
+      create_failure: "ユーザー登録に失敗しました。"
+      update_success: "プロフィールを編集しました。"
+      update_failure: "プロフィール編集に失敗しました。"
+    videos:
+      create_success: "動画が投稿されました。"
+      create_failure: "動画投稿に失敗しました。"
+      ramen_shop_save_failure: "ラーメン店情報の保存に失敗しました。"
+      update_success: "動画を編集しました。"
+      update_failure: "動画の編集に失敗しました。"
+      destroy_success: "動画が削除されました。"
+  activerecord:
+    attributes:
+      user:
+        password: "パスワード ※3文字以上で入力してください"
+        password_confirmation: "パスワード確認"
+        name: "ユーザー名"
+        email: "メールアドレス"
+        avatar: "アバター画像"
+      video:
+        menu_name: "メニュー名"
+        price: "金額"
+        comment: "コメント"
+        tags: "タグ"
+        file: "動画をアップロード"
+    errors:
+      models:
+        video:
+          attributes:
+            file:
+              blank: "ファイルを選択してください。"
+            video_tags:
+              invalid: "無効なタグです"
+        user:
+          attributes:
+            name:
+              blank: "ユーザー名を入力してください。"
+            email:
+              taken: "このメールアドレスはすでに存在します。"
+            password:
+              too_short: "パスワードは%{count}文字以上で入力してください。"
+            password_confirmation:
+              confirmation: "パスワードが一致しません。"
+        video_tag:
+          attributes:
+            video:
+              required: "この項目は必須です。"
+            tag:
+              required: "この項目は必須です。"
+            video_id:
+              taken: "この組み合わせはすでに存在します。"
+      messages:
+        blank: "この項目は必須です。"
+        taken: "はすでに存在します。"
+        too_short: "は%{count}文字以上で入力してください。"
+        confirmation: "パスワードが一致しません。"
+        record_invalid: "バリデーションに失敗しました"

@@ -1,6 +1,6 @@
 <div class='search_container'>
   <%= link_to videos_path do %>
-    <p class='back-button'>＜ 動画一覧へ</p>
+    <p class='back-button'><%= t('.back_button') %></p>
   <% end %>
   <%= render 'search_form' %>
 
@@ -46,7 +46,7 @@
       <%= paginate @ramen_shops, theme: 'bootstrap-5' %>
     <% else %>
       <% if params[:keyword].present? && params[:keyword].strip != "" %>
-        <p class="search-message">検索結果がありません</p>
+        <p class="search-message"><%= t('.no_search_results') %></p>
       <% end %>
     <% end %>
   <% end %>

@@ -2,13 +2,13 @@
   <h1><%= @user.name %></h1>
   <%= image_tag @user.avatar.url, class: "profile-avatar-image" %>
   <div class="profile-links">
-    <%= link_to 'プロフィール編集', edit_user_path(@user), class: 'custom-nav-link' %>
-    <%= link_to 'ログアウト', logout_path, data: { turbo_method: :delete }, class: 'custom-nav-link' %>
+    <%= link_to t('.edit_profile'), edit_user_path(@user), class: 'custom-nav-link' %>
+    <%= link_to t('.logout'), logout_path, data: { turbo_method: :delete }, class: 'custom-nav-link' %>
   </div>
   
   <div class="user-tabs">
-    <button class="tab-link active" data-tab="post-videos">投稿動画</button>
-    <button class="tab-link" data-tab="liked-videos">いいね動画</button>
+    <button class="tab-link active" data-tab="post-videos"><%= t('.post_video') %></button>
+    <button class="tab-link" data-tab="liked-videos"><%= t('.like_video') %></button>
   </div>
 
   <div class="tab-content-wrapper">
@@ -20,7 +20,7 @@
           <%= link_to edit_video_path(video.id), class: "edit-icon" do %>
             <i class="fas fa-edit"></i>
           <% end %>
-          <%= link_to video_path(video), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" }, class: "delete-icon" do %>
+          <%= link_to video_path(video), data: { turbo_method: :delete, turbo_confirm: t('.confirm_delete') }, class: "delete-icon" do %>
             <i class="fas fa-trash-alt"></i>
           <% end %>
         </div>
