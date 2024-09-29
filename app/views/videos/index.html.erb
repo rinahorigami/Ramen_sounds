@@ -7,10 +7,10 @@
             <% if video.file.present? %>
               <video controls>
                 <source src="<%= video.file.url %>" type="video/mp4">
-                お使いのブラウザは動画の再生に対応していません。
+                <%= t('.unsupported_browser') %>
               </video>
             <% else %>
-              <span>動画がありません</span>
+              <span><%= t('.no_videos_message') %></span>
             <% end %>
           </div>
 
@@ -27,7 +27,7 @@
               </p>
               <p class="videos-menu-price">
                 <% if video.price.present? %>
-                  <%= video.price %>円
+                  <%= video.price %><%= t('.yen') %>
                 <% end %>
               </p>
               <p class="videos-comment"><%= video.comment if video.comment.present? %></p>
@@ -41,6 +41,6 @@
           </div>
     <% end %>
   <% else %>
-    <p class='no-videos-message'>投稿動画がありません</p>
+    <p class='no-videos-message'><%= t('.no_videos_message') %></p>
   <% end %>
 </div>

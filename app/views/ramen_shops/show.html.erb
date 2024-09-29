@@ -6,7 +6,7 @@
                 lat: params[:lat], 
                 lng: params[:lng],
                 from_video_form: params[:from_video_form]) do %>
-  <p class='back-button'>＜ 検索フォームへ</p>
+  <p class='back-button'><%= t('.back_button') %></p>
 <% end %>
 <% if params[:search_type] == 'location' %>
   <%= render 'location_map', latitude: @latitude, longitude: @longitude %>
@@ -15,19 +15,19 @@
   <div class='shop_name'>
     <h1><%= @ramen_shop&.name || @ramen_shop_data['name'] %></h1>
     <% if params[:from_video_form] == "new" %>
-      <%= link_to 'この店舗を選択', new_video_path(
+      <%= link_to t('.select_store'), new_video_path(
         place_id: params[:id],
         shop_name: @ramen_shop&.name || @ramen_shop_data['name']
       ), class: 'select-shop-link' %>
     <% elsif params[:from_video_form] == "edit" && params[:video_id].present?  %>
-      <%= link_to 'この店舗を選択', edit_video_path(
+      <%= link_to t('.select_store'), edit_video_path(
         id: params[:video_id],
         place_id: params[:id],
         shop_name: @ramen_shop&.name || @ramen_shop_data['name']
       ), class: 'select-shop-link' %>
     <% end %>
   </div>
-  <p>住所: 
+  <p><%= t('.address') %>
     <% if @ramen_shop.present? %>
       <%= link_to(@ramen_shop.address.sub(/^日本、?\s*/, '').sub(/^〒\d{3}-\d{4}\s*/, ''), 
                   map_ramen_shop_path(id: @ramen_shop.place_id, from_video_form: params[:from_video_form])) %>
@@ -35,11 +35,11 @@
       <%= link_to(@ramen_shop_data['vicinity'], 
                   map_ramen_shop_path(id: @ramen_shop_data['place_id'], from_video_form: params[:from_video_form])) %>
     <% else %>
-      住所が見つかりませんでした。
+      <%= t('.address_not_found') %>
     <% end %>
   </p>
-  <p>電話番号: <%= @ramen_shop&.phone_number || @ramen_shop_data['formatted_phone_number'] || '情報なし' %></p>
-  <p class="hours-label">営業時間:</p>
+  <p><%= t('.phone_number') %> <%= @ramen_shop&.phone_number || @ramen_shop_data['formatted_phone_number'] || t('.no_information') %></p>
+  <p class="hours-label"><%= t('.opening_hours') %></p>
   <% if @ramen_shop&.opening_hours.present? %>
     <ul class="hours-list">
      <% @ramen_shop.opening_hours.split("\n").each do |day_text| %>
@@ -53,25 +53,25 @@
      <% end %>
     </ul>
   <% else %>
-    <p>営業時間情報なし</p>
+    <p><%= t('.no_opening_hours') %></p>
   <% end %>
   </div>
 
   <div class="videos-section">
     <% if @videos.any? %>
-      <h2>関連動画</h2>
+      <h2><%= t('.related_videos') %></h2>
       <ul class="videos-list">
         <% @videos.each do |video| %>
           <li>
             <video controls>
               <source src="<%= video.file %>" type="video/mp4">
-              お使いのブラウザはビデオタグに対応していません。
+              <%= t('.unsupported_browser') %>
             </video>
           </li>
         <% end %>
       </ul>
     <% else %>
-      <p>関連する動画はありません。</p>
+      <p><%= t('.no_related_videos') %></p>
     <% end %>
   </div>
 <% end %>

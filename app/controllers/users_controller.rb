@@ -14,10 +14,10 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:notice] = "ユーザー登録に成功しました。"
+      flash[:notice] = t('flash.users.create_success')
       redirect_to login_path
     else
-      flash[:error] = "ユーザー登録に失敗しました。"
+      flash[:error] = t('flash.users.create_failure')
       render :new, status: :unprocessable_entity
     end
   end
@@ -29,10 +29,10 @@ class UsersController < ApplicationController
   def update
     @user = current_user
     if @user.update(user_params)
-      flash[:notice] = 'プロフィールを編集しました。'
+      flash[:notice] = t('flash.users.update_success')
       redirect_to user_path(@user)
     else
-      flash[:error] = 'プロフィール編集に失敗しました。'
+      flash[:error] = t('flash.users.update_failure')
       render :edit
     end
   end

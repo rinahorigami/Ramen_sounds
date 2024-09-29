@@ -33,14 +33,14 @@ class VideosController < ApplicationController
           @video.place_id = ramen_shop_id
 
         if @video.save
-          flash[:notice] = "動画が投稿されました。"
+          flash[:notice] = t('flash.videos.create_success')
           redirect_to videos_path
         else
-          flash[:error] = "動画投稿に失敗しました。"
+          flash[:error] = t('flash.videos.create_failure')
           render :new, status: :unprocessable_entity
         end
       else
-        flash[:error] = "ラーメン店情報の保存に失敗しました。"
+        flash[:error] = t('flash.videos.ramen_shop_save_failure')
         render :new, status: :unprocessable_entity
       end
 
@@ -49,10 +49,10 @@ class VideosController < ApplicationController
       @video.place_id = nil
 
       if @video.save
-        flash[:notice] = "動画が投稿されました。"
+        flash[:notice] = t('flash.videos.create_success')
         redirect_to videos_path
       else
-        flash[:error] = "動画投稿に失敗しました。"
+        flash[:error] = t('flash.videos.create_failure')
         render :new, status: :unprocessable_entity
       end
     end
@@ -87,17 +87,17 @@ class VideosController < ApplicationController
     end
   
     if @video.update(video_params)
-      flash[:notice] = "動画を編集しました。"
+      flash[:notice] = t('flash.videos.update_success')
       redirect_to user_path(current_user)
     else
-      flash[:error] = '動画の編集に失敗しました。'
+      flash[:error] = t('flash.videos.update_failure')
       render :edit
     end
   end
 
   def destroy
     @video.destroy
-    flash[:alert] = '動画が削除されました。'
+    flash[:alert] = t('flash.videos.destroy_success')
     redirect_to user_path(current_user), status: :see_other
   end
 
