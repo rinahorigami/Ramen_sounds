@@ -39,7 +39,7 @@ ASMRコンテンツとしてラーメン動画を楽しむことができ、ラ�
 ### 画面遷移図
 Figma:https://www.figma.com/design/a0rMpXFKHFcY7kllhPLJ4Y/Ramen-sounds%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?node-id=0-1&t=BK30Tu4CXAV4ZwzV-1
 ### ER図
-https://gyazo.com/ddeaeba4cd6f92ffa1b5c91688808f60
+https://gyazo.com/2d8df6cc835b5ca387111027c47dd790
 
 ## 実装を予定している機能
 ### MVP
