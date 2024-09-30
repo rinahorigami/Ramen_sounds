@@ -12,29 +12,37 @@
   </div>
 
   <div class="tab-content-wrapper">
-  <div id="post-videos" class="tab-content active">
-    <% @videos.each do |video| %>
-      <div class="video-item">
-        <%= video_tag video.file.url, controls: true, class: "video-fixed-size" %>
-        <div class="video-actions">
-          <%= link_to edit_video_path(video.id), class: "edit-icon" do %>
-            <i class="fas fa-edit"></i>
-          <% end %>
-          <%= link_to video_path(video), data: { turbo_method: :delete, turbo_confirm: t('.confirm_delete') }, class: "delete-icon" do %>
-            <i class="fas fa-trash-alt"></i>
-          <% end %>
-        </div>
-      </div>
-    <% end %>
-  </div>
+    <div id="post-videos" class="tab-content active">
+      <% if @videos.present? %>
+        <% @videos.each do |video| %>
+          <div class="video-item">
+            <%= video_tag video.file.url, controls: true, class: "video-fixed-size" %>
+            <div class="video-actions">
+              <%= link_to edit_video_path(video.id), class: "edit-icon" do %>
+                <i class="fas fa-edit"></i>
+              <% end %>
+              <%= link_to video_path(video), data: { turbo_method: :delete, turbo_confirm: t('.confirm_delete') }, class: "delete-icon" do %>
+                <i class="fas fa-trash-alt"></i>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <%= t('.no_videos_message') %>
+      <% end %>
+    </div>
 
-  <div id="liked-videos" class="tab-content">
-    <% @liked_videos.each do |video| %>
-      <div class="video-item">
-        <%= video_tag video.file.url, controls: true, class: "video-fixed-size" %>
-      </div>
-    <% end %>
+    <div id="liked-videos" class="tab-content">
+      <% if @liked_videos.present? %>
+        <% @liked_videos.each do |video| %>
+          <div class="video-item">
+            <%= video_tag video.file.url, controls: true, class: "video-fixed-size" %>
+          </div>
+        <% end %>
+      <% else %>
+        <%= t('.no_liked_videos_message') %>
+      <% end %>
+    </div>
   </div>
 </div>
-
 

@@ -11,7 +11,7 @@
   <% if params[:search_type] == 'tag' %>
     <%= render 'videos_list' %>
   <% else %>
-    <% if @ramen_shops.any? %>
+    <% if @ramen_shops.present? %>
       <ul>
         <% @ramen_shops.each do |shop| %>
          <div class='search-ramen-shop'>
