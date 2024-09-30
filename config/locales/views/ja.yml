@@ -30,6 +30,8 @@ ja:
       logout: ログアウト
       edit_profile: プロフィール編集
       confirm_delete: 本当に削除しますか？
+      no_videos_message: 投稿した動画はありません
+      no_liked_videos_message: いいねした動画はありません
   videos:
     new:
       title: 投稿動画を作成

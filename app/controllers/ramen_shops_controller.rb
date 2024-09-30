@@ -15,23 +15,24 @@ class RamenShopsController < ApplicationController
       case params[:search_type]
       when 'name'
         ramen_shops_array = RamenShop.where('name LIKE ?', "%#{params[:keyword]}%")
+        @ramen_shops = Kaminari.paginate_array(ramen_shops_array).page(params[:page]).per(10)
       when 'location'
         google_places_service = GooglePlacesService.new(ENV['GOOGLE_PLACES_API_KEY'])
         ramen_shops_array = google_places_service.search_by_location(params[:keyword])
+        @ramen_shops = Kaminari.paginate_array(ramen_shops_array).page(params[:page]).per(10)
       when 'tag'
-        ramen_shops_array = Video.by_tag(params[:keyword]).map(&:ramen_shop).compact
+        videos_array = Video.by_tag(params[:keyword]).includes(:ramen_shop)
+        @videos = Kaminari.paginate_array(videos_array).page(params[:page]).per(10)
       else
-        ramen_shops_array = []
+        @ramen_shops = []
+        @videos = []
       end
     else
-      ramen_shops_array = []
+      @ramen_shops = []
+      @videos = []
     end
+  end
   
-    # ramen_shops_array が nil の場合、空配列を設定
-    ramen_shops_array ||= []
-  
-    @ramen_shops = Kaminari.paginate_array(ramen_shops_array).page(params[:page]).per(10)
-  end  
 
   def show
     @latitude = params[:lat]

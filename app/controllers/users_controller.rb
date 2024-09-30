@@ -3,8 +3,8 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
-    @videos = @user.videos
-    @liked_videos = @user.liked_videos
+    @videos = @user.videos.includes(:user, :ramen_shop).order(created_at: :desc)
+    @liked_videos = @user.liked_videos.includes(:user, :ramen_shop).order(created_at: :desc)
   end
 
   def new

@@ -1,6 +1,6 @@
-<% if @ramen_shops.any? %>
+<% if @videos.present? %>
   <ul class="videos-list">
-    <% @ramen_shops.each do |video| %>
+    <% @videos.each do |video| %>
       <li class="tag-videos">
         <video width="600" controls>
           <source src="<%= video.file.url %>" type="video/mp4">
@@ -10,7 +10,7 @@
       </li>
     <% end %>
   </ul>
-  <%= paginate @ramen_shops, theme: 'bootstrap-5' %>
+  <%= paginate @videos, theme: 'bootstrap-5' %>
 <% else %>
   <% if params[:keyword].present? && params[:keyword].strip != "" %>
     <p class="search-message"><%= t('.no_search_results') %></p>

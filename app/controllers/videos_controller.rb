@@ -11,63 +11,55 @@ class VideosController < ApplicationController
 
   def create
     @video = current_user.videos.build(video_params)
-    ramen_shop_id = params[:ramen_shop_id]
+    place_id = params[:place_id]
     
-    if ramen_shop_id.present?
+    if place_id.present?
       google_places_service = GooglePlacesService.new(ENV['GOOGLE_PLACES_API_KEY'])
-      ramen_shop_data = google_places_service.get_ramen_shop_data(ramen_shop_id)
-      
-      @ramen_shop = RamenShop.find_or_initialize_by(place_id: ramen_shop_id)
+      ramen_shop_data = google_places_service.get_ramen_shop_data(place_id)
+   
+      @ramen_shop = RamenShop.find_or_initialize_by(place_id: place_id)
       @ramen_shop.name = ramen_shop_data['name']
       @ramen_shop.address = ramen_shop_data['formatted_address']
       @ramen_shop.phone_number = ramen_shop_data['formatted_phone_number']
       @ramen_shop.latitude = ramen_shop_data['geometry']['location']['lat']
       @ramen_shop.longitude = ramen_shop_data['geometry']['location']['lng']
-
-        if ramen_shop_data['opening_hours'].present?
-          @ramen_shop.opening_hours = ramen_shop_data['opening_hours']['weekday_text'].join("\n")
-        end
-
-        if @ramen_shop.save
-          @video.ramen_shop = @ramen_shop
-          @video.place_id = ramen_shop_id
-
-        if @video.save
-          flash[:notice] = t('flash.videos.create_success')
-          redirect_to videos_path
-        else
-          flash[:error] = t('flash.videos.create_failure')
-          render :new, status: :unprocessable_entity
-        end
+   
+      if ramen_shop_data['opening_hours'].present?
+        @ramen_shop.opening_hours = ramen_shop_data['opening_hours']['weekday_text'].join("\n")
+      end
+   
+      if @ramen_shop.save
+        @video.ramen_shop = @ramen_shop
+        @video.place_id = place_id
       else
         flash[:error] = t('flash.videos.ramen_shop_save_failure')
         render :new, status: :unprocessable_entity
+        return
       end
-
     else
       @video.ramen_shop = nil
       @video.place_id = nil
-
-      if @video.save
-        flash[:notice] = t('flash.videos.create_success')
-        redirect_to videos_path
-      else
-        flash[:error] = t('flash.videos.create_failure')
-        render :new, status: :unprocessable_entity
-      end
     end
-  end
+   
+    if @video.save
+      flash[:notice] = t('flash.videos.create_success')
+      redirect_to videos_path
+    else
+      flash[:error] = t('flash.videos.create_failure')
+      render :new, status: :unprocessable_entity
+    end
+  end   
 
   def edit ;end
 
   def update
-    ramen_shop_id = params[:ramen_shop_id]
+    place_id = params[:place_id]
   
-    if ramen_shop_id.present?
+    if place_id.present?
       google_places_service = GooglePlacesService.new(ENV['GOOGLE_PLACES_API_KEY'])
-      ramen_shop_data = google_places_service.get_ramen_shop_data(ramen_shop_id)
+      ramen_shop_data = google_places_service.get_ramen_shop_data(place_id)
   
-      @ramen_shop = RamenShop.find_or_initialize_by(place_id: ramen_shop_id)
+      @ramen_shop = RamenShop.find_or_initialize_by(place_id: place_id)
       @ramen_shop.name = ramen_shop_data['name']
       @ramen_shop.address = ramen_shop_data['formatted_address']
       @ramen_shop.phone_number = ramen_shop_data['formatted_phone_number']
@@ -78,9 +70,15 @@ class VideosController < ApplicationController
         @ramen_shop.opening_hours = ramen_shop_data['opening_hours']['weekday_text'].join("\n")
       end
   
-      @ramen_shop.save
+      unless @ramen_shop.save
+        Rails.logger.debug "Failed to save RamenShop: #{@ramen_shop.errors.full_messages}"
+        flash[:error] = t('flash.videos.ramen_shop_save_failure')
+        render :edit
+        return
+      end
+  
       @video.ramen_shop = @ramen_shop
-      @video.place_id = ramen_shop_id
+      @video.place_id = place_id
     else
       @video.ramen_shop = nil
       @video.place_id = nil
@@ -93,7 +91,7 @@ class VideosController < ApplicationController
       flash[:error] = t('flash.videos.update_failure')
       render :edit
     end
-  end
+  end  
 
   def destroy
     @video.destroy
