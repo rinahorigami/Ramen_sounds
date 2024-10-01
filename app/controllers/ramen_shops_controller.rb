@@ -21,7 +21,7 @@ class RamenShopsController < ApplicationController
         ramen_shops_array = google_places_service.search_by_location(params[:keyword])
         @ramen_shops = Kaminari.paginate_array(ramen_shops_array).page(params[:page]).per(10)
       when 'tag'
-        videos_array = Video.by_tag(params[:keyword]).includes(:ramen_shop)
+        videos_array = Video.by_tag(params[:keyword])
         @videos = Kaminari.paginate_array(videos_array).page(params[:page]).per(10)
       else
         @ramen_shops = []

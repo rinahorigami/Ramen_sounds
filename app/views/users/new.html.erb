@@ -21,7 +21,7 @@
       </div>
       <div class="mb-3">
         <%= f.label :avatar, for: "avatar-input" %>
-        <%= f.file_field :avatar, accept: 'image/*', id: "avatar-input", style: "display: none;" %>
+        <%= f.file_field :avatar, accept: 'image/*', id: "avatar-input" %>
         <button type="button" class="btn btn-secondary" id="select-avatar-btn"><%= t('.select_image') %></button>
         <img id="avatar-preview" src="#" alt="プレビュー画像" style="display:none; margin-top: 10px; max-width: 100px;">
       </div>
