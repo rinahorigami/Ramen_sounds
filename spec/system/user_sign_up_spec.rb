@@ -31,7 +31,7 @@ RSpec.describe 'ユーザー登録機能', type: :system do
     click_button '登録'
 
     # エラーメッセージが表示されることを確認
-    expect(page).to have_content('Name ユーザー名を入力してください。')
+    expect(page).to have_content('ユーザー名を入力してください。')
   end
 
   it 'パスワード確認が一致しない場合、登録に失敗する' do
