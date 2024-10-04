@@ -26,6 +26,31 @@ class GooglePlacesService
     end
   end
 
+  def search_by_name(name)
+    endpoint = "https://maps.googleapis.com/maps/api/place/textsearch/json"
+    params = {
+      query: name,
+      location: '35.6895,139.6917',  # 東京の位置
+      radius: 5000,  # 半径5kmの範囲
+      language: 'ja',
+      key: ENV['GOOGLE_PLACES_API_KEY']
+    }
+  
+    # Google Places APIにリクエストを送信
+    response = HTTParty.get(endpoint, query: params)
+    
+    # レスポンスをログに出力
+    puts "API response: #{response.inspect}"
+  
+    # レスポンスが成功したかを確認
+    if response.success?
+      response.parsed_response['results']
+    else
+      puts "API request failed with status: #{response.code}, message: #{response.message}"
+      []
+    end
+  end  
+
   def search_by_location_with_spots(keyword, location, radius = 18000)
     combined_keyword = "#{keyword} ラーメン"
     results = @client.spots(location[:lat], location[:lng], radius: radius, types: ['restaurant'], keyword: combined_keyword, language: 'ja')

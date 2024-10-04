@@ -13,12 +13,14 @@ ja:
       login: ログイン
       to_register_page: アカウントお持ちでないの方 →
       password_forget: パスワードをお忘れの方はこちら →
+      about-the-site: サイトについて →
   users:
     new:
       title: ユーザー登録
       to_login_page: ログインページへ →
       select_image: 画像を選択する
       create: 登録
+      about-the-site: サイトについて →
     edit:
       title: プロフィール編集
       select_image: 画像を選択する
@@ -98,6 +100,7 @@ ja:
     index:
       to_login_page: ログインページへ →
       to_register_page: アカウントお持ちでないの方 →
+      about-the-site: サイトについて →
   password_resets:
     new:
       title: パスワードリセット
@@ -118,6 +121,7 @@ ja:
         post_video: "動画投稿"
         my_page: "マイページ"
         logout: "ログアウト"
+        about-the-site: サイトについて
       footer:
         terms: 利用規約
         privacy: プライバシーポリシー

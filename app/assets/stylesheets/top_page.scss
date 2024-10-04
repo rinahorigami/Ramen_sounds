@@ -1,25 +1,54 @@
-.top-page, .login-page, .signup-page {
+.top-page {
+  position: relative; /* 相対位置に設定 */
+  z-index: 1; /* 背景より前面に表示 */
+  background-color: rgba(255, 255, 255, 0.7); /* 背景を半透明にして視認性を高める */
   font-family: 'Helvetica', 'Arial', sans-serif;
   margin: 0;
   padding: 0;
-  background-image: url('AdobeStock_343708014.jpg');
-  background-size: cover;
-  background-position: center;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-size: cover;
+  background-position: center;
+  transition: background-image 1s ease-in-out; /* フェード効果 */
+}
+
+#background-container {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0; /* 初期状態は透明 */
+  transition: opacity 1s ease-in-out; /* フェードアニメーション */
+  z-index: 0; /* 背景用 */
+}
+
+.background-image.active {
+  opacity: 1; /* 表示される要素 */
 }
   
 .top-page-container,
 .user-page-container {
-  background-color: rgba(255, 255, 255, 0.7);
+  position: relative; /* 背景と独立して配置 */
+  z-index: 1; /* 背景より前面に表示 */
+  background-color: rgba(255, 255, 255, 0.7); /* 背景を半透明にして視認性を高める */
   padding: 20px 40px;
   border-radius: 10px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
   max-width: 1000px;
   width: 100%;
+  margin: auto; /* 中央に配置 */
 }
   
 .top-page-container h1 {
@@ -32,7 +61,8 @@
 
 .login-link,
 .signup-link,
-.password-reset-link {
+.password-reset-link,
+.scroll-link {
   color: rgb(16, 96, 180);
   text-decoration: none;
 }
@@ -51,9 +81,7 @@ p {
   margin: 10px 0;
   font-size: 18px;
 }
-  
 
-  
 a:hover {
   text-decoration: underline;
 }
@@ -146,3 +174,98 @@ a:hover {
   margin-bottom: 10px;
 }
 
+.how-to-use h1 {
+  font-size: 3em;
+  color: #4f4d4d;
+  margin-bottom: 20px;
+  font-family: 'Arial', sans-serif;
+}
+
+.how-to-use {
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+  max-width: 1100px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.how-to-use h2 {
+  font-size: 2em;
+  color: rgb(79, 77, 77);
+  margin-bottom: 15px;
+}
+
+.how-to-use p,
+.how-to-use ul {
+  font-size: 1.2em;
+  color: rgb(79, 77, 77);
+  margin-bottom: 0 !important;
+}
+
+.how-to-use ul {
+  list-style-type: none;
+  padding: 0;
+  counter-reset: li;
+  margin-top: 30px;
+}
+
+.how-to-use li {
+  position: relative;
+  font-size: 25px;
+  color: #7699c7;
+}
+
+.how-to-use ul p {
+  font-size: 17px;
+  color: #315a86;
+}
+
+.how-to-use a {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-top: 20px;
+  background-color: #1060b4;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.how-to-use a:hover {
+  background-color: #0d4a91;
+}
+
+.screenshot {
+  width: 70%;
+  margin-bottom: 30px;
+  margin-top: 15px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.screenshot:hover {
+  transform: scale(1.05);
+}
+
+.scrollable-container {
+  overflow-x: auto; /* 横スクロールを有効にする */
+  white-space: nowrap; /* 子要素を横並びにしない */
+}
+
+/* ul要素内のli, p, imgをブロック表示にする */
+.scrollable-container ul {
+  display: inline-block; /* ul全体を横スクロール内に収める */
+  vertical-align: top; /* 並べた時に上部を揃える */
+  width: 100%; /* 横幅をコンテナ内で調整 */
+}
+
+.scrollable-container li,
+.scrollable-container p,
+.scrollable-container img {
+  display: block; /* 各要素を縦に並べる */
+  margin-bottom: 20px; /* 下にマージンを追加して間隔を調整 */
+}

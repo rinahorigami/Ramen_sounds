@@ -7,6 +7,7 @@
       <%= link_to t('views.shared.header.find'), '#', class: 'custom-nav-link', id: 'find-location-link', data: { search_url: ramen_shops_path } %>
       <%= link_to t('views.shared.header.post_video'), new_video_path, class: 'custom-nav-link' %>
       <%= link_to t('views.shared.header.my_page'), user_path(current_user), class: 'custom-nav-link' %>
+      <%= link_to t('views.shared.header.about-the-site'), "#{root_path}#how-to-use", class: 'custom-nav-link' %>
       <%= link_to t('views.shared.header.logout'), logout_path, class: 'custom-nav-link', data: { turbo_method: :delete } %>
     </nav>
   </div>
