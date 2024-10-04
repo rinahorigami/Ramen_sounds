@@ -1,4 +1,6 @@
-<div class="top-page">
+<div class="top-page" id="background-container">
+  <div class="background-image" id="background1"></div>
+  <div class="background-image" id="background2"></div>
   <div class="top-page-container">
     <h1>Ramen sounds</h1>
     <p>
@@ -7,5 +9,43 @@
     <p>
       <%= link_to t('.to_register_page'), new_user_path, class: "signup-link"%>
     </p>
+    <p>
+      <%= link_to t('.about-the-site'), "#how-to-use", class: "scroll-link" %>
+    </p>
   </div>
+</div>
+
+<div class="how-to-use" >
+  <h1>サイトについて</h1>
+  <p>Ramen soundsは、ラーメンを食べている動画を投稿して共有でき</p>
+  <p>動画をもとに好きなラーメン店を見つけられるアプリです♪</p>
+  <p>ASMR動画としても楽しめます！</p>
+  <p>以下の機能を活用して、動画を投稿・視聴し、好きなラーメン店を探しましょう！</p>
+  <ul>
+    <li>ラーメン店で食べたラーメンの動画や、お家で食べたラーメンの動画などを投稿し</li>
+    <li id="how-to-use">みんなにシェアしよう！</li>
+    <p>投稿動画にラーメン店を関連づけることができます！</p>
+    <%= image_tag 'video_post.png', alt: '動画投稿のスクリーンショット', class: 'screenshot' %>
+
+    <p>投稿ページの「ラーメン店を選択」をクリックして、検索フォームで店舗を検索し店舗詳細ページに遷移したら、</p>
+    <p>下記の「この店舗を選択」をクリックしたら動画とラーメン店を関連づけることができます！</p>
+    <%= image_tag 'select_shop.png', alt: '店舗選択のスクリーンショット', class: 'screenshot' %>
+
+    <li>店舗名でラーメン店を検索できます！</li>
+    <%= image_tag 'search_name.png', alt: '店舗名検索のスクリーンショット', class: 'screenshot' %>
+    <li>場所検索ではマップでラーメン店を検索できます！</li>
+    <p>マップをドラッグしてラーメン店を探すことができ、アイコンをタップすると店舗名が表示され、</p>
+    <p>店舗名をクリックすると店舗詳細ページに遷移します！</p>
+    <%= image_tag 'search_location.png', alt: '場所検索のスクリーンショット', class: 'screenshot' %>
+    <li>タグ検索ではそのタグに関連づけられた動画を検索できます！</li>
+    <%= image_tag 'search_tag.png', alt: 'タグ検索のスクリーンショット', class: 'screenshot' %>
+
+    <p>マイページで投稿した動画の編集・削除ができます！</p>
+    <p>いいねした動画の一覧も確認できます！</p>
+    <%= image_tag 'video_delete.png', alt: 'マイページのスクリーンショット', class: 'screenshot' %>
+    
+    <li>動画にいいねやコメントを投稿できます！</li>
+    <%= image_tag 'video_comment.png', alt: 'コメント・いいねのスクリーンショット', class: 'screenshot' %>
+  </ul>
+  <%= link_to 'アカウントを登録して動画を投稿する', new_user_path %>
 </div>
