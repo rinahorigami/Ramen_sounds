@@ -6,3 +6,9 @@
     <%= form.submit t('.create'), class: 'submit-button' %>
   <% end %>
 <% end %>
+
+<%= turbo_stream.replace "comment-count-#{@video.id}" do %>
+  <div class="comment-count">
+    <%= @video.comments.count %>
+  </div>
+<% end %>

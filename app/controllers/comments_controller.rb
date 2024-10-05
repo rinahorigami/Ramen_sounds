@@ -18,7 +18,7 @@ class CommentsController < ApplicationController
     @comment = @video.comments.find(params[:id])
     @comment.destroy
     flash[:alert] = t('flash.comments.destroy_success')
-    redirect_to videos_path, status: :see_other
+    redirect_to request.referer || videos_path, status: :see_other
   end
 
   private
