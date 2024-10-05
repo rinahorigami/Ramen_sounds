@@ -1,18 +1,46 @@
-<% if @videos.present? %>
-  <ul class="videos-list">
+<div class="tag-reel-container">
+  <% if @videos.present? %>
     <% @videos.each do |video| %>
-      <li class="tag-videos">
-        <video width="600" controls>
-          <source src="<%= video.file.url %>" type="video/mp4">
-          <%= t('.unsupported_browser') %>
-        </video><br>
-        <span><%= video.tag_list %></span>
-      </li>
+      <div class="reel-item">
+        <div class="video-content">
+          <div class="video-wrapper">
+            <video controls>
+              <source src="<%= video.file.url %>" type="video/mp4">
+              <%= t('.unsupported_browser') %>
+            </video><br>
+          </div>
+        
+        <div class="tag-video-details">
+          <%= render 'videos/video_details', video: video %>
+        </div>
+        <div class="video-info">
+            <% if video.ramen_shop.present? %>
+              <%= link_to video.ramen_shop.name, ramen_shop_path(video.ramen_shop.id), class: "ramen-shop-name" %>
+            <% end %>
+              <p class="videos-menu-name">
+                <% if video.menu_name.present? %>
+                  <%= video.menu_name %>
+                <% end %>
+              </p>
+              <p class="videos-menu-price">
+                <% if video.price.present? %>
+                  <%= video.price %><%= t('.yen') %>
+                <% end %>
+              </p>
+              <p class="videos-comment"><%= video.comment if video.comment.present? %></p>
+                <div class="video-tags">
+                  <% video.tags.each do |tag| %>
+                    <span class="tag">#<%= tag.name %></span>
+                  <% end %>
+                </div>
+              </div>
+             </div>
+          </div>
+     <% end %>
+   <%= paginate @videos, theme: 'bootstrap-5' %>
+  <% else %>
+    <% if params[:keyword].present? && params[:keyword].strip != "" %>
+      <p class="search-message"><%= t('.no_search_results') %></p>
     <% end %>
-  </ul>
-  <%= paginate @videos, theme: 'bootstrap-5' %>
-<% else %>
-  <% if params[:keyword].present? && params[:keyword].strip != "" %>
-    <p class="search-message"><%= t('.no_search_results') %></p>
   <% end %>
-<% end %>
+</div>

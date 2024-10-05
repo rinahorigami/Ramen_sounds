@@ -38,7 +38,7 @@
       <%= t('.address_not_found') %>
     <% end %>
   </p>
-  <p><%= t('.phone_number') %> <%= @ramen_shop&.phone_number || @ramen_shop_data['formatted_phone_number'] || t('.no_information') %></p>
+  <p><%= t('.phone_number') %> <%= @ramen_shop&.phone_number || (@ramen_shop_data && @ramen_shop_data['formatted_phone_number']) || t('.no_information') %></p>
   <p class="hours-label"><%= t('.opening_hours') %></p>
   <% if @ramen_shop&.opening_hours.present? %>
     <ul class="hours-list">
