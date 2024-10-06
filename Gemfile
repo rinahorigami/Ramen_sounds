@@ -13,7 +13,7 @@ gem "sprockets-rails"
 # gem "mysql2", "~> 0.5"
 
 # Use the Puma web server [https://github.com/puma/puma]
-gem "puma", "~> 5.0"
+gem "puma", ">= 5.6.9"
 
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem "importmap-rails"
@@ -61,6 +61,7 @@ gem 'google_maps_service'
 gem 'google_places'
 gem 'config'
 gem 'rails-i18n'
+gem 'rexml', '>= 3.3.6'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
