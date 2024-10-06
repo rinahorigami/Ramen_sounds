@@ -1,8 +1,8 @@
 <div class="top-page" id="background-container">
   <div class="background-image" id="background1"></div>
-    <div class="background-image" id="background2"></div>
-      <div class="top-page-container">
-        <h1><%= t('.title') %></h1>
+  <div class="background-image" id="background2"></div>
+    <div class="top-page-container">
+      <h1><%= t('.title') %></h1>
         <%= form_with model: @user, local: true, data: { turbo: false } do |f| %>
          <%= render 'shared/error_message', object: @user %>
           <div class="mb-3">
@@ -36,7 +36,5 @@
         <div class='text-center'>
           <%= link_to t('.about-the-site'), "#{root_path}#how-to-use", class: "login-link" %>
         </div>
-      </div>
     </div>
-  </div>
 </div>

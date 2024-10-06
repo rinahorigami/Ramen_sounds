@@ -1,16 +1,18 @@
-<div class="login-page">
-  <div class="top-page-container">
-    <h2 class="login"><%= t('.title') %></h2>
-    <%= form_with(model: @user, url: password_reset_path(params[:id]), method: :patch) do |f| %>
-      <div class="mb-3">
-        <%= f.label :password, t('.new_password'), class: "form-label" %>
-        <%= f.password_field :password, class: "form-control" %>
-      </div>
-      <div class="mb-3">
-        <%= f.label :password_confirmation, class: "form-label" %>
-        <%= f.password_field :password_confirmation, class: "form-control" %>
-      </div>
-      <%= f.submit t('.update'), class: "btn-primary" %>
-    <% end %>
-  </div>
+<div class="top-page" id="background-container">
+  <div class="background-image" id="background1"></div>
+  <div class="background-image" id="background2"></div>
+    <div class="top-page-container">
+      <h2 class="login"><%= t('.title') %></h2>
+      <%= form_with(model: @user, url: password_reset_path(params[:id]), method: :patch) do |f| %>
+        <div class="mb-3">
+          <%= f.label :password, t('.new_password'), class: "form-label" %>
+          <%= f.password_field :password, class: "form-control" %>
+        </div>
+        <div class="mb-3">
+          <%= f.label :password_confirmation, class: "form-label" %>
+          <%= f.password_field :password_confirmation, class: "form-control" %>
+        </div>
+        <%= f.submit t('.update'), class: "btn-primary" %>
+      <% end %>
+    </div>
 </div>
