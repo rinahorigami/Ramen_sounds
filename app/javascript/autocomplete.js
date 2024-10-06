@@ -1,32 +1,38 @@
-document.addEventListener('turbo:load', function() {
-  // フォーム全体のリセット処理
-  const form = document.getElementById('search-form');
+document.addEventListener("turbo:load", function() {
+  const searchInput = document.getElementById("search-keyword");
+  const autocompleteList = document.getElementById("autocomplete-list");
 
-  if (!form) {
-    console.error('search-form が見つかりません。');
-    return;  // ここで終了して以降の処理を行わない
-  }
+  searchInput.addEventListener("input", function() {
+    const keyword = this.value;
+    const searchType = document.querySelector('input[name="search_type"]').value;
 
-  const tabName = document.getElementById('tab-name');
-  const tabLocation = document.getElementById('tab-location');
-  const tabTag = document.getElementById('tab-tag');
+    if (keyword.length > 1) {
+      fetch(`/ramen_shops/autocomplete?search_type=${searchType}&keyword=${keyword}`)
+        .then(response => response.json())
+        .then(data => {
+          autocompleteList.innerHTML = '';
+          data.forEach(item => {
+            const listItem = document.createElement("li");
+            listItem.textContent = item.name;
+            listItem.classList.add("autocomplete-item");
 
-  // 各タブが存在する場合にのみ、リスナーを追加
-  if (tabName) {
-    tabName.addEventListener('click', function() {
-      form.reset();
-    });
-  }
+            listItem.addEventListener("click", function() {
+              searchInput.value = item.name;
+              autocompleteList.innerHTML = '';
+            });
 
-  if (tabLocation) {
-    tabLocation.addEventListener('click', function() {
-      form.reset();
-    });
-  }
+            autocompleteList.appendChild(listItem);
+          });
+        })
+        .catch(error => console.error('Error:', error));
+    } else {
+      autocompleteList.innerHTML = '';
+    }
+  });
 
-  if (tabTag) {
-    tabTag.addEventListener('click', function() {
-      form.reset();
-    });
-  }
+  searchInput.addEventListener("blur", function() {
+    setTimeout(function() {
+      autocompleteList.innerHTML = '';
+    }, 200);
+  });
 });
