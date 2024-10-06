@@ -19,9 +19,7 @@ const RamenMap = {
   // location-map 用の初期化
   initLocationMap: function(latitude, longitude) {
     const map = this.createMap(latitude, longitude, "location-map");
-    // ラーメン店のマーカーを追加
     this.searchNearby(map);
-    // マップが移動やズームされた後に再検索
     this.addIdleListener(map);
   },
 
@@ -31,16 +29,21 @@ const RamenMap = {
     const longitude = position.coords.longitude;
     const map = this.createMap(latitude, longitude, "user-map");
 
-    // ユーザーの位置にマーカーを表示
     this.addUserMarker(map, latitude, longitude);
-    this.searchNearby(map); // 周辺のラーメン店を検索してマーカーを表示
-    this.addIdleListener(map); // マップ移動後の再検索を追加
+    this.searchNearby(map);
+    this.addIdleListener(map);
+  },
+
+  // 位置情報をブロックした場合のuser-map用の初期化
+  initDefaultLocationMap: function(latitude, longitude) {
+    const map = this.createMap(latitude, longitude, "user-map");
+    this.searchNearby(map);
+    this.addIdleListener(map);
   },
 
   // store-map 用の初期化
   initStoreMap: function(latitude, longitude) {
     const map = this.createMap(latitude, longitude, "store-map");
-    // 店舗のマーカーを追加
     this.addStoreMarker(map, latitude, longitude);
   },
 
@@ -133,20 +136,29 @@ document.addEventListener("turbo:load", function() {
   }
 
   // user-map の場合
-  if (document.getElementById("user-map")) {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        function(position) {
-          RamenMap.initUserMap(position);
-        },
-        function() {
-          RamenMap.initLocationMap(35.6895, 139.6917); // 東京をデフォルトに
-        }
-      );
+  setTimeout(() => {
+    const userMapElement = document.getElementById("user-map");
+    console.log("userMapElement:", userMapElement);
+
+    if (userMapElement) {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          function(position) {
+            RamenMap.initUserMap(position);
+          },
+          function() {
+            console.log("位置情報の取得に失敗。デフォルトの東京を表示します。");
+            RamenMap.initDefaultLocationMap(35.6895, 139.6917);
+          }
+        );
+      } else {
+        console.log("位置情報取得に対応していません。デフォルトの東京を表示します。");
+        RamenMap.initDefaultLocationMap(35.6895, 139.6917);
+      }
     } else {
-      RamenMap.initLocationMap(35.6895, 139.6917); // 東京をデフォルトに
+      console.error("userMapElementが見つかりません");
     }
-  }
+  }, 100);
 
   // store-map の場合
   const storeMapElement = document.getElementById("store-map");

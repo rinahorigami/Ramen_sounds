@@ -124,6 +124,7 @@
   flex-direction: column;
   align-items: center;
   gap: 20px;
+  width: 100%;
   height: 78%;
 }
 
@@ -234,7 +235,7 @@
   width: 100px;
   height: 500px;
   position: absolute;
-  right: -50px;
+  right: 0;
   top: 0;
 }
 
