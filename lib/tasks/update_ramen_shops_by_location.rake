@@ -15,7 +15,7 @@ namespace :update_ramen_shops do
 
       # save_ramen_shop_data メソッドを使用してRamenShopを保存
       begin
-        ramen_shop = service.save_ramen_shop_data(shop_data.place_id)
+        ramen_shop = service.save_ramen_shop_data(shop_data['place_id'])
 
         if ramen_shop.persisted?
           puts "Saved or found existing ramen shop: #{ramen_shop.name}"

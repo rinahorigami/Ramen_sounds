@@ -18,11 +18,17 @@ class GooglePlacesService
     if ramen_shop_data['opening_hours'].present?
       ramen_shop.opening_hours = ramen_shop_data['opening_hours']['weekday_text'].join("\n")
     end
-
-    if ramen_shop.save
-      return ramen_shop
+  
+    # 変更がある場合のみ保存
+    if ramen_shop.changed?
+      if ramen_shop.save
+        return ramen_shop
+      else
+        raise "Failed to save ramen shop data"
+      end
     else
-      raise "Failed to save ramen shop data"
+      puts "No changes detected, skipping save for #{ramen_shop.name}"
+      return ramen_shop
     end
   end
 
@@ -30,7 +36,7 @@ class GooglePlacesService
     endpoint = "https://maps.googleapis.com/maps/api/place/textsearch/json"
     params = {
       query: name,
-      location: '35.6895,139.6917',  # 東京の位置
+      location: '33.5904,130.4017',  # 福岡の位置
       radius: 5000,  # 半径5kmの範囲
       language: 'ja',
       key: ENV['GOOGLE_PLACES_API_KEY']
@@ -58,6 +64,12 @@ class GooglePlacesService
       (shop.vicinity && shop.vicinity.include?(keyword)) || 
       (shop.formatted_address && shop.formatted_address.include?(keyword))
     end
+  
+    # 検索結果の中身を確認するために出力
+    filtered_results.each do |shop_data|
+      puts "Shop data: #{shop_data.inspect}"
+    end
+  
     filtered_results
   end
 
