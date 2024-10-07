@@ -54,27 +54,6 @@ class RamenShopsController < ApplicationController
     end
   end
 
-  def map
-    @ramen_shop = RamenShop.find_by(place_id: params[:id])
-  
-    if @ramen_shop.nil?
-      google_places_service = GooglePlacesService.new(ENV['GOOGLE_PLACES_API_KEY'])
-      @ramen_shop_data = google_places_service.get_ramen_shop_data(params[:id])
-  
-      if @ramen_shop_data.nil?
-        render plain: "Ramen shop not found", status: :not_found
-      end
-    end
-
-    @link_url = if @ramen_shop.present?
-      ramen_shop_path(id: @ramen_shop.place_id)
-    elsif @ramen_shop_data.present?
-      ramen_shop_path(id: @ramen_shop_data['place_id'])
-    else
-      '#'
-    end
-  end
-
   def autocomplete
     search_type = params[:search_type]
     keyword = params[:keyword]

@@ -27,13 +27,12 @@
       ), class: 'select-shop-link' %>
     <% end %>
   </div>
+  <%= render 'map' %>
   <p><%= t('.address') %>
     <% if @ramen_shop.present? %>
-      <%= link_to(@ramen_shop.address.sub(/^日本、?\s*/, '').sub(/^〒\d{3}-\d{4}\s*/, ''), 
-                  map_ramen_shop_path(id: @ramen_shop.place_id, from_video_form: params[:from_video_form])) %>
+      <span><%= @ramen_shop.address.sub(/^日本、?\s*/, '').sub(/^〒\d{3}-\d{4}\s*/, '') %></span>
     <% elsif @ramen_shop_data.present? %>
-      <%= link_to(@ramen_shop_data['vicinity'], 
-                  map_ramen_shop_path(id: @ramen_shop_data['place_id'], from_video_form: params[:from_video_form])) %>
+      <span><%= @ramen_shop_data['vicinity'] %></span>
     <% else %>
       <%= t('.address_not_found') %>
     <% end %>
