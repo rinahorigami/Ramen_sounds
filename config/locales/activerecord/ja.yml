@@ -13,7 +13,7 @@ ja:
       login_failure: "メールアドレスまたはパスワードが違います。"
       logout: "ログアウトしました。"
     users:
-      create_success: "ユーザー登録に成功しました。"
+      create_success: "ユーザー登録が完了し、ログインしました。"
       create_failure: "ユーザー登録に失敗しました。"
       update_success: "プロフィールを編集しました。"
       update_failure: "プロフィール編集に失敗しました。"
