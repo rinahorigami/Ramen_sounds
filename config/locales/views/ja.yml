@@ -7,6 +7,7 @@ ja:
     label:
       email: メールアドレス
       password: パスワード
+      remember_me: 次回以降自動でログイン
   sessions:
     new:
       title: ログイン

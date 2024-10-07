@@ -14,8 +14,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      auto_login(@user)
       flash[:notice] = t('flash.users.create_success')
-      redirect_to login_path
+      redirect_to videos_path
     else
       flash[:error] = t('flash.users.create_failure')
       render :new, status: :unprocessable_entity
