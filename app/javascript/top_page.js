@@ -1,9 +1,9 @@
 // 切り替える背景画像のリスト
 const backgrounds = [
-  'url("/images/AdobeStock_343708014.jpg")',
-  'url("/images/AdobeStock_233343975.jpeg")',
-  'url("/images/AdobeStock_204177687.jpeg")',
-  'url("/images/AdobeStock_478152704.jpeg")'
+  'url("/images/AdobeStock_343708014.webp")',
+  'url("/images/AdobeStock_233343975.webp")',
+  'url("/images/AdobeStock_204177687.webp")',
+  'url("/images/AdobeStock_478152704.webp")'
 ];
 
 let currentIndex = 0;
