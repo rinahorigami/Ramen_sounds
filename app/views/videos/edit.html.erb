@@ -1,7 +1,8 @@
+<%= javascript_include_tag 'loading' %>
 <div class="video-form-container">
   <h2><%= t('.title') %></h2>
 
-  <%= form_with(model: @video, local: true, html: { class: 'custom-form' }, data: { turbo: false }) do |form| %>
+  <%= form_with(model: @video, html: { class: 'custom-form' }) do |form| %>
     <%= render 'shared/error_message', object: @video %>
     
     <div class="form-group horizontal-form-group">
@@ -56,4 +57,5 @@
 
     <%= form.submit t('.create'), class: 'btn-primary video-btn' %>
   <% end %>
+  <%= render 'shared/loading_video' %>
 </div>
