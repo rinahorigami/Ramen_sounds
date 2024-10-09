@@ -1,3 +1,8 @@
+<%= javascript_import_module_tag 'map' %>
 <div class="map-container">
   <div id="location-map" data-latitude="<%= @latitude %>" data-longitude="<%= @longitude %>"></div>
 </div>
+
+<script>
+  const ramenIconPath = "<%= asset_path('circle_ramen_icon.png') %>";
+</script>

@@ -1,3 +1,6 @@
+<%= javascript_import_module_tag 'searcb_form' %>
+<%= javascript_import_module_tag 'autocomplete' %>
+
 <%= form_with(url: ramen_shops_path, method: :get, local: true, class: "search-form", id: "search-form") do |f| %>
   <%= hidden_field_tag :from_video_form, params[:from_video_form] %>
   <%= hidden_field_tag :video_id, @video.present? ? @video.id : params[:video_id] %>

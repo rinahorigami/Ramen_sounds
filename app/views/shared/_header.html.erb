@@ -1,4 +1,6 @@
 <header>
+  <%= javascript_import_module_tag 'location_information' %>
+  <%= javascript_import_module_tag 'my_page' %>
   <div class="header-container">
     <div class="custom-logo">
       <h1><%= link_to t('views.shared.header.title'), videos_path %></h1>
@@ -11,4 +13,5 @@
       <%= link_to t('views.shared.header.logout'), logout_path, class: 'custom-nav-link', data: { turbo_method: :delete } %>
     </nav>
   </div>
+  <%= render 'shared/loading_location' %>
 </header>
