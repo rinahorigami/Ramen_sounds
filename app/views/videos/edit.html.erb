@@ -50,7 +50,7 @@
 
       <% if @video.file.present? %>
         <div class="current-video-url">
-          <p><%= t('.current_video_url') %><%= link_to @video.file.url, @video.file.url, target: "_blank" %></p>
+          <p><%= t('.current_video') %><%= link_to 'こちら', @video.file.url, target: "_blank" %></p>
         </div>
       <% end %>
     </div>
