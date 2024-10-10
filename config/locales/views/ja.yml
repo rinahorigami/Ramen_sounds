@@ -56,7 +56,7 @@ ja:
       price_message: 金額を入力してください
       tag_message: "カンマ区切りで入力してください(例: 新宿,醤油ラーメン)"
       create: 編集
-      current_video_url: "現在の動画URL:"
+      current_video: "現在の動画は"
       file_message: "※現在の動画から変更する場合のみ選択してください"
   ramen_shops:
     search_form:
