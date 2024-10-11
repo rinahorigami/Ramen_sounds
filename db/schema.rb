@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_10_07_070504) do
+ActiveRecord::Schema[7.0].define(version: 2024_10_10_132650) do
+  create_table "authentications", charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "provider", null: false
+    t.string "uid", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["provider", "uid"], name: "index_authentications_on_provider_and_uid", unique: true
+    t.index ["user_id"], name: "index_authentications_on_user_id"
+  end
+
   create_table "comments", charset: "utf8mb4", force: :cascade do |t|
     t.text "content", null: false
     t.bigint "user_id", null: false
@@ -91,6 +101,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_10_07_070504) do
     t.index ["user_id"], name: "index_videos_on_user_id"
   end
 
+  add_foreign_key "authentications", "users"
   add_foreign_key "comments", "users"
   add_foreign_key "comments", "videos"
   add_foreign_key "likes", "users"

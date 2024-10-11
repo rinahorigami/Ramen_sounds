@@ -15,13 +15,17 @@ ja:
       to_register_page: アカウントお持ちでないの方 →
       password_forget: パスワードをお忘れの方はこちら →
       about-the-site: サイトについて →
+      or: "ー または ー"
+      google_acount_login: Googleアカウントでログイン
   users:
     new:
-      title: ユーザー登録
+      title: 新規登録
       to_login_page: ログインページへ →
       select_image: 画像を選択する
       create: 登録
       about-the-site: サイトについて →
+      or: "ー または ー"
+      google_acount_login: Googleアカウントでログイン
     edit:
       title: プロフィール編集
       select_image: 画像を選択する
