@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
 
+  get 'google_login_api/oauth', to: 'google_login_api#oauth'
+  get 'google_login_api/callback', to: 'google_login_api#callback'
+
   resources :ramen_shops, only: %i[index show] do
     member do
       get 'map'
