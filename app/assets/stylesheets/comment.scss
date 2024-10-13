@@ -2,8 +2,8 @@
   position: absolute;
   top: 0;
   right: 0;
-  width: 300px; /* コメント欄の幅を指定 */
-  height: 500px; /* 全体の高さに合わせる */
+  width: 260px; /* コメント欄の幅を指定 */
+  height: 350px; /* 全体の高さに合わせる */
   background-color: rgba(255, 255, 255, 0.9);
   overflow: hidden;
   overflow-y: auto;
@@ -89,4 +89,23 @@
 .delete-comment-link i {
   cursor: pointer; /* アイコンをクリック可能にする */
   font-size: 1.2em; /* アイコンのサイズを調整 */
+}
+
+@media (max-width: 768px) {
+  .comment-section {
+    top: -45px;
+    right: -90px;
+    height: 290px;
+    width: 190px;
+  }
+
+  .custom-placeholder::placeholder {
+    font-size: 10px !important; /* フォントサイズを小さく */
+    color: #888 !important;
+  }
+
+  .custom-placeholder::-webkit-input-placeholder { /* Chrome, Safari, Opera */
+    font-size: 10px !important;
+    color: #888 !important;
+  }
 }

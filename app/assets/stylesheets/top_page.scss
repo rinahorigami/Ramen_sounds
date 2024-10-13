@@ -55,7 +55,12 @@
   font-size: 4.8em;
   margin-bottom: 20px;
   margin-top: 20px;
-  font-family: 'Merriweather', serif;
+  color: rgb(79, 77, 77);
+}
+
+.top-page-container h2 {
+  font-size: 3em;
+  margin-bottom: 20px;
   color: rgb(79, 77, 77);
 }
 
@@ -63,7 +68,7 @@
 .signup-link,
 .password-reset-link,
 .scroll-link {
-  color: rgb(16, 96, 180);
+  color: rgb(50, 91, 135);
   text-decoration: none;
 }
 
@@ -87,7 +92,7 @@ a:hover {
 }
 
 .mb-3 {
-  margin-bottom: 20px;
+  margin-bottom: 5px;
   text-align: center;
 }
   
@@ -127,11 +132,11 @@ a:hover {
 }
 
 #avatar-preview {
-  margin-top: 10px;
-  max-width: 100px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+  display: none;
+  margin: 10px auto;
+  margin-bottom: 20px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
 }
 
@@ -146,6 +151,7 @@ a:hover {
 }
 
 .terms_container h1 {
+  font-family: 'Times New Roman', Times, serif;
   font-size: 2em;
   text-align: center;
   margin-bottom: 20px;
@@ -214,19 +220,19 @@ a:hover {
 .how-to-use li {
   position: relative;
   font-size: 25px;
-  color: #7699c7;
+  color: #2671c0;
 }
 
 .how-to-use ul p {
   font-size: 17px;
-  color: #315a86;
+  color: #2671c0;
 }
 
 .how-to-use a {
   display: inline-block;
   padding: 10px 20px;
   margin-top: 20px;
-  background-color: #1060b4;
+  background-color: #2671c0;
   color: #fff;
   text-decoration: none;
   border-radius: 5px;
@@ -235,7 +241,7 @@ a:hover {
 }
 
 .how-to-use a:hover {
-  background-color: #0d4a91;
+  background-color: #143f71;
 }
 
 .screenshot {
@@ -251,25 +257,6 @@ a:hover {
   transform: scale(1.05);
 }
 
-.scrollable-container {
-  overflow-x: auto; /* 横スクロールを有効にする */
-  white-space: nowrap; /* 子要素を横並びにしない */
-}
-
-/* ul要素内のli, p, imgをブロック表示にする */
-.scrollable-container ul {
-  display: inline-block; /* ul全体を横スクロール内に収める */
-  vertical-align: top; /* 並べた時に上部を揃える */
-  width: 100%; /* 横幅をコンテナ内で調整 */
-}
-
-.scrollable-container li,
-.scrollable-container p,
-.scrollable-container img {
-  display: block; /* 各要素を縦に並べる */
-  margin-bottom: 20px; /* 下にマージンを追加して間隔を調整 */
-}
-
 .google-login-wrapper .google-login-btn {
   background-color: #ffffff;
   color: #000000;
@@ -283,10 +270,77 @@ a:hover {
 
 .google-login-wrapper .google-login-btn:hover {
   background-color: #f0f0f0;
+  color: #000000;
 }
 
 .google-logo {
   width: 30px;
   height: 30px;
   margin-right: 10px;
+}
+
+@media (max-width: 768px) {
+  .top-page {
+    font-size: 15px;
+    padding: 10px;
+  }
+
+  .top-page-container h1 {
+    font-size: 2.5em;
+  }
+
+  .top-page-container h2 {
+    font-size: 2em;
+  }
+
+  p {
+    font-size: 15px;
+  }
+
+  .google-login-wrapper a {
+    font-size: 15px;
+  }
+
+  .user-form-control {
+    width: 90%;
+  }
+
+  .btn-primary {
+    font-size: 1em;
+    padding: 8px 16px;
+  }
+
+  .how-to-use {
+    padding: 20px;
+    max-width: 768px;
+  }
+
+  .how-to-use h1 {
+    font-size: 2em;
+  }
+
+  .how-to-use h2 {
+    font-size: 1.5em;
+  }
+
+  .how-to-use p, .how-to-use ul {
+    font-size: 0.9em;
+  }
+
+  .screenshot {
+    width: 90%;
+  }
+
+  .terms_container {
+    max-width: 768px;
+    padding: 30px 20px;
+  }
+  
+  .terms_container h1 {
+    font-size: 1.6em;
+  }
+  
+  .terms_container h2 {
+    font-size: 1.2em;
+  }
 }

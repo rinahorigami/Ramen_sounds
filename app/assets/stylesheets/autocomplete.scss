@@ -34,3 +34,9 @@
   background-color: #007BFF;
   color: white;
 }
+
+@media (max-width: 768px) {
+  #autocomplete-list {
+    width: 76%;
+  }
+}

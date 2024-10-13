@@ -1,13 +1,3 @@
-<%= link_to ramen_shops_path(
-                keyword: params[:keyword], 
-                search_type: params[:search_type], 
-                location: params[:location], 
-                page: params[:page],
-                lat: params[:lat], 
-                lng: params[:lng],
-                from_video_form: params[:from_video_form]) do %>
-  <p class='back-button'><%= t('.back_button') %></p>
-<% end %>
 <% if params[:search_type] == 'location' %>
   <%= render 'location_map', latitude: @latitude, longitude: @longitude %>
 <% else %>

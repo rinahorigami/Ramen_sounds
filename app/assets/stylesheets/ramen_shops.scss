@@ -68,6 +68,8 @@
   font-size: 2em;
   margin-bottom: 30px;
   text-align: center;
+  color: #5c6063;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 .ramen-shop-details p {
@@ -103,23 +105,6 @@
 .ramen-shop-details .hours-list li {
   padding-left: 20px;
   text-indent: -20px;
-}
-
-.back-button {
-  position: absolute;
-  top: 110px;
-  left: 20px;
-  font-size: 15px;
-  font-weight: 100;
-  color: #333;
-  text-decoration: none;
-  transition: background-color 0.3s, box-shadow 0.3s;
-  border-radius: 3px;
-}
-
-.back-button:hover {
-  background-color: rgba(187, 188, 188, 0.3);
-  box-shadow: 0 0 0 10px rgba(187, 188, 188, 0.3);
 }
 
 .shop_name {
@@ -181,6 +166,7 @@
   width: 320px;
   height: 180px;
   border-radius: 5px;
+  background-color: black;
 }
 
 .videos-section p {
@@ -229,4 +215,40 @@
 
 .search-ramen-shop {
   padding: 5px 50px;
+}
+
+@media (max-width: 768px) {
+  .ramen-shop-details {
+    max-width: 750px;
+    margin: 0 10px;
+  }
+  
+  .ramen-shop-details h1 {
+    font-size: 1.5em;
+  }
+  
+  .ramen-shop-details p,
+  .ramen-shop-details .hours-label,
+  .ramen-shop-details .hours-list {
+    font-size: 1em;
+  }
+  
+  .shop_name {
+    text-align: center !important;
+    line-height: 1;
+  }
+
+  .search_container form {
+    width: 90%;
+    max-width: 768px;
+  }
+    
+  .search_container ul {
+    width: 90%;
+    max-width: 768px;
+  }
+
+  .search-ramen-shop {
+    padding: 0;
+  }
 }

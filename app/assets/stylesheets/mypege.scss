@@ -30,6 +30,16 @@
   margin-bottom: 20px;
 }
 
+@media (min-width: 768px) {
+  .profile-links .custom-nav-link {
+    font-size: 20px;
+  }
+
+  .user-tabs {
+    font-size: 20px;
+  }
+}
+
 .user-tabs {
   display: flex;
   justify-content: center;
@@ -79,10 +89,10 @@
 
 .video-item {
   position: relative;
-  max-width: 250px;
-  margin-right: 70px;
-  display: flex;
-  margin-bottom: 10px;
+  width: 100%; /* 親要素の幅に応じて拡張する */
+  max-width: 350px; /* 最大幅を設定（必要に応じて調整） */
+  margin-right: 20px;
+  max-height: 300px;
 }
 
 .video-actions {
@@ -94,18 +104,33 @@
 }
 
 .video-fixed-size {
-  width: 300px;
-  height: 250px;
-  object-fit: contain; /* アスペクト比を保持して、余白は黒にする */
-  background-color: black; /* 余白部分を黒く表示 */
+  width: 100%; /* video-itemの幅いっぱいに */
+  height: 300px; /* 高さを固定 */
+  object-fit: contain; /* アスペクト比を保持しつつ中央に配置 */
+  background-color: black;
   border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.profile-video-details {
+.mypage-video-details {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin-left: 5px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  width: 50px;
+  height: 215px;
+  position: absolute;
+  right: 5px;
+  bottom: 40px;
+}
+
+@media (min-width: 768px) {
+  .mypage-video-details {
+    background: rgba(253, 253, 253, 0.7);
+    border-radius: 3px;
+  }
 }
 
 .edit-icon, .delete-icon {
@@ -117,4 +142,19 @@
 
 .edit-icon:hover, .delete-icon:hover {
   color: #6ad2fb;
+}
+
+@media (max-width: 768px) {
+  .video-item {
+    max-width: 180px;
+    margin-right: 0;
+  }
+
+  .mypage-video-details {
+    width: 40px;
+  }
+
+  .user-profile-edit {
+    min-height: 70vh;
+  }
 }

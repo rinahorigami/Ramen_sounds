@@ -9,7 +9,7 @@
 
   <div class="comment-form-container">
     <%= form_with(model: [video, Comment.new], id: "comment-form-#{video.id}", data: { turbo: true }, html: { class: 'comment-form' }) do |form| %>
-      <%= form.text_area :content, placeholder: t('.comment'), rows: 1 %>
+      <%= form.text_area :content, placeholder: t('.comment'), rows: 1, class: 'custom-placeholder' %>
       <%= form.submit t('.create'), class: 'submit-button' %>
     <% end %>
   </div>

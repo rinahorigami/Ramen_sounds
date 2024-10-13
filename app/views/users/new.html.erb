@@ -5,7 +5,7 @@
   <div class="background-image" id="background1"></div>
   <div class="background-image" id="background2"></div>
     <div class="top-page-container">
-      <h1><%= t('.title') %></h1>
+      <h2><%= t('.title') %></h2>
         <%= form_with model: @user, local: true, data: { turbo: false } do |f| %>
          <%= render 'shared/error_message', object: @user %>
           <div class="mb-3">
@@ -28,7 +28,7 @@
             <%= f.label :avatar, for: "avatar-input" %>
             <%= f.file_field :avatar, accept: 'image/*', id: "avatar-input", style: "display: none;"%>
             <button type="button" class="btn btn-secondary" id="select-avatar-btn"><%= t('.select_image') %></button>
-            <img id="avatar-preview" src="#" alt="プレビュー画像" style="display:none; margin-top: 10px; max-width: 100px;">
+            <img id="avatar-preview" src="#" alt="プレビュー画像" >
           </div>
           <%= f.submit t('.create'), class: "btn-primary" %>
         <% end %>

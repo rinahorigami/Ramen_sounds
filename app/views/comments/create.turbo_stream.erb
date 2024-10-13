@@ -2,7 +2,7 @@
 
 <%= turbo_stream.replace "comment-form-#{@video.id}" do %>
   <%= form_with(model: [@video, Comment.new], id: "comment-form-#{@video.id}", html: { class: 'comment-form' }) do |form| %>
-    <%= form.text_area :content, placeholder: t('.comment'), rows: 1 %>
+    <%= form.text_area :content, placeholder: t('.comment'), rows: 1, class: 'custom-placeholder' %>
     <%= form.submit t('.create'), class: 'submit-button' %>
   <% end %>
 <% end %>

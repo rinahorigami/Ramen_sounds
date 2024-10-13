@@ -25,6 +25,23 @@
                 <i class="fas fa-trash-alt"></i>
               <% end %>
             </div>
+            <div class="mypage-video-details">
+              <div class="user-info">
+                <%= image_tag video.user.avatar.url, class: "avatar-image" %>
+                <div class="actions">
+                  <%= render 'videos/like_button', video: video %>
+                  <div class="comment-icon">
+                    <i class="fa fa-comment" data-video-id="<%= video.id %>"></i>
+                    <%= turbo_frame_tag "comment-count-#{video.id}" do %>
+                      <div class="comment-count">
+                        <%= video.comments.count %>
+                      </div>
+                    <% end %>
+                  </div>
+                  <%= render 'comments/comments', video: video %>
+                </div>
+              </div>
+            </div>
           </div>
         <% end %>
       <% else %>
@@ -37,6 +54,23 @@
         <% @liked_videos.each do |video| %>
           <div class="video-item">
             <%= video_tag video.file.url, controls: true, class: "video-fixed-size" %>
+            <div class="mypage-video-details">
+              <div class="user-info">
+                <%= image_tag video.user.avatar.url, class: "avatar-image" %>
+                <div class="actions">
+                  <%= render 'videos/like_button', video: video %>
+                  <div class="comment-icon">
+                    <i class="fa fa-comment" data-video-id="<%= video.id %>"></i>
+                    <%= turbo_frame_tag "comment-count-#{video.id}" do %>
+                      <div class="comment-count">
+                        <%= video.comments.count %>
+                      </div>
+                    <% end %>
+                  </div>
+                  <%= render 'comments/comments', video: video %>
+                </div>
+              </div>
+            </div>
           </div>
         <% end %>
       <% else %>

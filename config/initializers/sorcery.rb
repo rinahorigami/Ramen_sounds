@@ -83,10 +83,17 @@ Rails.application.config.sorcery.configure do |config|
   config.external_providers = %i[google]
 
   # GoogleのOAuth設定
-  config.google.key = ENV["GOOGLE_CLIENT_ID"]
-  config.google.secret = ENV["GOOGLE_CLIENT_SECRET"]
-  config.google.callback_url = "http://localhost:3000/google_login_api/callback"
-  config.google.user_info_mapping = {email: "email", name: "name" }
+  if Rails.env.production?
+    config.google.key = ENV["GOOGLE_CLIENT_ID_PRODUCTION"]
+    config.google.secret = ENV["GOOGLE_CLIENT_SECRET_PRODUCTION"]
+    config.google.callback_url = "https://ramen-sounds.com/google_login_api/callback"
+  else
+    config.google.key = ENV["GOOGLE_CLIENT_ID"]
+    config.google.secret = ENV["GOOGLE_CLIENT_SECRET"]
+    config.google.callback_url = "http://localhost:3000/google_login_api/callback"
+  end
+
+  config.google.user_info_mapping = {email: "email", name: "name"}
 
   # You can change it by your local ca_file. i.e. '/etc/pki/tls/certs/ca-bundle.crt'
   # Path to ca_file. By default use a internal ca-bundle.crt.
