@@ -5,7 +5,6 @@
     <div class="custom-logo">
       <h1><%= link_to t('views.shared.header.title'), videos_path %></h1>
     </div>
-    <!-- チェックボックスを追加 -->
     <input type="checkbox" id="menu-toggle" class="menu-toggle-checkbox">
     <label for="menu-toggle" class="hamburger-menu">
       <!-- ハンバーガーボタン -->
@@ -16,7 +15,7 @@
     
     <nav class="custom-nav-links" id="nav-links">
       <%= link_to t('views.shared.header.find'), '#', class: 'custom-nav-link', id: 'find-location-link', data: { search_url: ramen_shops_path } %>
-      <%= link_to t('views.shared.header.post_video'), new_video_path, class: 'custom-nav-link' %>
+      <%= link_to t('views.shared.header.post_video'), new_video_path, class: 'custom-nav-link', data: { turbo: false } %>
       <%= link_to t('views.shared.header.my_page'), user_path(current_user), class: 'custom-nav-link' %>
       <%= link_to t('views.shared.header.about-the-site'), "#{root_path}#how-to-use", class: 'custom-nav-link' %>
       <%= link_to t('views.shared.header.logout'), logout_path, class: 'custom-nav-link', data: { turbo_method: :delete } %>

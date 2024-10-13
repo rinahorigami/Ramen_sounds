@@ -1,5 +1,4 @@
 <%= javascript_import_module_tag 'top_page' %>
-<%= javascript_import_module_tag 'avatar_preview' %>
 
 <div class="top-page" id="background-container">
   <div class="background-image" id="background1"></div>
@@ -26,9 +25,7 @@
           </div>
           <div class="mb-3">
             <%= f.label :avatar, for: "avatar-input" %>
-            <%= f.file_field :avatar, accept: 'image/*', id: "avatar-input", style: "display: none;"%>
-            <button type="button" class="btn btn-secondary" id="select-avatar-btn"><%= t('.select_image') %></button>
-            <img id="avatar-preview" src="#" alt="プレビュー画像" >
+            <%= f.file_field :avatar, accept: 'image/*', id: "avatar-input", class: "form-control" %>
           </div>
           <%= f.submit t('.create'), class: "btn-primary" %>
         <% end %>
