@@ -20,8 +20,8 @@
 #location-map {
   height: 500px;
   width: 100%;
-  max-width: 2000px; /* 必要に応じて最大幅を設定 */
-  border: 1px solid #ccc; /* 境界線を追加 (オプション) */
+  max-width: 2000px;
+  border: 1px solid #ccc;
 }
 
 #search-button {
@@ -41,4 +41,19 @@
   background-color: #0056b3;  /* ボタンが押されたときの背景色 */
   box-shadow: 0 2px #003d80;  /* ボタンが押されたときの影を短くする */
   transform: translateY(2px); /* ボタンを少し下に押し込むように見せる */
+}
+
+@media (max-width: 768px) {
+  .map-container {
+    height: 80vh;
+    width: 100%;
+  }
+
+  #store-map,
+  #user-map,
+  #location-map {
+    height: 300px;
+    width: 100%;
+    max-width: 768px; /* 必要に応じて最大幅を設定 */
+  }
 }

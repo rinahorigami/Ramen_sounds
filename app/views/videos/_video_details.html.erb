@@ -1,6 +1,6 @@
 <div class="video-details">
   <div class="user-info">
-    <%= image_tag video.user.avatar.url, alt: video.user.name, class: "avatar-image" %>
+    <%= image_tag video.user.avatar.url, class: "avatar-image" %>
     <div class="actions">
       <%= render 'videos/like_button', video: video %>
       <div class="comment-icon">

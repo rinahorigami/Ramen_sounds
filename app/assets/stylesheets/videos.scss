@@ -49,13 +49,16 @@
   margin-bottom: 0px;
 }
 
-.btn-primary.secondary {
+.select-shop {
   text-align: center;
-  width: 30%;
+  width: 20%;
   padding: 5px 5px;
   margin: 0 auto 0;
   margin-bottom: 5px;
   text-decoration: none;
+  color: white;
+  background-color: rgb(114, 152, 205);
+  border-radius: 3px;
 }
 
 .selected-shop-name {
@@ -265,11 +268,11 @@
 .comment-count {
   font-size: 14px;
   text-align: center;
-  color: #333;
+  color: black;
 }
 
 .fa-comment {
-  margin-bottom: 3px;
+  margin-bottom: 5px;
 }
 .action-link {
   color: inherit;
@@ -282,4 +285,130 @@
 
 .fa-heart {
   color: rgb(246, 44, 118);
+}
+
+@media (max-width: 768px) {
+  /* reel-itemをスマホでフル幅表示に */
+  .reel-item {
+    max-width: 100%; /* 幅を100%に */
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  /* 動画の高さと幅を調整 */
+  .video-wrapper {
+    height: 300px;
+    width: 370px;
+    margin: 10px;
+    position: relative;
+  }
+
+  /* 動画のコンテンツの幅をスマホに合わせて縮小 */
+  .video-content {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  /* 動画の情報部分のフォントサイズを小さく調整 */
+  .video-info {
+    padding: 8px;
+    font-size: 14px; /* フォントサイズを小さく */
+    width: 95%;
+    margin: 0 auto;
+  }
+
+  /* ラーメン店名やメニュー情報のフォントサイズを調整 */
+  .ramen-shop-name {
+    font-size: 18px; /* 店舗名を少し小さく */
+  }
+  .videos-menu-name,
+  .videos-menu-price,
+  .videos-comment {
+    font-size: 14px; /* メニューや価格情報を小さく */
+  }
+
+  .like-button,
+  .comment-icon {
+    font-size: 25px;
+    width: 40px;
+    height: 40px;
+    margin: 15px 0;
+    padding: 10px;
+    color: #000;
+    padding-top: 37px;
+  }
+
+  .avatar-image {
+    width: 40px;
+    height: 40px;
+  }
+
+  .like-count,
+  .comment-count {
+    font-size: 12px; /* カウントのフォントサイズを小さく */
+    text-align: center;
+    color: white;
+  }
+
+  /* タグのフォントサイズ調整 */
+  .video-tags span.tag {
+    font-size: 12px; /* タグのフォントサイズを小さく */
+  }
+
+  /* 動画詳細のエリアを画面に収まるように調整 */
+  .tag-video-details {
+    width: 70px;
+    height: 300px; /* 高さを小さく */
+    right: 0;
+    top: 0;
+  }
+
+  /* フォームエリアの幅を100%に調整 */
+  .video-form-container {
+    max-width: 100%;
+    padding: 15px;
+  }
+
+  /* フォームの入力フィールドを100%幅に調整 */
+  .form-control {
+    width: 90%; /* 幅を90%に調整 */
+  }
+
+  /* 投稿ボタンの幅を調整 */
+  .video-btn {
+    width: 80%; /* 幅を広げてタップしやすく */
+    padding: 10px;
+    font-size: 1em; /* フォントサイズを少し小さく */
+  }
+
+  .actions {
+    margin-top: 10px;
+    justify-content: flex-start;
+  }
+
+  .avatar-image,
+  .actions {
+    display: inline-flex;
+    margin-right: 10px;
+  }
+
+  .video-details {
+    position: absolute;
+    width: auto; /* 幅は自動調整 */
+    height: auto; /* 高さは自動調整 */
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    right: 5px;
+    top: 60px;
+  }
+
+  .form-control::-webkit-input-placeholder { /* Chrome, Safari, Opera */
+    font-size: 12px;
+  }
+
+  .select-shop {
+    font-size: 15px;
+    width: 40%;
+  }
 }

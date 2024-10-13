@@ -1,7 +1,4 @@
 <div class='search_container'>
-  <%= link_to videos_path do %>
-    <p class='back-button'><%= t('.back_button') %></p>
-  <% end %>
   <%= render 'search_form' %>
 
   <% unless params[:keyword].present? %>

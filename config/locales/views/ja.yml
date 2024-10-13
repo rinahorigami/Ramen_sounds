@@ -77,11 +77,7 @@ ja:
       no_search_results: 検索結果がありません
     index:
       no_search_results: 検索結果がありません
-      back_button: "← 動画一覧へ"
-    map:
-      back_button: " ← 戻る"
     show:
-      back_button: "← 検索フォームへ"
       select_store: この店舗を選択
       address_not_found: 住所が見つかりませんでした
       no_information: 情報なし
@@ -131,8 +127,11 @@ ja:
         terms: 利用規約
         privacy: プライバシーポリシー
     pagination:
-      first: '最初'
-      last: '最後'
-      previous: '前へ'
-      next: '次へ'
+      first: '<<'   # 最初を「<<」に変更
+      last: '>>'    # 最後を「>>」に変更
+      previous: '＜' # 前へを「＜」に変更
+      next: '＞'     # 次へを「＞」に変更
       truncate: '...'
+    top:
+      index:
+        title: 'Ramen sounds'
