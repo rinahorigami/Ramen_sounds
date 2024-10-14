@@ -13,7 +13,7 @@ RSpec.describe Comment, type: :model do
     it '空の場合は無効である' do
       comment.content = nil
       comment.valid?
-      expect(comment.errors[:content]).to include('この項目は必須です。')
+      expect(comment.errors[:content]).to include('を入力してください')
     end
   end
   

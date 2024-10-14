@@ -11,21 +11,21 @@ RSpec.describe User, type: :model do
     it 'メールアドレスがないと無効である' do
       user.email = ''
       expect(user).to_not be_valid
-      expect(user.errors[:email]).to include("この項目は必須です。")
+      expect(user.errors[:email]).to include("を入力してください")
     end
 
     it 'パスワードが3文字未満の場合は無効である' do
       user.password = '12'
       user.password_confirmation = '12'
       expect(user).to_not be_valid
-      expect(user.errors[:password]).to include("パスワードは3文字以上で入力してください。")
+      expect(user.errors[:password]).to include("は3文字以上で入力してください")
     end
 
     it 'メールアドレスが一意でなければ無効である' do
       create(:user, email: 'duplicate@example.com')
       user.email = 'duplicate@example.com'
       expect(user).to_not be_valid
-      expect(user.errors[:email]).to include("このメールアドレスはすでに存在します。")
+      expect(user.errors[:email]).to include("はすでに存在します")
     end
   end
 

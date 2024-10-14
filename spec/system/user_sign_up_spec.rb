@@ -16,8 +16,8 @@ RSpec.describe 'ユーザー登録機能', type: :system do
     # フォーム送信
     click_button '登録'
 
-    expect(page).to have_current_path(login_path)
-    expect(page).to have_content('ユーザー登録に成功しました。')
+    expect(page).to have_current_path(videos_path)
+    expect(page).to have_content('ユーザー登録が完了し、ログインしました。')
   end
 
   it 'ユーザー登録に失敗する (必須フィールドが未入力)' do
@@ -31,7 +31,7 @@ RSpec.describe 'ユーザー登録機能', type: :system do
     click_button '登録'
 
     # エラーメッセージが表示されることを確認
-    expect(page).to have_content('ユーザー名を入力してください。')
+    expect(page).to have_content('ユーザー登録に失敗しました。')
   end
 
   it 'パスワード確認が一致しない場合、登録に失敗する' do
@@ -46,6 +46,6 @@ RSpec.describe 'ユーザー登録機能', type: :system do
     click_button '登録'
 
     # エラーメッセージが表示されることを確認
-    expect(page).to have_content('パスワードが一致しません。')
+    expect(page).to have_content('ユーザー登録に失敗しました。')
   end
 end

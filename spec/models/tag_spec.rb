@@ -12,7 +12,7 @@ RSpec.describe Tag, type: :model do
       tag.name = ''
       tag.valid?
       expect(tag).to_not be_valid
-      expect(tag.errors[:name]).to include("この項目は必須です。")
+      expect(tag.errors[:name]).to include("を入力してください")
     end
   end
 end

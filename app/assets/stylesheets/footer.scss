@@ -9,8 +9,22 @@ footer {
   justify-content: center;
 }
 
-footer a {
+footer a,
+footer p {
   margin: 0 30px; /* リンクの間隔を設定 */
   text-decoration: none; /* 下線をなくす */
   color: white; /* リンクの色を白に設定 */
+}
+
+@media (max-width: 768px) {
+  footer {
+    height: 65px;
+    padding: 10px 0;
+  }
+
+  footer a,
+  footer p {
+    font-size: 13px;
+    margin: 0  10px;
+  }
 }
