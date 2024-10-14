@@ -20,7 +20,7 @@ RSpec.describe Like, type: :model do
       create(:like, user: user, video: video)
       duplicate_like = build(:like, user: user, video: video)
       expect(duplicate_like).not_to be_valid
-      expect(duplicate_like.errors[:user_id]).to include('はすでに存在します。')
+      expect(duplicate_like.errors[:user_id]).to include('はすでに存在します')
     end
   end
 end

@@ -12,19 +12,19 @@ RSpec.describe RamenShop, type: :model do
     it '名前がないと無効である' do
       ramen_shop.name = nil
       ramen_shop.valid?
-      expect(ramen_shop.errors[:name]).to include("この項目は必須です。")
+      expect(ramen_shop.errors[:name]).to include("を入力してください")
     end
 
     it '住所がないと無効である' do
       ramen_shop.address = nil
       ramen_shop.valid?
-      expect(ramen_shop.errors[:address]).to include("この項目は必須です。")
+      expect(ramen_shop.errors[:address]).to include("を入力してください")
     end
 
     it 'place_idがないと無効である' do
       ramen_shop.place_id = nil
       ramen_shop.valid?
-      expect(ramen_shop.errors[:place_id]).to include("この項目は必須です。")
+      expect(ramen_shop.errors[:place_id]).to include("を入力してください")
     end
   end
 

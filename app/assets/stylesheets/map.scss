@@ -3,16 +3,25 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
   width: 100%;
-  padding-bottom: 50px;
+  height: 80vh;
+}
+
+@media (min-width: 768px) {
+  .map-container {
+    height: 100vh;
+    padding-bottom: 50px;
+  }
+
+  .store-map-container {
+    margin-top: 15px;
+  }
 }
 
 .store-map-container {
   align-items: center;
   justify-content: center;
   width: 100%;
-  margin-top: 15px;
 }
 
 #store-map,
@@ -24,36 +33,17 @@
   border: 1px solid #ccc;
 }
 
-#search-button {
-  background-color: #3172b7;  /* 青色 */
-  color: white;               /* 文字色を白に */
-  padding: 10px 20px;         /* パディングを追加してサイズを調整 */
-  border: none;               /* ボーダーを無しに */
-  border-radius: 5px;         /* 角を丸くする */
-  font-size: 16px;            /* フォントサイズを大きくする */
-  cursor: pointer;            /* カーソルをポインターにする */
-  box-shadow: 0 5px #022e5c;  /* ボタンの影（通常時） */
-  transition: all 0.2s ease;
-  margin-bottom: 20px;
-}
-
-#search-button:active {
-  background-color: #0056b3;  /* ボタンが押されたときの背景色 */
-  box-shadow: 0 2px #003d80;  /* ボタンが押されたときの影を短くする */
-  transform: translateY(2px); /* ボタンを少し下に押し込むように見せる */
-}
-
 @media (max-width: 768px) {
-  .map-container {
-    height: 80vh;
-    width: 100%;
-  }
-
-  #store-map,
   #user-map,
   #location-map {
-    height: 300px;
+    height: 650px;
     width: 100%;
     max-width: 768px; /* 必要に応じて最大幅を設定 */
+    padding-bottom: 0;
+  }
+
+  #store-map {
+    height: 300px;
+    margin-top: 15px;
   }
 }
