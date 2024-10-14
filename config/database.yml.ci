@@ -8,4 +8,4 @@ default: &default
 
 test:
   <<: *default
-  database: myapp_test
+  database: ramen_asmr_app_test
