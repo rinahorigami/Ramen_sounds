@@ -21,6 +21,7 @@ jobs:
           --health-retries=3
         env:
           MYSQL_ROOT_PASSWORD: ci_password
+          MYSQL_DATABASE: myapp_test
 
     steps:
       - name: Check out code
@@ -35,18 +36,18 @@ jobs:
         run: |
           gem install bundler
           bundle install --jobs 4 --retry 3
-      
-      - name: Set environment variables
-        run: echo "GOOGLE_PLACES_API_KEY=${{ secrets.GOOGLE_PLACES_API_KEY }}" >> $GITHUB_ENV
 
       - name: Set up the database
         env:
           RAILS_ENV: test
         run: |
           cp -v config/database.yml.ci config/database.yml
-          sleep 10
+          sleep 10  # MySQLが完全に起動するまで待機
           bundle exec rails db:create
           bundle exec rails db:schema:load
+
+      - name: Print MySQL logs
+        run: docker logs $(docker ps -q --filter name=db)
 
       - name: Run tests
         env:
