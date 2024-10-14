@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     services:
-      mysql:
+      db:
         image: mysql:5.7
         ports:
           - 3306:3306
@@ -20,13 +20,13 @@ jobs:
           --health-timeout=5s
           --health-retries=3
         env:
-          MYSQL_ROOT_PASSWORD: ci_password
-          MYSQL_DATABASE: ramen_asmr_app_test
+          MYSQL_ROOT_PASSWORD: ''
+          MYSQL_DATABASE: ramen_asmr_test
 
     env:
-      DATABASE_USERNAME: root
-      DATABASE_PASSWORD: ci_password
-      DATABASE_HOST: mysql
+      DATABASE_USERNAME: ramen_asmr
+      DATABASE_PASSWORD: database_password
+      DATABASE_HOST: db
 
     steps:
       - name: Check out code
