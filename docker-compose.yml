@@ -5,11 +5,10 @@ services:
     platform: linux/amd64
     environment:
       TZ: Asia/Tokyo
-      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
-      MYSQL_ROOT_PASSWORD: ''
       MYSQL_DATABASE: ramen_asmr_development
       MYSQL_USER: ramen_asmr
       MYSQL_PASSWORD: database_password
+      MYSQL_ROOT_PASSWORD: ramensounds
     volumes:
       - mysql-data:/var/lib/mysql
     ports:
