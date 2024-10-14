@@ -21,7 +21,12 @@ jobs:
           --health-retries=3
         env:
           MYSQL_ROOT_PASSWORD: ci_password
-          MYSQL_DATABASE: myapp_test
+          MYSQL_DATABASE: ramen_asmr_app_test
+
+    env:
+      DATABASE_USERNAME: root
+      DATABASE_PASSWORD: ci_password
+      DATABASE_HOST: db
 
     steps:
       - name: Check out code
@@ -45,9 +50,6 @@ jobs:
           sleep 10  # MySQLが完全に起動するまで待機
           bundle exec rails db:create
           bundle exec rails db:schema:load
-
-      - name: Print MySQL logs
-        run: docker logs $(docker ps -q --filter name=db)
 
       - name: Run tests
         env:
