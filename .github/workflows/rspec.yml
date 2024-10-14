@@ -22,6 +22,8 @@ jobs:
         env:
           MYSQL_ROOT_PASSWORD: ci_password
           MYSQL_DATABASE: myapp_test
+          MYSQL_USER: root
+          MYSQL_PASSWORD: ci_password
 
     steps:
       - name: Check out code
@@ -41,12 +43,16 @@ jobs:
         run: echo "GOOGLE_PLACES_API_KEY=${{ secrets.GOOGLE_PLACES_API_KEY }}" >> $GITHUB_ENV
 
       - name: Set up the database
+        env:
+          RAILS_ENV: test
         run: |
           cp -v config/database.yml.ci config/database.yml
           bundle exec rails db:create
           bundle exec rails db:schema:load
 
       - name: Run tests
+        env:
+          RAILS_ENV: test
         run: |
           bundle exec rspec
 
