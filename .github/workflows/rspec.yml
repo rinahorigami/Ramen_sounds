@@ -47,7 +47,6 @@ jobs:
           RAILS_ENV: test
         run: |
           cp -v config/database.yml.ci config/database.yml
-          sleep 10  # MySQLが完全に起動するまで待機
           bundle exec rails db:create
           bundle exec rails db:schema:load
 
