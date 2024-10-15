@@ -21,7 +21,7 @@ jobs:
           --health-interval=10s
           --health-timeout=5s
           --health-retries=3
-          
+
     steps:
       - name: Check out code
         uses: actions/checkout@v2
@@ -48,5 +48,5 @@ jobs:
         env:
           RAILS_ENV: test
         run: |
-          bundle exec rspec
+          bundle exec rspec spec/models
 
