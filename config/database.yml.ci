@@ -3,7 +3,7 @@ default: &default
   encoding: utf8mb4
   host: 127.0.0.1
   username: ramen_asmr
-  password:
+  password: database_password
   pool: 5
 
 test:
