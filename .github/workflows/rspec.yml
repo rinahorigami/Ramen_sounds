@@ -8,7 +8,7 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-
+    timeout-minutes: 10
     services:
       db:
         image: mysql:5.7
@@ -16,14 +16,7 @@ jobs:
           - 3306:3306
         env:
           MYSQL_ALLOW_EMPTY_PASSWORD: yes
-          MYSQL_DATABASE: ramen_asmr_test
-          MYSQL_USER: ramen_asmr
-          MYSQL_PASSWORD: database_password
-        options: >-
-          --health-cmd="mysqladmin ping --silent"
-          --health-interval=10s
-          --health-timeout=5s
-          --health-retries=3
+        options: --health-cmd "mysqladmin ping" --health-interval 10s --health-timeout 5s --health-retries 10
 
     steps:
       - name: Check out code
@@ -40,12 +33,10 @@ jobs:
           bundle install --jobs 4 --retry 3
 
       - name: Set up the database
-        env:
-          RAILS_ENV: test
         run: |
           cp -v config/database.yml.ci config/database.yml
-          bundle exec rails db:create --trace
-          bundle exec rails db:schema:load
+          bundle exec rails db:create RAILS_ENV=test
+          bundle exec rails db:migrate RAILS_ENV=test
 
       - name: Run tests
         env:
