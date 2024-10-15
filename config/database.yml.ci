@@ -1,7 +1,7 @@
 default: &default
   adapter: mysql2
   encoding: utf8mb4
-  host: 172.24.0.2
+  host: db
   username: ramen_asmr
   password: database_password
   pool: 5
