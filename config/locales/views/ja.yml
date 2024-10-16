@@ -124,6 +124,7 @@ ja:
         logout: "ログアウト"
         about-the-site: サイトについて
       footer:
+        contact: お問い合わせ
         terms: 利用規約
         privacy: プライバシーポリシー
     pagination:
