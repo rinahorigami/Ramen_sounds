@@ -13,7 +13,7 @@ RSpec.describe Video, type: :model do
     it '動画ファイルがなければ無効である' do
       video.file = nil
       video.valid?
-      expect(video.errors[:file]).to include("ファイルを選択してください。")
+      expect(video.errors[:file]).to include("を入力してください")
     end
   end
 

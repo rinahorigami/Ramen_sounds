@@ -58,7 +58,7 @@ ASMRコンテンツとしてラーメン動画を楽しむことができ、ラ�
 | フロントエンド | JavaScript<br>Hotwire<br>Bootstrap |
 | バックエンド | Ruby 3.1.6<br>Ruby on Rails 7.0.8|
 | インフラ | Heroku<br>Amazon S3 |
-| データベース | PostgreSQL |
+| データベース | 開発環境：MySQL<br>本番環境：PostgreSQL |
 | API | Google Places API<br>Google Maps JavaScript API<br>Google Geolocation API |
 | 認証 | Sorcery<br>Googleログイン |
 | CI | GitHubActions |

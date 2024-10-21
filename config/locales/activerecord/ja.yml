@@ -38,20 +38,14 @@ ja:
         name: "ユーザー名"
         email: "メールアドレス"
         avatar: "アバター画像"
-      video:
-        menu_name: "メニュー名"
-        price: "金額"
-        comment: "コメント"
-        tags: "タグ"
-        file: "動画をアップロード"
     errors:
       models:
-        video:
+        video_submission_form:
           attributes:
-            file:
-              blank: "ファイルを選択してください。"
             video_tags:
               invalid: "無効なタグです"
+            file:
+              blank: "ファイルを選択してください。"
         video_tag:
           attributes:
             video:

@@ -48,6 +48,11 @@ ja:
       price_message: 金額を入力してください
       tag_message: "カンマ区切りで入力してください(例: 新宿,醤油ラーメン)"
       create: 投稿
+      menu_name: "メニュー名"
+      price: "金額"
+      comment: "コメント"
+      tags: "タグ"
+      file: "動画をアップロード"
     index:
       unsupported_browser: お使いのブラウザでは動画が再生できません
       no_videos_message: 投稿動画がありません
@@ -62,6 +67,11 @@ ja:
       create: 編集
       current_video: "現在の動画は"
       file_message: "※現在の動画から変更する場合のみ選択してください"
+      menu_name: "メニュー名"
+      price: "金額"
+      comment: "コメント"
+      tags: "タグ"
+      file: "動画をアップロード"
   ramen_shops:
     search_form:
       search_shop_name: 店舗名

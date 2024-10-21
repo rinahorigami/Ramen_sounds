@@ -1,8 +1,9 @@
 <%= javascript_include_tag 'loading' %>
 <div class="video-form-container">
+
   <h2><%= t('.title') %></h2>
 
-  <%= form_with(model: @video, html: { class: 'custom-form' }) do |form| %>
+  <%= form_with(model: @form, url: videos_path, html: { class: 'custom-form' }) do |form| %>
     <%= render 'shared/error_message', object: form.object %>
     
     <div class="form-group horizontal-form-group">
@@ -22,27 +23,27 @@
     </div>
 
     <div class="form-group horizontal-form-group">
-      <%= form.label :menu_name, class: 'video-form-label' %>
+      <%= form.label :menu_name, t('.menu_name'), class: 'video-form-label' %>
       <%= form.text_field :menu_name, placeholder: t('.menu_name_message'), class: 'form-control' %>
     </div>
 
     <div class="form-group horizontal-form-group">
-      <%= form.label :price, class: 'video-form-label' %>
+      <%= form.label :price, t('.price'), class: 'video-form-label' %>
       <%= form.text_field :price, placeholder: t('.price_message'), class: 'form-control' %>
     </div>
 
     <div class="form-group horizontal-form-group">
-      <%= form.label :comment, class: 'video-form-label' %>
+      <%= form.label :comment, t('.comment'), class: 'video-form-label' %>
       <%= form.text_area :comment, class: 'form-control' %>
     </div>
 
     <div class="form-group horizontal-form-group">
-      <%= form.label :tags, class: 'video-form-label' %>
-      <%= form.text_field :tag_list, placeholder: t('.tag_message'), value: @video.tag_list_without_hash, class: 'form-control' %>
+      <%= form.label :tags, t('.tags'), class: 'video-form-label' %>
+      <%= form.text_field :tag_list, placeholder: t('.tag_message'), value: @form.tag_list_without_hash, class: 'form-control' %>
     </div>
 
     <div class="form-group horizontal-form-group">
-      <%= form.label :file, class: 'custom-file-label' %>
+      <%= form.label :file, t('.file'), class: 'custom-file-label' %>
       <%= form.file_field :file, id: "video_file", class: 'form-control-file' %>
     </div>
 
