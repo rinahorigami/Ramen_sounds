@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>管理画面</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_importmap_tags %>
+</head>
+<body>
+  <header>
+    <h1>管理画面</h1>
+    <%= link_to "ログアウト", admin_logout_path, class: 'custom-nav-link', data: { turbo_method: :delete } %>
+  </header>
+  <main>
+    <%= yield %>
+  </main>
+</body>
+</html>

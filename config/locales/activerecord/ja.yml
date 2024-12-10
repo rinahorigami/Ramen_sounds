@@ -3,6 +3,10 @@ ja:
       google_login_success: "%{provider}アカウントでログインしました"
       google_login_failure: "%{provider}アカウントでのログインに失敗しました"
   flash:
+    admin:
+      sessions:
+        login_success: "管理者としてログインしました。"
+        login_failure: "ログインに失敗しました。"
     errors:
       not_authenticated: "ログインしてください"
     notices:
