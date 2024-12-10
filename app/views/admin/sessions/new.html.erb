@@ -1,0 +1,15 @@
+<div class="toppage-container">
+    <%= form_with url: admin_login_path, method: :post do |f| %>
+    <div>
+        <%= f.label :email, "メールアドレス" %>
+        <%= f.text_field :email %>
+    </div>
+    <div>
+        <%= f.label :password, "パスワード" %>
+        <%= f.password_field :password %>
+    </div>
+    <div>
+        <%= f.submit "ログイン" %>
+    </div>
+    <% end %>
+</div>

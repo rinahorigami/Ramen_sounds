@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_10_10_132650) do
+ActiveRecord::Schema[7.0].define(version: 2024_12_10_114830) do
   create_table "authentications", charset: "utf8mb4", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "provider", null: false
@@ -73,6 +73,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_10_10_132650) do
     t.integer "access_count_to_reset_password_page", default: 0
     t.string "remember_me_token"
     t.datetime "remember_me_token_expires_at"
+    t.integer "role", default: 0, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["remember_me_token"], name: "index_users_on_remember_me_token", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token"

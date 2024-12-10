@@ -2,7 +2,14 @@ Rails.application.routes.draw do
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
-  
+
+  namespace :admin do
+    get 'login', to: 'sessions#new', as: :login
+    post 'login', to: 'sessions#create'
+    delete 'logout', to: 'sessions#destroy', as: :logout
+
+    get '/', to: 'dashboard#index', as: :root
+  end
   root 'top#index'
 
   get 'terms_of_service', to: 'top#terms_of_service'
