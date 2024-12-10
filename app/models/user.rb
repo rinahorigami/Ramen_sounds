@@ -10,7 +10,7 @@ class User < ApplicationRecord
 
   mount_uploader :avatar, AvatarUploader
 
-  enum role: { general: 0, admin: 1}
+  enum role: { general: 0, admin: 1 }
   
   validates :name, presence: true
   validates :email, presence: true, uniqueness: { case_sensitive: false }
