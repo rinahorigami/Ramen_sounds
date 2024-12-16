@@ -1,0 +1,9 @@
+/* Bootstrap のスタイル */
+@import "bootstrap/dist/css/bootstrap.min.css";
+
+/* AdminLTE のスタイル */
+@import "admin-lte/dist/css/adminlte.min.css";
+
+/* カスタムスタイル */
+@import "./custom-admin.css";
+

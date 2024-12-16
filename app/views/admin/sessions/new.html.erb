@@ -1,15 +1,39 @@
-<div class="toppage-container">
-    <%= form_with url: admin_login_path, method: :post do |f| %>
-    <div>
-        <%= f.label :email, "メールアドレス" %>
-        <%= f.text_field :email %>
+<% content_for :body_class, 'login-page' %>
+<div class="login-box">
+  <div class="card card-outline card-primary">
+    <div class="card-header text-center">
+      <a href="#" class="h1"><b>Admin</b>LTE</a>
     </div>
-    <div>
-        <%= f.label :password, "パスワード" %>
-        <%= f.password_field :password %>
+    <div class="card-body">
+      <p class="login-box-msg">ログインしてセッションを開始してください</p>
+      <%= form_with url: admin_login_path, local: true, class: "form" do |f| %>
+        <div class="input-group mb-3">
+          <%= f.email_field :email, class: "form-control", placeholder: "メールアドレス" %>
+          <div class="input-group-append">
+            <div class="input-group-text"><span class="fas fa-envelope"></span></div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <%= f.password_field :password, class: "form-control", placeholder: "パスワード" %>
+          <div class="input-group-append">
+            <div class="input-group-text"><span class="fas fa-lock"></span></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-8">
+            <div class="icheck-primary">
+              <%= f.check_box :remember_me, id: "remember" %>
+              <label for="remember">ログインを保持する</label>
+            </div>
+          </div>
+          <div class="col-4">
+            <%= f.submit "ログイン", class: "btn btn-primary btn-block" %>
+          </div>
+        </div>
+      <% end %>
+      <p class="mb-1">
+        <a href="#">パスワードを忘れた場合</a>
+      </p>
     </div>
-    <div>
-        <%= f.submit "ログイン" %>
-    </div>
-    <% end %>
+  </div>
 </div>
