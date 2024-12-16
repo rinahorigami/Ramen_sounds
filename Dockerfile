@@ -1,16 +1,25 @@
 # ベースイメージを指定
 FROM ruby:3.1.6
 
-# Node.jsとYarnのインストール
-RUN apt-get update -qq && apt-get install -y nodejs default-mysql-client
+# 必要なパッケージをインストール
+RUN apt-get update -qq && apt-get install -y \
+    curl \
+    build-essential \
+    default-mysql-client \
+    wget \
+    unzip
+
+# Node.jsとnpmの公式リポジトリを追加してインストール
+RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
+    && apt-get install -y nodejs
 
 # ChromeとChromedriverをインストール
-RUN apt-get install -y wget unzip
-RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-RUN dpkg -i google-chrome-stable_current_amd64.deb; apt-get -fy install
-RUN wget -N https://chromedriver.storage.googleapis.com/$(curl -sS https://chromedriver.storage.googleapis.com/LATEST_RELEASE)/chromedriver_linux64.zip
-RUN unzip chromedriver_linux64.zip -d /usr/local/bin/
-RUN chmod +x /usr/local/bin/chromedriver
+RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
+    && dpkg -i google-chrome-stable_current_amd64.deb || apt-get -fy install \
+    && wget -N https://chromedriver.storage.googleapis.com/$(curl -sS https://chromedriver.storage.googleapis.com/LATEST_RELEASE)/chromedriver_linux64.zip \
+    && unzip chromedriver_linux64.zip -d /usr/local/bin/ \
+    && chmod +x /usr/local/bin/chromedriver \
+    && rm -f google-chrome-stable_current_amd64.deb chromedriver_linux64.zip
 
 # 作業ディレクトリを設定
 WORKDIR /app
@@ -24,6 +33,9 @@ RUN bundle install
 
 # アプリケーションコードをコピー
 COPY . /app
+
+# npmのグローバルパッケージをインストール
+RUN npm install -g yarn
 
 # エントリーポイントを設定
 COPY entrypoint.sh /usr/bin/

@@ -4,14 +4,11 @@
   <title>管理画面</title>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
-  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-  <%= javascript_importmap_tags %>
+  <%= stylesheet_link_tag "admin", "data-turbo-track": "reload" %>
+  <%= javascript_include_tag "admin", "data-turbo-track": "reload", defer: true %>
 </head>
-<body>
-  <header>
-    <h1>管理画面</h1>
-    <%= link_to "ログアウト", admin_logout_path, class: 'custom-nav-link', data: { turbo_method: :delete } %>
-  </header>
+<body class="hold-transition <%= content_for?(:body_class) ? yield(:body_class) : 'sidebar-mini' %>">
+  <%= render 'shared/flash_message' %>
   <main>
     <%= yield %>
   </main>

@@ -1,0 +1,22 @@
+/* ベースフォントサイズを調整 */
+body {
+  font-size: 16px; /* AdminLTE のデフォルトは 14px */
+}
+
+/* 特定の要素に対するフォントサイズの調整 */
+.sidebar {
+  font-size: 15px; /* サイドバー用 */
+}
+
+.navbar {
+  font-size: 16px; /* ナビゲーションバー用 */
+}
+
+.card {
+  font-size: 16px; /* カード要素用 */
+}
+
+/* テーブルのフォントサイズ */
+.table {
+  font-size: 15px;
+}
