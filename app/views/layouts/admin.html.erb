@@ -8,9 +8,106 @@
   <%= javascript_include_tag "admin", "data-turbo-track": "reload", defer: true %>
 </head>
 <body class="hold-transition <%= content_for?(:body_class) ? yield(:body_class) : 'sidebar-mini' %>">
-  <%= render 'shared/flash_message' %>
-  <main>
-    <%= yield %>
-  </main>
+  <div class="wrapper">
+
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+          <a href="#" class="nav-link">Home</a>
+        </li>
+      </ul>
+    </nav>
+    <!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+      <!-- Brand Logo -->
+      <%= link_to admin_root_path, class: "brand-link" do %>
+        <span class="brand-text font-weight-light">AdminLTE</span>
+      <% end %>
+
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <nav class="mt-2">
+          <ul class="nav nav-pills nav-sidebar flex-column" role="menu">
+            <!-- Dashboard -->
+            <li class="nav-item">
+              <%= link_to admin_root_path, class: "nav-link" do %>
+                <i class="nav-icon fas fa-users"></i>
+                <p>Dashboard</p>
+              <% end %>
+            </li>
+
+            <!-- User Management -->
+            <li class="nav-item">
+              <%= link_to admin_users_path, class: "nav-link" do %>
+                <i class="nav-icon fas fa-users"></i>
+                <p>Users</p>
+              <% end %>
+            </li>
+
+            <!-- Video Management -->
+            <li class="nav-item">
+              <%= link_to '#', class: "nav-link" do %>
+                <i class="nav-icon fas fa-video"></i>
+                <p>Videos</p>
+              <% end %>
+            </li>
+
+            <!-- Ramen Shop Management -->
+            <li class="nav-item">
+              <%= link_to '#', class: "nav-link" do %>
+                <i class="nav-icon fas fa-store"></i>
+                <p>Ramen Shops</p>
+              <% end %>
+            </li>
+
+            <!-- Reports -->
+            <li class="nav-item">
+              <%= link_to '#', class: "nav-link" do %>
+                <i class="nav-icon fas fa-flag"></i>
+                <p>Reports</p>
+              <% end %>
+            </li>
+
+            <!-- Logout -->
+            <li class="nav-item">
+              <%= link_to admin_logout_path, class: "nav-link", data: { turbo_method: :delete } do %>
+                <i class="nav-icon fas fa-sign-out-alt"></i>
+                <p>Logout</p>
+              <% end %>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <!-- /.sidebar -->
+    </aside>
+
+    <!-- Content Wrapper -->
+    <div class="content-wrapper">
+      <div class="content-header">
+        <div class="container-fluid">
+          <h1 class="m-0"><%= content_for?(:header_title) ? yield(:header_title) : "Dashboard" %></h1>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="container-fluid">
+          <%= yield %> <!-- 各ビューの内容がここにレンダリングされる -->
+        </div>
+      </div>
+    </div>
+    <!-- /.content-wrapper -->
+
+    <!-- Footer -->
+    <footer class="main-footer">
+      <strong>Copyright &copy; 2024.</strong>
+      All rights reserved.
+    </footer>
+  </div>
 </body>
 </html>
