@@ -7,14 +7,14 @@ module Admin
       @videos = Video.includes(:ramen_shop)
     end
 
-    def show ;end
+    def show; end
 
     def edit
-      @form = VideoSubmissionForm.new({}, current_user: current_user, video: @video)
+      @form = VideoSubmissionForm.new({}, current_user:, video: @video)
     end
   
     def update
-      @form = VideoSubmissionForm.new(video_submission_params, place_id: params[:place_id], current_user: current_user, video: @video)
+      @form = VideoSubmissionForm.new(video_submission_params, place_id: params[:place_id], current_user:, video: @video)
     
       if @form.update(video_submission_params)
         flash[:notice] = t('flash.videos.update_success')
