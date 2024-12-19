@@ -4,6 +4,7 @@ esbuild.build({
   entryPoints: ['app/javascript/admin.js'], // エントリーポイント
   bundle: true,
   outfile: 'app/assets/builds/admin.js',    // 出力ファイル
+  treeShaking: true, 
   minify: true,
   sourcemap: true,
   loader: {

@@ -5,7 +5,7 @@
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
   <%= stylesheet_link_tag "admin", "data-turbo-track": "reload" %>
-  <%= javascript_include_tag "admin", "data-turbo-track": "reload", defer: true %>
+  <%= javascript_include_tag "admin", "data-turbo-track": "reload" %>
 </head>
 <body class="hold-transition <%= content_for?(:body_class) ? yield(:body_class) : 'sidebar-mini' %>">
   <div class="wrapper">
@@ -52,7 +52,7 @@
 
             <!-- Video Management -->
             <li class="nav-item">
-              <%= link_to '#', class: "nav-link" do %>
+              <%= link_to admin_videos_path, class: "nav-link" do %>
                 <i class="nav-icon fas fa-video"></i>
                 <p>Videos</p>
               <% end %>
@@ -91,6 +91,7 @@
     <div class="content-wrapper">
       <div class="content-header">
         <div class="container-fluid">
+          <%= render 'shared/flash_message' %>
           <h1 class="m-0"><%= content_for?(:header_title) ? yield(:header_title) : "Dashboard" %></h1>
         </div>
       </div>

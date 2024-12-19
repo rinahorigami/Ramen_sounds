@@ -1,0 +1,59 @@
+<% content_for :header_title do %>
+  投稿動画詳細
+<% end %>
+
+<table class="table table-bordered table-striped">
+  <tbody>
+    <tr>
+      <th>動画</th>
+      <td><video controls style="width: 600px; height: 320px;"><source src="<%= @video.file.url %>" type="video/mp4"></td>
+    </tr>
+    <tr>
+      <th>ID</th>
+      <td><%= @video.id %></td>
+    </tr>
+    <tr>
+      <th>ユーザーID</th>
+      <td><%= @video.user.id %></td>
+    </tr>
+    <tr>
+      <th>ユーザー名</th>
+      <td><%= @video.user.name %></td>
+    </tr>
+    <tr>
+      <th>ラーメン店名</th>
+      <td><%= @video.ramen_shop&.name %></td>
+    </tr>
+    <tr>
+      <th>メニュー名</th>
+      <td><%= @video&.menu_name %></td>
+    </tr>
+    <tr>
+      <th>金額</th>
+      <td><%= @video&.price %></td>
+    </tr>
+    <tr>
+      <th>コメント</th>
+      <td><%= @video&.comment %></td>
+    </tr>
+    <tr>
+      <th>タグ</th>
+      <td><%= @video&.tag_list %></td>
+    </tr>
+    <tr>
+      <th>投稿日</th>
+      <td><%= @video.created_at %></td>
+    </tr>
+    <tr>
+      <th>更新日</th>
+      <td><%= @video.updated_at %></td>
+    </tr>
+    <tr>
+      <th>操作</th>
+      <td>
+        <%= link_to "編集", edit_admin_video_path, class: "btn btn-secondary btn-sm" %>
+        <%= link_to "削除", admin_video_path(@video), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" }, class: "btn btn-danger btn-sm" %>
+      </td>
+    </tr>
+  </tbody>
+</table>
