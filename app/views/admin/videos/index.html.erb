@@ -1,0 +1,32 @@
+<% content_for :header_title do %>
+  動画管理
+<% end %>
+
+<table class="table table-bordered table-striped table-hover">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>動画</th>
+      <th>ラーメン店</th>
+      <th>投稿日</th>
+      <th>更新日</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @videos.each do |video| %>
+      <tr>
+        <td><%= video.id %></td>
+        <td><video controls style="width: 300px; height: 200px;">
+                <source src="<%= video.file.url %>" type="video/mp4"></td>
+        <td><%= video.ramen_shop&.name %></td>
+        <td><%= video.created_at %></td>
+        <td><%= video.updated_at %></td>
+        <td>
+          <%= link_to "詳細", admin_video_path(video), class: "btn btn-primary btn-sm" %>
+          <%= link_to "編集", edit_admin_video_path(video), class: "btn btn-secondary btn-sm" %>
+          <%= link_to "削除", admin_video_path(video), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" }, class: "btn btn-danger btn-sm" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
