@@ -6,6 +6,7 @@
   <%= csp_meta_tag %>
   <%= stylesheet_link_tag "admin", "data-turbo-track": "reload" %>
   <%= javascript_include_tag "admin", "data-turbo-track": "reload" %>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body class="hold-transition <%= content_for?(:body_class) ? yield(:body_class) : 'sidebar-mini' %>">
   <div class="wrapper">
@@ -60,7 +61,7 @@
 
             <!-- Ramen Shop Management -->
             <li class="nav-item">
-              <%= link_to '#', class: "nav-link" do %>
+              <%= link_to admin_ramen_shops_path, class: "nav-link" do %>
                 <i class="nav-icon fas fa-store"></i>
                 <p>Ramen Shops</p>
               <% end %>

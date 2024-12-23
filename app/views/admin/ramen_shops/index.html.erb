@@ -1,0 +1,32 @@
+<% content_for :header_title do %>
+  ラーメン店管理
+<% end %>
+
+<div class="d-flex justify-content-end mb-3">
+  <%= link_to "店舗登録", new_admin_ramen_shop_path, class: "btn btn-success btn-sm" %>
+</div>
+
+<table class="table table-bordered table-striped table-hover">
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>店名</th>
+      <th>住所</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @ramen_shops.each do |shop| %>
+      <tr>
+        <td><%= shop.id %></td>
+        <td><%= shop.name %></td>
+        <td><%= shop.address.gsub(/^日本、/, '').gsub(/〒?\d{3}-\d{4}/, '') %></td>
+        <td>
+            <%= link_to "詳細", admin_ramen_shop_path(shop), class: "btn btn-primary btn-sm p-1" %>
+            <%= link_to "編集", edit_admin_ramen_shop_path(shop), class: "btn btn-secondary btn-sm p-1" %>
+            <%= link_to "削除", admin_ramen_shop_path(shop), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" }, class: "btn btn-danger btn-sm p-1" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

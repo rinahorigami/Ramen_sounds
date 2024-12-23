@@ -1,0 +1,49 @@
+<% content_for :header_title do %>
+  ラーメン店管理
+<% end %>
+
+<div class="card card-primary">
+  <!-- /.card-header -->
+  <div class="card-body">
+
+    <%= form_with(model: @ramen_shop, url: admin_ramen_shop_path(@ramen_shop), method: :patch,) do |form| %>
+
+      <div class="form-group row">
+        <%= form.label :name, "店名", class: 'col-sm-2 col-form-label' %>
+        <div class="col-sm-10">
+          <%= form.text_field :name, class: 'form-control' %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <%= form.label :address, "住所", class: 'col-sm-2 col-form-label' %>
+        <div class="col-sm-10">
+          <%= form.text_field :address, class: 'form-control' %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <%= form.label :place_id, "place_id", class: 'col-sm-2 col-form-label' %>
+        <div class="col-sm-10">
+          <%= form.text_field :place_id, class: 'form-control' %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <%= form.label :phone_number, "電話番号", class: 'col-sm-2 col-form-label' %>
+        <div class="col-sm-10">
+          <%= form.text_field :phone_number, class: 'form-control' %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <%= form.label :opening_hours, "営業時間", class: 'col-sm-2 col-form-label' %>
+        <div class="col-sm-10">
+          <%= form.text_area :opening_hours, class: 'form-control', rows: 7 %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-10 offset-sm-2">
+          <%= form.submit "登録", class: 'btn btn-primary' %>
+        </div>
+      </div>
+    <% end %>
+    <%= link_to "戻る", admin_ramen_shop_path(@ramen_shop) %>
+  </div>
+</div>
