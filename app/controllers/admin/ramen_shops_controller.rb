@@ -31,7 +31,7 @@ module Admin
         Rake::Task['update_ramen_shops:fetch_data_by_name'].invoke
   
         flash[:notice] = "RamenShopsの更新が成功しました。"
-      rescue => e
+      rescue StandardError => e
         flash[:alert] = "エラーが発生しました: #{e.message}"
       ensure
         Rake::Task['update_ramen_shops:fetch_data_by_name'].reenable
@@ -45,7 +45,7 @@ module Admin
       @videos = @ramen_shop.videos.order(created_at: :desc)
     end
 
-    def edit ;end
+    def edit; end
 
     def update
       if @ramen_shop.update(shop_params)
