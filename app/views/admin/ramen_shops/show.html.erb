@@ -1,0 +1,71 @@
+<% content_for :header_title do %>
+  <%= @ramen_shop.name %>
+<% end %>
+
+<table class="table table-bordered table-striped">
+  <tbody>
+    <tr>
+      <th>id</th>
+      <td><%= @ramen_shop.id %></td>
+    </tr>
+    <tr>
+      <th>店名</th>
+      <td><%= @ramen_shop.name %></td>
+    </tr>
+    <tr>
+      <th>住所</th>
+      <td><%= @ramen_shop.address.gsub(/^日本、/, '') %></td>
+    </tr>
+    <tr>
+      <th>place_id</th>
+      <td><%= @ramen_shop.place_id %></td>
+    </tr>
+    <tr>
+      <th>電話番号</th>
+      <td><%= @ramen_shop&.phone_number %></td>
+    </tr>
+    <tr>
+      <th>営業時間</th>
+      <td><ul>
+        <% @ramen_shop&.opening_hours.split("\n").each do |day_text| %>
+        <li><%= day_text %></li>
+        <% end %>
+      </ul></td>
+    </tr>
+    <tr>
+      <th>緯度</th>
+      <td><%= @ramen_shop.latitude %></td>
+    </tr>
+    <tr>
+      <th>経度</th>
+      <td><%= @ramen_shop.longitude %></td>
+    </tr>
+    <tr>
+      <th>登録日</th>
+      <td><%= @ramen_shop.created_at %></td>
+    </tr>
+    <tr>
+      <th>更新日</th>
+      <td><%= @ramen_shop.updated_at %></td>
+    </tr>
+    <tr>
+      <th>関連づけられた動画（<%= @videos.count %>件）</th>
+      <td>
+        <% @videos.each do |video| %>
+          <div>
+            <video controls style="width: 250px; height: 150px;">
+              <source src="<%= video.file.url %>" type="video/mp4">
+            </video>
+          </div>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <th>操作</th>
+      <td>
+        <%= link_to "編集", edit_admin_ramen_shop_path, class: "btn btn-secondary btn-sm" %>
+        <%= link_to "削除", admin_ramen_shop_path(@ramen_shop), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" }, class: "btn btn-danger btn-sm" %>
+      </td>
+    </tr>
+  </tbody>
+</table>

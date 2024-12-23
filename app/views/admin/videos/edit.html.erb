@@ -1,71 +1,87 @@
-<div class="card">
-  <div class="card-header">
-    <h3 class="card-title"><%= t('.title') %></h3>
-  </div>
+<% content_for :header_title do %>
+  動画編集
+<% end %>
+<div class="card card-primary">
+  <!-- /.card-header -->
   <div class="card-body">
-    <%= form_with(model: @form, url: admin_video_path(@video), method: :patch, html: { class: 'custom-form' }) do |form| %>
+    <%= form_with(model: @form, url: admin_video_path(@video), method: :patch, html: { class: 'form-horizontal' }) do |form| %>
       <%= render 'shared/error_message', object: @video %>
 
       <!-- ラーメン店選択 -->
-      <div class="form-group">
-        <label><%= t('.select_shop') %></label>
-        <div class="input-group">
-          <%= link_to ramen_shops_path(video_id: @video.id, from_video_form: "edit"), class: 'btn btn-info select-shop' do %>
-            <%= t('.select_shop') %>
-          <% end %>
-          <p id="selected-shop-name" class="ml-3">
-            <% if params[:shop_name].present? %>
-              <%= params[:shop_name] %>
-            <% elsif @video.ramen_shop.present? %>
-              <%= @video.ramen_shop.name %>
-            <% else %>
-              <%= t('.no_select_shop') %>
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label"><p>店舗</p></label>
+        <div class="col-sm-10">
+          <div class="input-group">
+            <%= link_to ramen_shops_path(video_id: @video.id, from_video_form: "edit"), class: 'btn btn-info' do %>
+              <p>店舗選択</p>
             <% end %>
-          </p>
+            <p id="selected-shop-name" class="ml-3">
+              <% if params[:shop_name].present? %>
+                <%= params[:shop_name] %>
+              <% elsif @video.ramen_shop.present? %>
+                <%= @video.ramen_shop.name %>
+              <% else %>
+                <p>店舗が選択されてません</p>
+              <% end %>
+            </p>
+          </div>
+          <%= hidden_field_tag :place_id, params[:place_id] || @video.place_id %>
         </div>
-        <%= hidden_field_tag :place_id, params[:place_id] || @video.place_id %>
       </div>
 
       <!-- メニュー名 -->
-      <div class="form-group">
-        <%= form.label :menu_name, t('.menu_name'), class: 'control-label' %>
-        <%= form.text_field :menu_name, placeholder: t('.menu_name_message'), class: 'form-control', value: @video.menu_name || params[:menu_name] %>
+      <div class="form-group row">
+        <%= form.label :menu_name, "メニュー名", class: 'col-sm-2 col-form-label' %>
+        <div class="col-sm-10">
+          <%= form.text_field :menu_name, class: 'form-control', value: @video.menu_name || params[:menu_name] %>
+        </div>
       </div>
 
       <!-- 金額 -->
-      <div class="form-group">
-        <%= form.label :price, t('.price'), class: 'control-label' %>
-        <%= form.text_field :price, placeholder: t('.price_message'), class: 'form-control', value: @video.price || params[:price] %>
+      <div class="form-group row">
+        <%= form.label :price, "金額", class: 'col-sm-2 col-form-label' %>
+        <div class="col-sm-10">
+          <%= form.text_field :price, class: 'form-control', value: @video.price || params[:price] %>
+        </div>
       </div>
 
       <!-- コメント -->
-      <div class="form-group">
-        <%= form.label :comment, t('.comment'), class: 'control-label' %>
-        <%= form.text_area :comment, class: 'form-control', value: @video.comment || params[:comment] %>
+      <div class="form-group row">
+        <%= form.label :comment, "コメント", class: 'col-sm-2 col-form-label' %>
+        <div class="col-sm-10">
+          <%= form.text_area :comment, class: 'form-control', value: @video.comment || params[:comment] %>
+        </div>
       </div>
 
       <!-- タグ -->
-      <div class="form-group">
-        <%= form.label :tags, t('.tags'), class: 'control-label' %>
-        <%= form.text_field :tag_list, placeholder: t('.tag_message'), value: @video.tag_list_without_hash, class: 'form-control' %>
+      <div class="form-group row">
+        <%= form.label :tags, "タグ", class: 'col-sm-2 col-form-label' %>
+        <div class="col-sm-10">
+          <%= form.text_field :tag_list, value: @video.tag_list_without_hash, class: 'form-control' %>
+        </div>
       </div>
 
       <!-- ファイルアップロード -->
-      <div class="form-group">
-        <%= form.label :file, t('.file'), class: 'control-label' %>
-        <p class="text-muted"><%= t('.file_message') %></p>
-        <%= form.file_field :file, class: 'form-control-file' %>
-        <% if @video.file.present? %>
-          <p class="mt-2">
-            <%= t('.current_video') %> <%= link_to t('.here'), @video.file.url, target: "_blank", class: "text-primary" %>
-          </p>
-        <% end %>
+      <div class="form-group row">
+        <%= form.label :file, "動画", class: 'col-sm-2 col-form-label' %>
+        <div class="col-sm-10">
+          <%= form.file_field :file, class: 'form-control-file' %>
+          <% if @video.file.present? %>
+            <p class="mt-2">
+              現在の動画は<%= link_to "こちら", @video.file.url, target: "_blank", class: "text-primary" %>
+            </p>
+          <% end %>
+        </div>
       </div>
 
       <!-- 保存ボタン -->
-      <div class="form-group">
-        <%= form.submit t('.create'), class: 'btn btn-primary' %>
+      <div class="form-group row">
+        <div class="col-sm-10 offset-sm-2">
+          <%= form.submit "登録", class: 'btn btn-primary' %>
+        </div>
       </div>
     <% end %>
+    <%= link_to "戻る", admin_video_path(@video) %>
   </div>
 </div>
+

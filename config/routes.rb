@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
     resources :users, only: [:index, :show, :edit, :update, :destroy]
     resources :videos, only: [:index, :show, :edit, :update, :destroy]
+    resources :ramen_shops, only: [:index, :show, :new, :create, :edit, :update, :destroy]
 
     get '/', to: 'dashboard#index', as: :root
   end
